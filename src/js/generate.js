@@ -1,7 +1,26 @@
-import { statements } from "./constants.js";
+import { statements, formElementIDs } from "./constants.js";
 
-// Convert the NodeList to an array
-const formElements = [...document.querySelectorAll('.form-element')];
+const form = document.getElementById('form-group');
+
+const generateFormElements = formElementIDs => {
+    formElementIDs.forEach((formElementID, index) => {
+        const formElement = document.createElement('div');
+
+        formElement.className = "form-element";
+        formElement.id = formElementIDs[index];
+        formElement.dataset.expanded = "no";
+
+        form.appendChild(formElement);
+    });
+
+    const generateRegexBtn = document.createElement('button');
+    
+    generateRegexBtn.type = "button";
+    generateRegexBtn.id = "generate-regex";
+    generateRegexBtn.textContent = "Generate Regex";
+
+    form.appendChild(generateRegexBtn);
+}
 
 // Function: Generates the innerHTML of formElements by using their ID
 const generateFormElementInnerHTML = formElements => {
@@ -74,6 +93,11 @@ const generateFormElementInnerHTML = formElements => {
         `;
     });
 }
+
+generateFormElements(formElementIDs);
+
+// Convert the NodeList to an array
+const formElements = [...document.querySelectorAll('.form-element')];
 
 // This will dynamically populate all the formElements on load
 generateFormElementInnerHTML(formElements);
