@@ -18,3 +18,8 @@
     bottom: $bottom;
     left: $left;
 }
+
+@mixin border($thickness: $border-thickness, $style: $border-style, $color: $border-color, $radius: $border-radius) {
+    border: $thickness $style $color;
+    border-radius: $radius;
+}
