@@ -3,3 +3,178 @@
 @import './config';
 @import './navbar';
 @import './footer';
+
+main {
+    width: 70%;
+    
+    margin: 3rem auto;
+
+    #regex-name {
+        color: #4a4a4a;
+        font-size: 3rem;
+        font-family: tahoma;
+
+        border: none;
+        border-bottom: 2px solid lightgrey;
+
+        width: 100%;
+
+        &::placeholder {
+            color: lightgrey;
+        }
+    }
+
+    #form-group {
+        margin-top: 3rem;
+
+        .form-element {
+            margin-bottom: 1rem;
+
+            border: 2px solid lightgrey;
+            padding: 1rem;
+            border-radius: 0.5rem;
+
+            label {
+                font-size: 1.5rem;
+                color: #4a4a4a;
+            }
+
+            select {
+                float: right;
+
+                background-color: white;
+                font-size: 1.5rem;
+                
+                border: 2px solid lightgrey;
+                border-radius: 0.5rem;
+
+                padding: 0.1rem 1rem;
+
+                cursor: pointer;
+
+                &:focus-within {
+                    border-color: #1b9bff;
+                }
+            }
+
+            .params {
+                margin-left: 1.75rem;
+                margin-top: 1.5rem;
+            }
+        }
+
+        #generate-regex {
+            background-color: transparent;
+
+            border: 2px solid #0082e6;
+            border-radius: 0.5rem;
+
+            padding: 0.5rem 1rem;
+
+            color: #0082e6;
+            font-size: 1.5rem;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            &:hover {
+                background-color: #0082e6;
+
+                color: white;
+
+                transition: 0.3s;
+            }
+        }
+
+        .expand-btn {
+            background-color: transparent;
+
+            border: none;
+
+            color: lightgrey;
+            font-weight: bold;
+            font-size: 1.5rem;
+
+            margin-right: 0.5rem;
+
+            cursor: pointer;
+        }
+
+        input[type="radio"] {
+            margin-bottom: 1rem;
+            margin-right: 1rem;
+
+            cursor: pointer;
+        }
+
+        .character-sets {
+            margin-left: 3rem;
+
+            border: 2px solid lightgrey;
+            border-radius: 0.5rem;
+
+            padding: 1rem;
+
+            margin-bottom: 1rem;
+
+            div:not(:last-of-type) {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        .custom-characters-field {
+            margin-left: 3rem;
+            margin-bottom: 1rem;
+
+            border: 2px solid lightgrey;
+            border-radius: 0.5rem;
+
+            padding: 1rem;
+
+            input {
+                border: none;
+                border-bottom: 2px solid lightgrey;
+
+                font-size: 1.5rem;
+
+                transition: 0.3s;
+
+                &:focus {
+                    border-color: #0082e6;
+
+                    transition: 0.3s;
+                }
+            }
+        }
+
+        .quantity {
+            div:not(last-of-type) {
+                margin-bottom: 0.5rem;
+
+                input {
+                    float: right;
+
+                    border: none;
+                    border-bottom: 2px solid lightgrey;
+
+                    width: 7rem;
+
+                    text-align: center;
+
+                    transition: 0.3s;
+
+                    &:focus {
+                        border-color: #0082e6;
+
+                        transition: 0.3s;
+                    }
+                }
+            }
+        }
+
+        input[type="checkbox"] {
+            cursor: pointer;
+        }
+    }
+}

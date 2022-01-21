@@ -62,7 +62,7 @@ footer .footer-container {
   width: 100%;
   height: 30rem;
   background: #0099ff;
-  margin-top: -1rem;
+  margin-top: -6rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -155,5 +155,163 @@ footer .footer-container .socials .col a {
 
 footer .footer-container .socials .col a:hover {
   text-decoration: underline;
+}
+
+main {
+  width: 70%;
+  margin: 3rem auto;
+}
+
+main #regex-name {
+  color: #4a4a4a;
+  font-size: 3rem;
+  font-family: tahoma;
+  border: none;
+  border-bottom: 2px solid lightgrey;
+  width: 100%;
+}
+
+main #regex-name::-webkit-input-placeholder {
+  color: lightgrey;
+}
+
+main #regex-name:-ms-input-placeholder {
+  color: lightgrey;
+}
+
+main #regex-name::-ms-input-placeholder {
+  color: lightgrey;
+}
+
+main #regex-name::placeholder {
+  color: lightgrey;
+}
+
+main #form-group {
+  margin-top: 3rem;
+}
+
+main #form-group .form-element {
+  margin-bottom: 1rem;
+  border: 2px solid lightgrey;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+main #form-group .form-element label {
+  font-size: 1.5rem;
+  color: #4a4a4a;
+}
+
+main #form-group .form-element select {
+  float: right;
+  background-color: white;
+  font-size: 1.5rem;
+  border: 2px solid lightgrey;
+  border-radius: 0.5rem;
+  padding: 0.1rem 1rem;
+  cursor: pointer;
+}
+
+main #form-group .form-element select:focus-within {
+  border-color: #1b9bff;
+}
+
+main #form-group .form-element .params {
+  margin-left: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+main #form-group #generate-regex {
+  background-color: transparent;
+  border: 2px solid #0082e6;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: #0082e6;
+  font-size: 1.5rem;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+main #form-group #generate-regex:hover {
+  background-color: #0082e6;
+  color: white;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+main #form-group .expand-btn {
+  background-color: transparent;
+  border: none;
+  color: lightgrey;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+main #form-group input[type="radio"] {
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+main #form-group .character-sets {
+  margin-left: 3rem;
+  border: 2px solid lightgrey;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+main #form-group .character-sets div:not(:last-of-type) {
+  margin-bottom: 0.5rem;
+}
+
+main #form-group .custom-characters-field {
+  margin-left: 3rem;
+  margin-bottom: 1rem;
+  border: 2px solid lightgrey;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+main #form-group .custom-characters-field input {
+  border: none;
+  border-bottom: 2px solid lightgrey;
+  font-size: 1.5rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+main #form-group .custom-characters-field input:focus {
+  border-color: #0082e6;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+main #form-group .quantity div:not(last-of-type) {
+  margin-bottom: 0.5rem;
+}
+
+main #form-group .quantity div:not(last-of-type) input {
+  float: right;
+  border: none;
+  border-bottom: 2px solid lightgrey;
+  width: 7rem;
+  text-align: center;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+main #form-group .quantity div:not(last-of-type) input:focus {
+  border-color: #0082e6;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+main #form-group input[type="checkbox"] {
+  cursor: pointer;
 }
 /*# sourceMappingURL=main.css.map */
