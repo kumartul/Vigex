@@ -22,52 +22,52 @@ const generateFormElementInnerHTML = formElements => {
         <div class="params hidden">
 
             <div class="character-set">
-                <input type="radio" name="${id}-confirmation" id="${id}-confirmation-character-set">
+                <input disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-character-set">
                 <label for="${id}-confirmation-character-set">Choose character set(s)</label>
             </div>
 
             <div class="hidden character-sets">
 
                 <div>
-                    <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-uppercase-letters">
+                    <input disabled type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-uppercase-letters">
                     <label for="${id}-confirmation-character-set-uppercase-letters">Uppercase Letters</label>
                 </div>
 
                 <div>
-                    <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-lowercase-letters">
+                    <input disabled type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-lowercase-letters">
                     <label for="${id}-confirmation-character-set-lowercase-letters">Lowercase Letters</label>
                 </div>
 
                 <div>
-                    <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-numbers">
+                    <input disabled type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-numbers">
                     <label for="${id}-confirmation-character-set-lowercase-letters">Numbers</label>
                 </div>
 
                 <div>
-                    <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-special-characters">
+                    <input disabled type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-special-characters">
                     <label for="${id}-confirmation-character-set-lowercase-letters">Special Characters</label>
                 </div>
             </div>
 
             <div class="custom-characters">
-                <input type="radio" name="${id}-confirmation" id="${id}-confirmation-custom-characters">
+                <input disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-custom-characters">
                 <label for="${id}-confirmation-custom-characters">Custom Characters</label>
             </div>
 
             <div class="hidden custom-characters-field">
-                <input type="text" placeholder="Enter your character set">
+                <input disabled type="text" placeholder="Enter your character set">
             </div>
 
             <div class="hidden quantity">
 
                 <div>
                     <label for="${id}-min-quantity">Minimum number of times this character set must repeat: </label>
-                    <input type="number" id="${id}-min-quantity" min="0" value="1">
+                    <input disabled type="number" id="${id}-min-quantity" min="0" value="1">
                 </div>
 
                 <div>
                     <label for="${id}-max-quantity">Maximum number of times this character set must repeat: </label>
-                    <input type="number" id="${id}-max-quantity" min="1" value="1">
+                    <input disabled type="number" id="${id}-max-quantity" min="1" value="1">
                 </div>
             </div>
         </div>

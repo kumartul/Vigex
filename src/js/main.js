@@ -65,6 +65,13 @@ confirmationMenus.forEach(confirmationMenu => {
                 hiddenDiv.classList.add('visible');
             });
 
+            // Fetch all the input fields in the form of an array
+            const inputFields = [...formElement.querySelectorAll('input')];
+
+            inputFields.forEach(inputField => {
+                inputField.disabled = false;
+            });
+
             // Get the expandBtn of the formElement
             const expandBtn = formElement.querySelector(`.expand-btn`);
 
@@ -81,6 +88,13 @@ confirmationMenus.forEach(confirmationMenu => {
             hiddenDivs.forEach(hiddenDiv => {
                 hiddenDiv.classList.remove('visible');
                 hiddenDiv.classList.add('hidden');
+            });
+
+            // Fetch all the input fields in the form of an array
+            const inputFields = [...formElement.querySelectorAll('input')];
+
+            inputFields.forEach(inputField => {
+                inputField.disabled = true;
             });
 
             // Get the expandBtn of the formElement
