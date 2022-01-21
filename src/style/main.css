@@ -1,0 +1,59 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: sans-serif;
+}
+
+.logo {
+  position: absolute;
+  top: -0.8rem;
+  left: -6rem;
+}
+
+#icon {
+  width: 320px;
+  height: 82px;
+  -webkit-transform: scale(0.4);
+          transform: scale(0.4);
+}
+
+.navbar {
+  background: -webkit-gradient(linear, left top, right top, from(black), to(#323232));
+  background: linear-gradient(to right, black, #323232);
+  width: 100%;
+  height: 6rem;
+}
+
+.navbar button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 1.5rem;
+  right: 1rem;
+  background: transparent;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid #8f8d8d;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.navbar button svg {
+  margin-left: 0.5rem;
+}
+/*# sourceMappingURL=main.css.map */

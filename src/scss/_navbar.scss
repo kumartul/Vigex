@@ -1,0 +1,32 @@
+@import './icon';
+
+.navbar {
+    background: linear-gradient(to right, rgb(0, 0, 0), rgb(50, 50, 50));
+
+    width: 100%;
+    height: $navbar-height;
+
+    button {
+        @include content-center;
+
+        position: absolute;
+        top: 1.5rem;
+        right: 1rem;
+
+        background: transparent;
+        
+        color: white;
+        font-size: 1.5rem;
+        
+        padding: 0.5rem 1rem;
+        
+        border: 2px solid rgb(143, 141, 141);
+        border-radius: 0.5rem;
+
+        cursor: pointer;
+
+        svg {
+            margin-left: 0.5rem;
+        }
+    }
+}
