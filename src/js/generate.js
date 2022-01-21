@@ -1,4 +1,4 @@
-import { statements, formElementIDs } from "./constants.js";
+import { statements, formElementIDs } from "./utils.js";
 
 const form = document.getElementById('form-group');
 

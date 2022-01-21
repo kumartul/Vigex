@@ -1,5 +1,5 @@
 import './generate.js';
-import { confirmationStates } from './constants.js';
+import { confirmationStates } from './utils.js';
 import './buildRegex.js';
 
 const starsOnGitHubBtn = document.getElementById('stars-on-github');
