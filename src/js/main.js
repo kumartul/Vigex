@@ -32,18 +32,6 @@ const fetchNumberOfStarGazers = async () => {
     });
 }
 
-// Function: Generates the regular expression
-generateRegexBtn.addEventListener('click', () => {    
-    generateRegexBtn.textContent = "Generating...";
-    
-    generateRegexBtn.disabled = true;
-
-    // Change the style
-    generateRegexBtn.style.backgroundColor = "#1b9bff";
-    generateRegexBtn.style.color = "white";
-    generateRegexBtn.style.cursor = "not-allowed";
-});
-
 // Attach a 'click' event listener to the starsOnGitHubBtn so that whenever someone clicks on the button,
 // he/she will be redirected to the repository on GitHub
 starsOnGitHubBtn.addEventListener('click', () => {
