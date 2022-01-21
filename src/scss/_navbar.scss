@@ -8,10 +8,8 @@
 
     button {
         @include content-center;
-
-        position: absolute;
-        top: 1.5rem;
-        right: 1rem;
+        
+        @include pos-absolute($top: 1.5rem, $right: 1rem);
 
         background: transparent;
         
