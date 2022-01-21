@@ -61,8 +61,53 @@ generateRegexBtn.addEventListener('click', () => {
                 const min = formElement.querySelector('.quantity .min').value;
                 const max = formElement.querySelector('.quantity .max').value;
 
-                const lastPortion = regex.slice(regex.indexOf("]"));
+                const lastPortion = regex.slice(regex.indexOf("]") + 1);
                 regex = regex.slice(0, regex.indexOf("]") + 1) + `{${min}, ${max}}` + lastPortion;
+            }
+            else if(formElement.id === "ends-with") {
+                regex += "[]$";
+
+                const radioBtns = [...formElement.querySelectorAll('input[type="radio"]')];
+
+                radioBtns.forEach(radioBtn => {
+                    if(radioBtn.checked) {
+                        if(radioBtn.className === "character-set") {
+                            const checkBoxes = [...formElement.querySelectorAll('.character-sets input')];
+
+                            checkBoxes.forEach(checkBox => {
+                                if(checkBox.checked) {
+                                    if(checkBox.id.includes("uppercase")) {
+                                        const lastPortion = regex.slice(regex.lastIndexOf("[") + 1);
+                                        regex = regex.slice(0, regex.lastIndexOf("[") + 1) + "A-Z" + lastPortion;
+                                    }
+                                    if(checkBox.id.includes("lowercase")) {
+                                        const lastPortion = regex.slice(regex.lastIndexOf("[") + 1);
+                                        regex = regex.slice(0, regex.lastIndexOf("[") + 1) + "a-z" + lastPortion;
+                                    }
+                                    if(checkBox.id.includes("numbers")) {
+                                        const lastPortion = regex.slice(regex.lastIndexOf("[") + 1);
+                                        regex = regex.slice(0, regex.lastIndexOf("[") + 1) + "0-9" + lastPortion;
+                                    }
+                                    if(checkBox.id.includes("special")) {
+                                        const lastPortion = regex.slice(regex.lastIndexOf("[") + 1);
+                                        regex = regex.slice(0, regex.lastIndexOf("[") + 1) + "_\\W" + lastPortion;
+                                    }
+                                }
+                            });
+                        }
+                        else if(radioBtn.className === "custom-characters") {
+                            const customCharactersField = formElement.querySelector('.custom-characters-field input');
+                            
+                            const lastPortion = regex.slice(regex.lastIndexOf("]"));
+                            regex = regex.slice(0, regex.lastIndexOf("[") + 1) + `${customCharactersField.value}` + lastPortion;
+                        }
+                    }
+                });
+
+                const min = formElement.querySelector('.quantity .min').value;
+                const max = formElement.querySelector('.quantity .max').value;
+
+                regex = regex.slice(0, regex.indexOf("$")) + `{${min}, ${max}}` + "$";
             }
         }
     });
