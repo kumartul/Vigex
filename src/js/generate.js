@@ -41,29 +41,29 @@ const generateFormElementInnerHTML = formElements => {
         <div class="params hidden">
 
             <div class="character-set">
-                <input disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-character-set" class="character-set">
+                <input checked disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-character-set" class="character-set">
                 <label for="${id}-confirmation-character-set">Choose character set(s)</label>
             </div>
 
             <div class="hidden character-sets">
 
                 <div>
-                    <input disabled type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-uppercase-letters">
+                    <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-uppercase-letters">
                     <label for="${id}-confirmation-character-set-uppercase-letters">Uppercase Letters</label>
                 </div>
 
                 <div>
-                    <input disabled type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-lowercase-letters">
+                    <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-lowercase-letters">
                     <label for="${id}-confirmation-character-set-lowercase-letters">Lowercase Letters</label>
                 </div>
 
                 <div>
-                    <input disabled type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-numbers">
+                    <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-numbers">
                     <label for="${id}-confirmation-character-set-lowercase-letters">Numbers</label>
                 </div>
 
                 <div>
-                    <input disabled type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-special-characters">
+                    <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-special-characters">
                     <label for="${id}-confirmation-character-set-lowercase-letters">Special Characters</label>
                 </div>
             </div>
