@@ -12,7 +12,7 @@ const generateFormElementInnerHTML = formElements => {
         
         formElement.innerHTML = 
         `
-        <button type="button" id="expand-${id}-confirmation" class="expand-btn">&gt;</button>
+        <button type="button" data-expanded="no" id="expand-${id}-confirmation" class="expand-btn">&gt;</button>
         <label for="${id}-confirmation">${statements[index]}</label>
         <select id="${id}-confirmation" class="confirmation">
             <option value="Yes">Yes</option>
