@@ -1,7 +1,7 @@
 import './generate.js';
 import { confirmationStates } from './constants.js';
+import './buildRegex.js';
 
-const generateRegexBtn = document.getElementById('generate-regex');
 const starsOnGitHubBtn = document.getElementById('stars-on-github');
 
 // Convert the NodeList to an array
