@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -25,8 +26,8 @@ html {
 }
 
 .navbar {
-  background: -webkit-gradient(linear, left top, right top, from(black), to(#323232));
-  background: linear-gradient(to right, black, #323232);
+  background: -webkit-gradient(linear, left top, right top, from(#0082e6), to(#1b9bff));
+  background: linear-gradient(to right, #0082e6, #1b9bff);
   width: 100%;
   height: 6rem;
 }
@@ -48,12 +49,111 @@ html {
   color: white;
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
-  border: 2px solid #8f8d8d;
+  border: 2px solid white;
   border-radius: 0.5rem;
   cursor: pointer;
 }
 
 .navbar button svg {
   margin-left: 0.5rem;
+}
+
+footer .footer-container {
+  width: 100%;
+  height: 30rem;
+  background: #0099ff;
+  margin-top: -1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+footer .footer-container .wrapper {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+
+footer .footer-container h2 {
+  color: white;
+  font-size: 3rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+footer .footer-container .credits {
+  border-top: 3px solid white;
+  padding: 2rem 30rem 0.5rem 0;
+  color: white;
+  font-size: 1.5rem;
+}
+
+footer .footer-container .credits a {
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+footer .footer-container .credits a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+footer .footer-container .credits img {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+footer .footer-container .copyright {
+  color: white;
+  font-size: 1.5rem;
+}
+
+footer .footer-container .socials {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 40%;
+  margin: 1.5rem 0;
+}
+
+footer .footer-container .socials .col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+footer .footer-container .socials .col a {
+  color: white;
+  font-size: 1.5rem;
+  line-height: 2;
+  cursor: pointer;
+}
+
+footer .footer-container .socials .col a:hover {
+  text-decoration: underline;
 }
 /*# sourceMappingURL=main.css.map */
