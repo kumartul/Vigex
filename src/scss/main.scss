@@ -64,17 +64,9 @@ main {
         }
 
         #generate-regex {
-            background-color: transparent;
-
-            border: 2px solid $theme-color;
-            border-radius: 0.5rem;
-
-            padding: 0.5rem 1rem;
-
-            color: $theme-color;
-            font-size: 1.5rem;
-
-            cursor: pointer;
+            @include button($theme-color);
+            
+            @include border($color: $theme-color);
 
             transition: 0.3s;
 
