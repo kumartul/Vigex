@@ -167,7 +167,8 @@ main {
   margin: 3rem auto;
 }
 
-main #regex-name {
+main #regex-name,
+main #output-regex {
   color: #4a4a4a;
   font-size: 3rem;
   font-family: tahoma;
@@ -176,20 +177,28 @@ main #regex-name {
   width: 100%;
 }
 
-main #regex-name::-webkit-input-placeholder {
+main #regex-name::-webkit-input-placeholder,
+main #output-regex::-webkit-input-placeholder {
   color: lightgrey;
 }
 
-main #regex-name:-ms-input-placeholder {
+main #regex-name:-ms-input-placeholder,
+main #output-regex:-ms-input-placeholder {
   color: lightgrey;
 }
 
-main #regex-name::-ms-input-placeholder {
+main #regex-name::-ms-input-placeholder,
+main #output-regex::-ms-input-placeholder {
   color: lightgrey;
 }
 
-main #regex-name::placeholder {
+main #regex-name::placeholder,
+main #output-regex::placeholder {
   color: lightgrey;
+}
+
+main #output-regex {
+  margin-top: 3rem;
 }
 
 main #form-group {
