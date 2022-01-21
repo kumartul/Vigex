@@ -1,18 +1,16 @@
 const generateRegexBtn = document.getElementById('generate-regex');
 
+const outputRegexField = document.getElementById('output-regex');
+
 const formElements = document.querySelectorAll('.form-element');
+
+// Function: Displays the regex in the outputRegexField
+const displayRegex = regex => {
+    outputRegexField.value = regex;
+}
 
 // Function: Generates the regular expression
 generateRegexBtn.addEventListener('click', () => {    
-    generateRegexBtn.textContent = "Generating...";
-    
-    generateRegexBtn.disabled = true;
-
-    // Change the style
-    generateRegexBtn.style.backgroundColor = "#1b9bff";
-    generateRegexBtn.style.color = "white";
-    generateRegexBtn.style.cursor = "not-allowed";
-
     let regex = ``;
 
     formElements.forEach(formElement => {
@@ -59,10 +57,17 @@ generateRegexBtn.addEventListener('click', () => {
                         }
                     }
                 });
+
+                const min = formElement.querySelector('.quantity .min').value;
+                const max = formElement.querySelector('.quantity .max').value;
+
+                const lastPortion = regex.slice(regex.indexOf("]"));
+                regex = regex.slice(0, regex.indexOf("]") + 1) + `{${min}, ${max}}` + lastPortion;
             }
         }
     });
 
     regex = "/" + regex + "/";
-    console.log(regex);
+
+    displayRegex(regex);
 });
