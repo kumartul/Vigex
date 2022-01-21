@@ -81,12 +81,12 @@ const generateFormElementInnerHTML = formElements => {
 
                 <div>
                     <label for="${id}-min-quantity">Minimum number of times this character set must repeat: </label>
-                    <input disabled type="number" id="${id}-min-quantity" min="0" value="1">
+                    <input disabled type="number" id="${id}-min-quantity" min="0" value="1" class="min">
                 </div>
 
                 <div>
                     <label for="${id}-max-quantity">Maximum number of times this character set must repeat: </label>
-                    <input disabled type="number" id="${id}-max-quantity" min="1" value="1">
+                    <input disabled type="number" id="${id}-max-quantity" min="1" value="1" class="max">
                 </div>
             </div>
         </div>
