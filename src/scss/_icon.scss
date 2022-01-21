@@ -1,0 +1,10 @@
+.logo {
+    position: absolute;
+    left: -6rem;
+}
+#icon {
+    width: $icon-width;
+    height: $icon-height;
+    
+    transform: scale(0.4);
+}
