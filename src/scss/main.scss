@@ -66,12 +66,12 @@ main {
         #generate-regex {
             background-color: transparent;
 
-            border: 2px solid #0082e6;
+            border: 2px solid $theme-color;
             border-radius: 0.5rem;
 
             padding: 0.5rem 1rem;
 
-            color: #0082e6;
+            color: $theme-color;
             font-size: 1.5rem;
 
             cursor: pointer;
@@ -79,7 +79,7 @@ main {
             transition: 0.3s;
 
             &:hover {
-                background-color: #0082e6;
+                background-color: $theme-color;
 
                 color: white;
 
@@ -141,7 +141,7 @@ main {
                 transition: 0.3s;
 
                 &:focus {
-                    border-color: #0082e6;
+                    border-color: $theme-color;
 
                     transition: 0.3s;
                 }
@@ -165,7 +165,7 @@ main {
                     transition: 0.3s;
 
                     &:focus {
-                        border-color: #0082e6;
+                        border-color: $theme-color;
 
                         transition: 0.3s;
                     }
@@ -177,4 +177,8 @@ main {
             cursor: pointer;
         }
     }
+}
+
+.hidden {
+    display: none;
 }
