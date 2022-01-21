@@ -22,7 +22,7 @@ const generateFormElementInnerHTML = formElements => {
         <div class="params hidden">
 
             <div class="character-set">
-                <input disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-character-set">
+                <input disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-character-set" class="character-set">
                 <label for="${id}-confirmation-character-set">Choose character set(s)</label>
             </div>
 
@@ -50,7 +50,7 @@ const generateFormElementInnerHTML = formElements => {
             </div>
 
             <div class="custom-characters">
-                <input disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-custom-characters">
+                <input disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-custom-characters" class="custom-characters">
                 <label for="${id}-confirmation-custom-characters">Custom Characters</label>
             </div>
 

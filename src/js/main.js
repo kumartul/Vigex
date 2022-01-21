@@ -7,7 +7,11 @@ const starsOnGitHubBtn = document.getElementById('stars-on-github');
 // Convert the NodeList to an array
 const expandBtns = [...document.querySelectorAll('.expand-btn')];
 
+// Convert the NodeList to an array
 const confirmationMenus = [...document.querySelectorAll('select')];
+
+// Conver the NodeList to an array
+const radioBtns = [...document.querySelectorAll('input[type="radio"]')];
 
 // Asynchronous Function: Fetches the number of star gazers of Vigex
 const fetchNumberOfStarGazers = async () => {
@@ -66,7 +70,7 @@ confirmationMenus.forEach(confirmationMenu => {
             });
 
             // Fetch all the input fields in the form of an array
-            const inputFields = [...formElement.querySelectorAll('input')];
+            let inputFields = [...formElement.querySelectorAll('input[type="radio"]'), ...formElement.querySelectorAll('.quantity input')];
 
             inputFields.forEach(inputField => {
                 inputField.disabled = false;
@@ -146,6 +150,36 @@ expandBtns.forEach(expandBtn => {
 
             event.target.setAttribute("data-expanded", "no");
         }
+    });
+});
+
+radioBtns.forEach(radioBtn => {
+    radioBtn.addEventListener('click', event => {
+        const formElement = event.target.parentElement.parentElement;
+
+        let inputFieldsToBeActivated = undefined;
+        let inputFieldsToBeDeactivated = undefined;
+
+        if(event.target.className === "character-set") {
+            // Convert the NodeList of 'HTMLInputElement' to an array
+            inputFieldsToBeActivated = [...formElement.querySelectorAll('.character-sets input')];
+            inputFieldsToBeDeactivated = [...formElement.querySelectorAll('.custom-characters-field input')];
+        }
+        else if(event.target.className === "custom-characters") {
+            // Convert the NodeList of 'HTMLInputElement' to an array
+            inputFieldsToBeActivated = [...formElement.querySelectorAll('.custom-characters-field input')];
+            inputFieldsToBeDeactivated = [...formElement.querySelectorAll('.character-sets input')];
+        }
+
+        // Iterate through every inputField and enable it
+        inputFieldsToBeActivated.forEach(inputFieldToBeActivated => {
+            inputFieldToBeActivated.disabled = false;
+        });
+
+        // Iterate through every inputField and disable it
+        inputFieldsToBeDeactivated.forEach(inputFieldToBeDeactivated => {
+            inputFieldToBeDeactivated.disabled = true;
+        });
     });
 });
 
