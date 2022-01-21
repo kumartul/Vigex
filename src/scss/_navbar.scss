@@ -1,7 +1,7 @@
 @import './icon';
 
 .navbar {
-    background: linear-gradient(to right, rgb(0, 0, 0), rgb(50, 50, 50));
+    background: linear-gradient(to right, #0082e6, #1b9bff);
 
     width: 100%;
     height: $navbar-height;
@@ -20,7 +20,7 @@
         
         padding: 0.5rem 1rem;
         
-        border: 2px solid rgb(143, 141, 141);
+        border: 2px solid white;
         border-radius: 0.5rem;
 
         cursor: pointer;
