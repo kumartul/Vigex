@@ -1,7 +1,7 @@
 @import './icon';
 
 .navbar {
-    background: linear-gradient(to right, #0082e6, #1b9bff);
+    background: linear-gradient(to right, $theme-color, $primary-color);
 
     width: 100%;
     height: $navbar-height;
