@@ -73,96 +73,17 @@
     <main>
         <input type="text" placeholder="Enter the name of Regex" id="regex-name">
 
+        <!-- Form Group -->
         <form id="form-group">
 
             <!-- Starts With -->
-            <div class="form-element">
-                <button type="button" id="expand-starts-widt-confirmation" class="expand-btn">&gt;</button>
-                <label for="starts-with-confirmation">Do you want your Regex to start with a particular character or character set?</label>
-                <select name="starts-with-confirmation" id="starts-with-confirmation" class="confirmation">
-                    <option value="Yes">Yes</option>
-                    <option value="No" selected>No</option>
-                </select>
-
-                <!-- Parameters -->
-                <div class="params hidden">
-
-                    <!-- Predefined Character Sets -->
-                    <div class="character-set">
-                        <input type="radio" name="starts-with-confirmation" id="starts-with-confirmation-character-set" class="character-set">
-                        <label for="starts-with-confirmation-character-set">Choose character set(s)</label>
-                    </div>
-
-                    <!-- Character Sets -->
-                    <div class="hidden character-sets">
-
-                        <!-- Uppercase Letters -->
-                        <div>
-                            <input type="checkbox" name="starts-with-confirmation-character-set" id="starts-with-confirmation-character-set-uppercase-letters">
-                            <label for="starts-with-confirmation-character-set-uppercase-letters">Uppercase Letters</label>
-                        </div>
-
-                        <!-- Lowercase Letters -->
-                        <div>
-                            <input type="checkbox" name="starts-with-confirmation-character-set" id="starts-with-confirmation-character-set-lowercase-letters">
-                            <label for="starts-with-confirmation-character-set-lowercase-letters">Lowercase Letters</label>
-                        </div>
-
-                        <!-- Numbers -->
-                        <div>
-                            <input type="checkbox" name="starts-with-confirmation-character-set" id="starts-with-confirmation-character-set-numbers">
-                            <label for="starts-with-confirmation-character-set-lowercase-letters">Numbers</label>
-                        </div>
-
-                        <!-- Special Characters -->
-                        <div>
-                            <input type="checkbox" name="starts-with-confirmation-character-set" id="starts-with-confirmation-character-special-characters">
-                            <label for="starts-with-confirmation-character-set-lowercase-letters">Special Characters</label>
-                        </div>
-                    </div>
-
-                    <!-- Custom Characters-->
-                    <div class="custom-characters">
-                        <input type="radio" name="starts-with-confirmation" id="starts-with-confirmation-custom-characters">
-                        <label for="starts-with-confirmation-custom-characters">Custom Characters</label>
-                    </div>
-
-                    <!-- Custom Character Set Field -->
-                    <div class="hidden custom-characters-field">
-                        <input type="text" placeholder="Enter your character set">
-                    </div>
-
-                    <!-- Quantity -->
-                    <div class="hidden quantity">
-
-                        <!-- Minimum Quantity -->
-                        <div>
-                            <label for="starts-with-min-quantity">Minimum number of times this character set must repeat: </label>
-                            <input type="number" name="starts-with-min-quantity" id="starts-with-min-quantity" min="0" value="1">
-                        </div>
-
-                        <!-- Maximum Quantity -->
-                        <div>
-                            <label for="starts-with-max-quantity">Maximum number of times this character set must repeat: </label>
-                            <input type="number" name="starts-with-max-quantity" id="starts-with-max-quantity" min="1" value="1">
-                        </div>
-                    </div>
-
-                </div>
+            <div class="form-element" id = "starts-with">
+                
             </div>
 
             <!-- Ends With -->
-            <div class="form-element">
-                <button type="button" id="expand-ends-widt-confirmation" class="expand-btn">&gt;</button>
-                <label for="ends-with-confirmation">Do you want your Regex to end with a particular character or character set?</label>
-                <select name="ends-with-confirmation" id="ends-with-confirmation" class="confirmation">
-                    <option value="Yes">Yes</option>
-                    <option value="No" selected>No</option>
-                </select>
+            <div class="form-element" id = "ends-with">
 
-                <div class="params hidden">
-
-                </div>
             </div>
 
             <button type="button" id="generate-regex">Generate Regex</button>
