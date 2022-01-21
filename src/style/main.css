@@ -15,6 +15,8 @@ html {
 .logo {
   position: absolute;
   top: -0.8rem;
+  right: auto;
+  bottom: auto;
   left: -6rem;
 }
 
@@ -45,13 +47,15 @@ html {
   position: absolute;
   top: 1.5rem;
   right: 1rem;
-  background: transparent;
-  color: white;
-  font-size: 1.5rem;
-  padding: 0.5rem 1rem;
+  bottom: auto;
+  left: auto;
   border: 2px solid white;
   border-radius: 0.5rem;
+  color: white;
+  font-size: 1.5rem;
   cursor: pointer;
+  padding: 0.5rem 1rem;
+  background: transparent;
 }
 
 .navbar button svg {
@@ -104,6 +108,7 @@ footer .footer-container .credits {
 
 footer .footer-container .credits a {
   color: white;
+  font-size: 2rem;
   font-weight: bold;
   letter-spacing: 0.5px;
 }
@@ -149,8 +154,8 @@ footer .footer-container .socials .col {
 footer .footer-container .socials .col a {
   color: white;
   font-size: 1.5rem;
-  line-height: 2;
   cursor: pointer;
+  line-height: 2;
 }
 
 footer .footer-container .socials .col a:hover {
@@ -194,13 +199,13 @@ main #form-group {
 main #form-group .form-element {
   margin-bottom: 1rem;
   border: 2px solid lightgrey;
-  padding: 1rem;
   border-radius: 0.5rem;
+  padding: 1rem;
 }
 
 main #form-group .form-element label {
-  font-size: 1.5rem;
   color: #4a4a4a;
+  font-size: 1.5rem;
 }
 
 main #form-group .form-element select {
@@ -223,13 +228,13 @@ main #form-group .form-element .params {
 }
 
 main #form-group #generate-regex {
-  background-color: transparent;
-  border: 2px solid #0082e6;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
   color: #0082e6;
   font-size: 1.5rem;
   cursor: pointer;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 2px solid #0082e6;
+  border-radius: 0.5rem;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
@@ -245,10 +250,12 @@ main #form-group .expand-btn {
   background-color: transparent;
   border: none;
   color: lightgrey;
-  font-weight: bold;
   font-size: 1.5rem;
-  margin-right: 0.5rem;
   cursor: pointer;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  font-weight: bold;
+  margin-right: 0.5rem;
 }
 
 main #form-group input[type="radio"] {
@@ -313,5 +320,9 @@ main #form-group .quantity div:not(last-of-type) input:focus {
 
 main #form-group input[type="checkbox"] {
   cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
 /*# sourceMappingURL=main.css.map */

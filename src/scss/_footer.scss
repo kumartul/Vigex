@@ -17,8 +17,7 @@ footer {
         align-items: flex-start;
 
         h2 {
-            color: white;
-            font-size: 3rem;
+            @include text(white, 3rem);
             font-family: 'IBM Plex Sans', sans-serif;
         }
 
@@ -27,11 +26,10 @@ footer {
 
             padding: 2rem 30rem 0.5rem 0;
 
-            color: white;
-            font-size: 1.5rem;
+            @include text;
 
             a {
-                color: white;
+                @include text(white, 2rem);
                 font-weight: bold;
                 letter-spacing: 0.5px;
 
@@ -53,8 +51,7 @@ footer {
         }
 
         .copyright {
-            color: white;
-            font-size: 1.5rem;
+            @include text;
         }
 
         .socials {
@@ -69,12 +66,8 @@ footer {
                 @include flex-col;
 
                 a {
-                    color: white;
-                    font-size: 1.5rem;
-
+                    @include link;
                     line-height: 2;
-
-                    cursor: pointer;
 
                     &:hover {
                         text-decoration: underline;

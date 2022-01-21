@@ -10,12 +10,10 @@ main {
     margin: 3rem auto;
 
     #regex-name {
-        color: #4a4a4a;
-        font-size: 3rem;
+        @include text($black, 3rem);
         font-family: tahoma;
 
-        border: none;
-        border-bottom: 2px solid lightgrey;
+        @include border-bottom;
 
         width: 100%;
 
@@ -30,13 +28,11 @@ main {
         .form-element {
             margin-bottom: 1rem;
 
-            border: 2px solid lightgrey;
+            @include border($color: lightgrey);
             padding: 1rem;
-            border-radius: 0.5rem;
 
             label {
-                font-size: 1.5rem;
-                color: #4a4a4a;
+                @include text($black, 1.5rem);
             }
 
             select {
@@ -45,8 +41,7 @@ main {
                 background-color: white;
                 font-size: 1.5rem;
                 
-                border: 2px solid lightgrey;
-                border-radius: 0.5rem;
+                @include border; 
 
                 padding: 0.1rem 1rem;
 
@@ -84,13 +79,10 @@ main {
 
             border: none;
 
-            color: lightgrey;
+            @include button(lightgrey);
             font-weight: bold;
-            font-size: 1.5rem;
 
             margin-right: 0.5rem;
-
-            cursor: pointer;
         }
 
         input[type="radio"] {
@@ -103,8 +95,7 @@ main {
         .character-sets {
             margin-left: 3rem;
 
-            border: 2px solid lightgrey;
-            border-radius: 0.5rem;
+            @include border;
 
             padding: 1rem;
 
@@ -119,14 +110,12 @@ main {
             margin-left: 3rem;
             margin-bottom: 1rem;
 
-            border: 2px solid lightgrey;
-            border-radius: 0.5rem;
+            @include border;
 
             padding: 1rem;
 
             input {
-                border: none;
-                border-bottom: 2px solid lightgrey;
+                @include border-bottom;
 
                 font-size: 1.5rem;
 
@@ -147,8 +136,7 @@ main {
                 input {
                     float: right;
 
-                    border: none;
-                    border-bottom: 2px solid lightgrey;
+                    @include border-bottom;
 
                     width: 7rem;
 
