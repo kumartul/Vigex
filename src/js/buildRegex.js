@@ -29,10 +29,8 @@ generateRegexBtn.addEventListener('click', () => {
 
     // Iterate through every formElement and analyse each of them deeply and generate the regex
     formElements.forEach(formElement => {
-
         // If the formElement's selectedIndex is 0 (Yes), then only analyse it
         if(formElement.querySelector('select').selectedIndex === 0) {
-
             // 'Starts-With'
             if(formElement.id === "starts-with") {
                 regex = `^`;
@@ -42,41 +40,34 @@ generateRegexBtn.addEventListener('click', () => {
                 
                 // Iterate through every radio button and analyse each radio button to generate the regex
                 radioBtns.forEach(radioBtn => {
-
                     // If the radio button is checked, then only analyse it
                     if(radioBtn.checked) {
                         if(radioBtn.className === "character-set") {
-
                             // Fetch all the checkboxes in the form of an array
                             const checkBoxes = [...formElement.querySelectorAll('.character-sets input')];
 
                             // Iterate through every checkBox and generate the regex accordingly
                             checkBoxes.forEach(checkBox => {
-
                                 // Analyse the checkbox only if it's checked
                                 if(checkBox.checked) {
-
                                     // Uppercase
                                     if(checkBox.id.includes("uppercase")) {
                                         const lastPortion = regex.slice(regex.indexOf("^") + 1);
 
                                         regex = regex.slice(0, regex.indexOf("^") + 1) + "A-Z" + lastPortion;
                                     }
-
                                     // Lowercase
                                     if(checkBox.id.includes("lowercase")) {
                                         const lastPortion = regex.slice(regex.indexOf("^") + 1);
 
                                         regex = regex.slice(0, regex.indexOf("^") + 1) + "a-z" + lastPortion;
                                     }
-
                                     // Numbers
                                     if(checkBox.id.includes("numbers")) {
                                         const lastPortion = regex.slice(regex.indexOf("^") + 1);
 
                                         regex = regex.slice(0, regex.indexOf("^") + 1) + "\\d" + lastPortion;
                                     }
-
                                     // Special Characters
                                     if(checkBox.id.includes("special")) {
                                         const lastPortion = regex.slice(regex.indexOf("^") + 1);
@@ -95,7 +86,6 @@ generateRegexBtn.addEventListener('click', () => {
 
                         // Custom Characters
                         else if(radioBtn.className === "custom-characters") {
-
                             // Enclose the character set in square brackets
                             const customCharactersField = formElement.querySelector('.custom-characters-field input');
                             
@@ -104,7 +94,6 @@ generateRegexBtn.addEventListener('click', () => {
 
                         // Custom Group
                         else if(radioBtn.className === "custom-group") {
-
                             // Enclose the character set in square brackets
                             const customGroupsField = formElement.querySelector('.custom-groups-field input');
 
@@ -148,41 +137,34 @@ generateRegexBtn.addEventListener('click', () => {
 
                 // Iterate through every radio button and analyse them to build the regex
                 radioBtns.forEach(radioBtn => {
-
                     // Analyse the radio button only if it's checked
                     if(radioBtn.checked) {
                         if(radioBtn.className === "character-set") {
-
                             // Fetch all the checkboxes in the form of an array
                             const checkBoxes = [...formElement.querySelectorAll('.character-sets input')];
 
                             // Iterate through every checkbox and analyse them to build the regex
                             checkBoxes.forEach(checkBox => {
-
                                 // Analyse the checkbox only if it's checked
                                 if(checkBox.checked) {
-
                                     // Uppercase
                                     if(checkBox.id.includes("uppercase")) {
                                         const lastPortion = regex.slice(regex.lastIndexOf("[") + 1);
 
                                         regex = regex.slice(0, regex.lastIndexOf("[") + 1) + "A-Z" + lastPortion;
                                     }
-                                    
                                     // Lowercase
                                     if(checkBox.id.includes("lowercase")) {
                                         const lastPortion = regex.slice(regex.lastIndexOf("[") + 1);
 
                                         regex = regex.slice(0, regex.lastIndexOf("[") + 1) + "a-z" + lastPortion;
                                     }
-                                    
                                     // Numbers
                                     if(checkBox.id.includes("numbers")) {
                                         const lastPortion = regex.slice(regex.lastIndexOf("[") + 1);
 
                                         regex = regex.slice(0, regex.lastIndexOf("[") + 1) + "\\d" + lastPortion;
                                     }
-
                                     // Special Characters
                                     if(checkBox.id.includes("special")) {
                                         const lastPortion = regex.slice(regex.lastIndexOf("[") + 1);
@@ -227,7 +209,6 @@ generateRegexBtn.addEventListener('click', () => {
                 }
                 // If 'minimum' is equal to 'maximum', then omit any one of the fields
                 else if(min === max) {
-                    
                     // If 'maximum' and 'minimum' are equal to 1, then omit both the fields
                     if(Number(min) !== 1) {
                         regex = regex.slice(0, regex.indexOf("$")) + `{${min}}` + "$";
