@@ -1,0 +1,17 @@
+.alert {
+    width: 100%;
+    height: $navbar-height/1.25;
+
+    background: rgba(255, 0, 0, 0.65);
+
+    @include text;
+
+    @include flex-row;
+    align-items: center;
+
+    display: none;
+
+    p {
+        margin-left: 2rem;
+    }
+}
