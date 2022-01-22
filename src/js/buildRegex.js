@@ -8,9 +8,16 @@ const formElements = document.querySelectorAll('.form-element');
 
 const globalSearchCheckbox = document.getElementById('global-search-checkbox');
 
+const regexNameField = document.getElementById('regex-name');
+
 // Function: Displays the regex in the outputRegexField
 const displayRegex = regex => {
-    outputRegexField.value = regex;
+    if(regexNameField.value) {
+        outputRegexField.value = regex;
+    }
+    else {
+        showAlertBox(alertBox, "Please give a name to your regular expression");
+    }
 }
 
 // Function: Generates the regular expression
