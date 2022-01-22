@@ -2,6 +2,20 @@ import { statements, formElementIDs } from "./utils.js";
 
 const form = document.getElementById('form-group');
 
+// This select menu will be  generated when as soon as the first formElement gets rendered and a user adds
+// a new field
+const selectMenu = 
+`
+<div class="character-or-group-select-menu">
+    <strong>Add</strong>
+    <select>
+        <option value = "None" selected>None</option>
+        <option value = "Character">Character Set</option>
+        <option value = "Group">Group</option>
+    </select>
+</div>
+`;
+
 // Function: Generates form elements dynamically
 const generateFormElements = formElementIDs => {
 
@@ -15,6 +29,11 @@ const generateFormElements = formElementIDs => {
         formElement.dataset.expanded = "no";
 
         form.appendChild(formElement);
+
+        // Render the select menu as soon as the first formElement gets rendered
+        if(index === 0) {
+            form.innerHTML += selectMenu;
+        }
     });
 
     // Create 'Global Search' checkbox
@@ -31,7 +50,7 @@ const generateFormElements = formElementIDs => {
     form.appendChild(globalLabel);
     
     form.innerHTML += "<br>";
-    
+
     // Create 'Generate Regex' button
     const generateRegexBtn = document.createElement('button');
     
@@ -40,7 +59,6 @@ const generateFormElements = formElementIDs => {
     generateRegexBtn.textContent = "Generate Regex";
 
     form.appendChild(generateRegexBtn);
-
 }
 
 // Function: Generates the innerHTML of endpointFormElements by using their ID
@@ -49,7 +67,7 @@ const generateEndpointFormElementInnerHTML = formElements => {
     // Iterate through each formElement and populate them based on their IDs
     formElements.forEach((formElement, index) => {
         const id = formElement.id;
-        
+
         formElement.innerHTML = 
         `
         <button type="button" data-expanded="no" id="expand-${id}-confirmation" class="expand-btn">&gt;</button>

@@ -41,27 +41,27 @@ main {
             label {
                 @include text($black, 1.5rem);
             }
-
-            select {
-                float: right;
-
-                background-color: white;
-                font-size: 1.5rem;
-                
-                @include border; 
-
-                padding: 0.1rem 1rem;
-
-                cursor: pointer;
-
-                &:focus-within {
-                    border-color: #1b9bff;
-                }
-            }
-
+            
             .params {
                 margin-left: 1.75rem;
                 margin-top: 1.5rem;
+            }
+        }
+
+        select {
+            float: right;
+
+            background-color: white;
+            font-size: 1.5rem;
+            
+            @include border; 
+
+            padding: 0.1rem 1rem;
+
+            cursor: pointer;
+
+            &:focus-within {
+                border-color: #1b9bff;
             }
         }
 
@@ -175,6 +175,21 @@ main {
 
         label[for="global-search-checkbox"] {
             @include text(black);
+        }
+
+        .character-or-group-select-menu {
+            height: 3.5rem;
+
+            margin-bottom: 0.8rem;
+
+            @include content-center;
+            justify-content: end;
+
+            strong {
+                @include text($theme-color, 1.5rem);
+
+                margin-right: 1rem;
+            }
         }
     }
 }
