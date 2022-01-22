@@ -7,7 +7,7 @@ const starsOnGitHubBtn = document.getElementById('stars-on-github');
 const expandBtns = [...document.querySelectorAll('.expand-btn')];
 
 // Convert the NodeList to an array
-const confirmationMenus = [...document.querySelectorAll('select')];
+const confirmationMenus = [...document.querySelectorAll('select.confirmation')];
 
 // Conver the NodeList to an array
 const radioBtns = [...document.querySelectorAll('input[type="radio"]')];
