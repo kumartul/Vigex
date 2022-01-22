@@ -8,7 +8,7 @@ const selectMenu =
 `
 <div class="character-or-group-select-menu">
     <strong>Add</strong>
-    <select>
+    <select class="character-or-group-select">
         <option value = "None" selected>None</option>
         <option value = "Character">Character Set</option>
         <option value = "Group">Group</option>
@@ -144,3 +144,107 @@ const formElements = [...document.querySelectorAll('.form-element')];
 
 // This will dynamically populate all the formElements on load
 generateEndpointFormElementInnerHTML(formElements);
+
+const characterOrGroupSelectMenu = document.querySelector('.character-or-group-select');
+
+characterOrGroupSelectMenu.addEventListener('change', event => {
+    const optionNumber = event.target.selectedIndex;
+
+    if(optionNumber === 1) {    // Character Sets
+        const firstFormElement = document.querySelector('.form-element');
+        
+        const id = Math.random();
+
+        firstFormElement.insertAdjacentHTML('afterend', 
+        `
+        <div class = "form-element" id="${id}">
+            <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
+            <label>Character Set</label>
+
+            <div class = "params hidden">
+                <div class="character-set">
+                    <input checked disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-character-set" class="character-set">
+                    <label for="${id}-confirmation-character-set">Choose character set(s)</label>
+                </div>
+
+                <div class="hidden character-sets">
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-uppercase-letters">
+                        <label for="${id}-confirmation-character-set-uppercase-letters">Uppercase Letters</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-lowercase-letters">
+                        <label for="${id}-confirmation-character-set-lowercase-letters">Lowercase Letters</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-numbers">
+                        <label for="${id}-confirmation-character-set-numbers">Numbers</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-special-characters">
+                        <label for="${id}-confirmation-character-set-special-characters">Special Characters</label>
+                    </div>
+                </div>
+                <div class="custom-characters">
+                    <input disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-custom-characters" class="custom-characters">
+                    <label for="${id}-confirmation-custom-characters">Custom Characters</label>
+                </div>
+
+                <div class="hidden custom-characters-field">
+                    <input disabled type="text" placeholder="Enter your character set">
+                </div>
+            </div>
+        </div>
+        `);
+
+        const expandBtn = document.getElementById(id);
+        
+        // Rotate the expandBtn by 90deg on the z-axis
+        expandBtn.addEventListener('click', event => {
+            // Parent element of expandBtn
+            const formElement = event.target.parentElement;
+
+            if(event.target.getAttribute("data-expanded") === "no") {
+                event.target.style.transition = "0.25s";
+                event.target.style.transform = "rotateZ(90deg)";
+
+                // Fetch all the divs in the formElement that are hidden in the form of an array
+                const hiddenDivs = [...formElement.querySelectorAll(".hidden")];
+
+                // Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
+                // so that they become visible
+                hiddenDivs.forEach(hiddenDiv => {
+                    hiddenDiv.classList.remove('hidden');
+                    hiddenDiv.classList.add('visible');
+                });
+
+                event.target.setAttribute("data-expanded", "yes");
+            }
+            else if(event.target.getAttribute("data-expanded") === "yes") {
+                event.target.style.transition = "0.25s";
+                event.target.style.transform = "rotateZ(0deg)";
+
+                // Fetch all the divs in the formElement that are hidden in the form of an array
+                const hiddenDivs = [...formElement.querySelectorAll(".visible")];
+
+                // Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
+                // so that they become visible
+                hiddenDivs.forEach(hiddenDiv => {
+                    hiddenDiv.classList.remove('visible');
+                    hiddenDiv.classList.add('hidden');
+                });
+
+                event.target.setAttribute("data-expanded", "no");
+            }
+        });
+    }
+    else if(optionNumber === 2) {   // Groups
+
+    }
+
+    // Reset the value to 'None'
+    event.target.selectedIndex = 0;
+});
