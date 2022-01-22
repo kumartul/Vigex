@@ -163,6 +163,17 @@ main {
         input[type="checkbox"] {
             cursor: pointer;
         }
+
+        #global-search-checkbox {
+            cursor: pointer;
+            
+            margin-right: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        label[for="global-search-checkbox"] {
+            @include text(black);
+        }
     }
 }
 

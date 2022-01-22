@@ -1,8 +1,12 @@
+import alertBox, { hideAlertBox, showAlertBox } from "./alert.js";
+
 const generateRegexBtn = document.getElementById('generate-regex');
 
 const outputRegexField = document.getElementById('output-regex');
 
 const formElements = document.querySelectorAll('.form-element');
+
+const globalSearchCheckbox = document.getElementById('global-search-checkbox');
 
 // Function: Displays the regex in the outputRegexField
 const displayRegex = regex => {
@@ -61,8 +65,19 @@ generateRegexBtn.addEventListener('click', () => {
                 const min = formElement.querySelector('.quantity .min').value;
                 const max = formElement.querySelector('.quantity .max').value;
 
-                const lastPortion = regex.slice(regex.indexOf("]") + 1);
-                regex = regex.slice(0, regex.indexOf("]") + 1) + `{${min}, ${max}}` + lastPortion;
+                if(max < min) {
+                    showAlertBox(alertBox, "Minimum number of occurrences cannot be greater than maximum number of occurrences");                    
+                    return;
+                }
+                else if(min === max) {
+                    const lastPortion = regex.slice(regex.indexOf("]") + 1);
+                    regex = regex.slice(0, regex.indexOf("]") + 1) + `{${max}}` + lastPortion;
+                }
+                else {
+                    const lastPortion = regex.slice(regex.indexOf("]") + 1);
+                    regex = regex.slice(0, regex.indexOf("]") + 1) + `{${min}, ${max}}` + lastPortion;
+                }
+
             }
             else if(formElement.id === "ends-with") {
                 regex += "[]$";
@@ -107,12 +122,26 @@ generateRegexBtn.addEventListener('click', () => {
                 const min = formElement.querySelector('.quantity .min').value;
                 const max = formElement.querySelector('.quantity .max').value;
 
-                regex = regex.slice(0, regex.indexOf("$")) + `{${min}, ${max}}` + "$";
+                if(max < min) {
+                    showAlertBox(alertBox, "Minimum number of occurrences cannot be greater than maximum number of occurrences");                    
+                    return;
+                }
+                else if(min === max) {
+                    regex = regex.slice(0, regex.indexOf("$")) + `{${min}}` + "$";
+                }
+                else {
+                    regex = regex.slice(0, regex.indexOf("$")) + `{${min}, ${max}}` + "$";
+                }
+
             }
         }
     });
 
     regex = "/" + regex + "/";
+
+    if(globalSearchCheckbox.checked) {
+        regex += "g";
+    }
 
     displayRegex(regex);
 });

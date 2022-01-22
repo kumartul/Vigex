@@ -361,6 +361,17 @@ main #form-group input[type="checkbox"] {
   cursor: pointer;
 }
 
+main #form-group #global-search-checkbox {
+  cursor: pointer;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+}
+
+main #form-group label[for="global-search-checkbox"] {
+  color: black;
+  font-size: 1.5rem;
+}
+
 .hidden {
   display: none;
 }
