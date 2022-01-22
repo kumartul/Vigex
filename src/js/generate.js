@@ -18,7 +18,6 @@ const selectMenu =
 
 // Function: Generates form elements dynamically
 const generateFormElements = formElementIDs => {
-
     // Iterate through every formElementID and create and append formElements
     formElementIDs.forEach((formElementID, index) => {
         const formElement = document.createElement('div');
@@ -63,7 +62,6 @@ const generateFormElements = formElementIDs => {
 
 // Function: Generates the innerHTML of endpointFormElements by using their ID
 const generateEndpointFormElementInnerHTML = formElements => {
-
     // Iterate through each formElement and populate them based on their IDs
     formElements.forEach((formElement, index) => {
         const id = formElement.id;
