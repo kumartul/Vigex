@@ -4,11 +4,13 @@ const form = document.getElementById('form-group');
 
 // Function: Generates form elements dynamically
 const generateFormElements = formElementIDs => {
+
     // Iterate through every formElementID and create and append formElements
     formElementIDs.forEach((formElementID, index) => {
         const formElement = document.createElement('div');
-
+        
         formElement.className = "form-element";
+        formElement.classList.add("endpoint");
         formElement.id = formElementIDs[index];
         formElement.dataset.expanded = "no";
 
@@ -41,8 +43,8 @@ const generateFormElements = formElementIDs => {
 
 }
 
-// Function: Generates the innerHTML of formElements by using their ID
-const generateFormElementInnerHTML = formElements => {
+// Function: Generates the innerHTML of endpointFormElements by using their ID
+const generateEndpointFormElementInnerHTML = formElements => {
 
     // Iterate through each formElement and populate them based on their IDs
     formElements.forEach((formElement, index) => {
@@ -78,12 +80,12 @@ const generateFormElementInnerHTML = formElements => {
 
                 <div>
                     <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-numbers">
-                    <label for="${id}-confirmation-character-set-lowercase-letters">Numbers</label>
+                    <label for="${id}-confirmation-character-set-numbers">Numbers</label>
                 </div>
 
                 <div>
                     <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-special-characters">
-                    <label for="${id}-confirmation-character-set-lowercase-letters">Special Characters</label>
+                    <label for="${id}-confirmation-character-set-special-characters">Special Characters</label>
                 </div>
             </div>
 
@@ -119,4 +121,4 @@ generateFormElements(formElementIDs);
 const formElements = [...document.querySelectorAll('.form-element')];
 
 // This will dynamically populate all the formElements on load
-generateFormElementInnerHTML(formElements);
+generateEndpointFormElementInnerHTML(formElements);
