@@ -99,7 +99,8 @@ main {
             cursor: pointer;
         }
 
-        .character-sets {
+        .character-sets,
+        .groups {
             margin-left: 3rem;
 
             @include border;
@@ -113,7 +114,8 @@ main {
             }
         }
 
-        .custom-characters-field {
+        .custom-characters-field,
+        .custom-groups-field {
             margin-left: 3rem;
             margin-bottom: 1rem;
 

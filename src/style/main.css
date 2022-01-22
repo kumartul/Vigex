@@ -303,7 +303,8 @@ main #form-group input[type="radio"] {
   cursor: pointer;
 }
 
-main #form-group .character-sets {
+main #form-group .character-sets,
+main #form-group .groups {
   margin-left: 3rem;
   border: 2px solid lightgrey;
   border-radius: 0.5rem;
@@ -311,11 +312,13 @@ main #form-group .character-sets {
   margin-bottom: 1rem;
 }
 
-main #form-group .character-sets div:not(:last-of-type) {
+main #form-group .character-sets div:not(:last-of-type),
+main #form-group .groups div:not(:last-of-type) {
   margin-bottom: 0.5rem;
 }
 
-main #form-group .custom-characters-field {
+main #form-group .custom-characters-field,
+main #form-group .custom-groups-field {
   margin-left: 3rem;
   margin-bottom: 1rem;
   border: 2px solid lightgrey;
@@ -323,7 +326,8 @@ main #form-group .custom-characters-field {
   padding: 1rem;
 }
 
-main #form-group .custom-characters-field input {
+main #form-group .custom-characters-field input,
+main #form-group .custom-groups-field input {
   border: none;
   border-bottom: 2px solid lightgrey;
   font-size: 1.5rem;
@@ -331,7 +335,8 @@ main #form-group .custom-characters-field input {
   transition: 0.3s;
 }
 
-main #form-group .custom-characters-field input:focus {
+main #form-group .custom-characters-field input:focus,
+main #form-group .custom-groups-field input:focus {
   border-color: #0082e6;
   -webkit-transition: 0.3s;
   transition: 0.3s;

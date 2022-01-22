@@ -100,7 +100,7 @@ generateRegexBtn.addEventListener('click', () => {
                             const customCharactersField = formElement.querySelector('.custom-characters-field input');
                             
                             regex = `^[${customCharactersField.value}]`;
-                        }
+                        }                        
                     }
                 });
 

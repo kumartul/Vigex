@@ -37,8 +37,10 @@ starsOnGitHubBtn.addEventListener('click', () => {
     window.location.href = "https://github.com/kumartul/vigex";
 });
 
+// Iterate through every confirmationMenu and add a 'click' event listener to each confirmationMenu
 confirmationMenus.forEach(confirmationMenu => {
     confirmationMenu.addEventListener('change', event => {
+
         // Parent of the current select menu
         const formElement = event.target.parentElement;
 
@@ -140,32 +142,37 @@ expandBtns.forEach(expandBtn => {
     });
 });
 
+// Iterate through every radio button and add a 'click' event listener to each of them 
 radioBtns.forEach(radioBtn => {
     radioBtn.addEventListener('click', event => {
         const formElement = event.target.parentElement.parentElement;
 
         let inputFieldsToBeActivated = undefined;
-        let inputFieldsToBeDeactivated = undefined;
 
         if(event.target.className === "character-set") {
             // Convert the NodeList of 'HTMLInputElement' to an array
             inputFieldsToBeActivated = [...formElement.querySelectorAll('.character-sets input')];
-            inputFieldsToBeDeactivated = [...formElement.querySelectorAll('.custom-characters-field input')];
         }
         else if(event.target.className === "custom-characters") {
             // Convert the NodeList of 'HTMLInputElement' to an array
             inputFieldsToBeActivated = [...formElement.querySelectorAll('.custom-characters-field input')];
-            inputFieldsToBeDeactivated = [...formElement.querySelectorAll('.character-sets input')];
         }
+        else if(event.target.className === "custom-group") {
+            // Convert the NodeList of 'HTMLInputElement' to an array
+            inputFieldsToBeActivated = [...formElement.querySelectorAll('.custom-groups-field input')];
+        }
+        
+        // First, deactivate all the fields
+        const inputFieldsToBeDeactived=  [...formElement.querySelectorAll('input[type="radio"] input')];
 
+        // Iterate through every inputField and disable it
+        inputFieldsToBeDeactived.forEach(inputFieldToBeDeactived => {
+            inputFieldToBeDeactived.disabled = true;
+        })
+        
         // Iterate through every inputField and enable it
         inputFieldsToBeActivated.forEach(inputFieldToBeActivated => {
             inputFieldToBeActivated.disabled = false;
-        });
-
-        // Iterate through every inputField and disable it
-        inputFieldsToBeDeactivated.forEach(inputFieldToBeDeactivated => {
-            inputFieldToBeDeactivated.disabled = true;
         });
     });
 });

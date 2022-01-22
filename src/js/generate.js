@@ -67,7 +67,6 @@ const generateEndpointFormElementInnerHTML = formElements => {
             </div>
 
             <div class="hidden character-sets">
-
                 <div>
                     <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-uppercase-letters">
                     <label for="${id}-confirmation-character-set-uppercase-letters">Uppercase Letters</label>
@@ -84,7 +83,7 @@ const generateEndpointFormElementInnerHTML = formElements => {
                 </div>
 
                 <div>
-                    <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-special-characters">
+                    <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-special-characters">
                     <label for="${id}-confirmation-character-set-special-characters">Special Characters</label>
                 </div>
             </div>
@@ -96,6 +95,15 @@ const generateEndpointFormElementInnerHTML = formElements => {
 
             <div class="hidden custom-characters-field">
                 <input disabled type="text" placeholder="Enter your character set">
+            </div>
+
+            <div class="custom-groups">
+                <input disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-custom-groups" class="custom-group">
+                <label for="${id}-confirmation-custom-groups">Custom Groups</label>
+            </div>
+
+            <div class="hidden custom-groups-field">
+                <input disabled type="text" placeholder="Enter your group">
             </div>
 
             <div class="hidden quantity">
