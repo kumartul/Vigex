@@ -199,6 +199,7 @@ main #output-regex::placeholder {
 
 main #output-regex {
   margin-top: 3rem;
+  padding: 0.5rem 1rem;
 }
 
 main #form-group {
