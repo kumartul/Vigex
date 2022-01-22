@@ -2,7 +2,9 @@ import { statements, formElementIDs } from "./utils.js";
 
 const form = document.getElementById('form-group');
 
+// Function: Generates form elements dynamically
 const generateFormElements = formElementIDs => {
+    // Iterate through every formElementID and create and append formElements
     formElementIDs.forEach((formElementID, index) => {
         const formElement = document.createElement('div');
 
@@ -13,6 +15,22 @@ const generateFormElements = formElementIDs => {
         form.appendChild(formElement);
     });
 
+    // Create 'Global Search' checkbox
+    const globalCheckbox = document.createElement('input');
+    globalCheckbox.type = "checkbox";
+    globalCheckbox.value = "Global";
+    globalCheckbox.id = "global-search-checkbox";
+
+    const globalLabel = document.createElement("label");
+    globalLabel.textContent = "Global Search";
+    globalLabel.setAttribute("for", "global-search-checkbox");
+
+    form.appendChild(globalCheckbox);
+    form.appendChild(globalLabel);
+    
+    form.innerHTML += "<br>";
+    
+    // Create 'Generate Regex' button
     const generateRegexBtn = document.createElement('button');
     
     generateRegexBtn.type = "button";
@@ -20,6 +38,7 @@ const generateFormElements = formElementIDs => {
     generateRegexBtn.textContent = "Generate Regex";
 
     form.appendChild(generateRegexBtn);
+
 }
 
 // Function: Generates the innerHTML of formElements by using their ID
