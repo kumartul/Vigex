@@ -7,3 +7,5 @@ export const formElementIDs = [
     "starts-with",
     "ends-with"
 ];
+
+export const regexKeyName = "regex";

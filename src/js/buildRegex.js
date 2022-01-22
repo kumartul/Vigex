@@ -1,4 +1,5 @@
 import alertBox, { hideAlertBox, showAlertBox } from "./alert.js";
+import { saveToLocalStorage } from "./localStorage.js";
 
 const generateRegexBtn = document.getElementById('generate-regex');
 
@@ -14,6 +15,8 @@ const regexNameField = document.getElementById('regex-name');
 const displayRegex = regex => {
     if(regexNameField.value) {
         outputRegexField.value = regex;
+
+        saveToLocalStorage(regexNameField.value, regex);
     }
     else {
         showAlertBox(alertBox, "Please give a name to your regular expression");
