@@ -101,6 +101,15 @@ generateRegexBtn.addEventListener('click', () => {
                             
                             regex = `^[${customCharactersField.value}]`;
                         }                        
+
+                        // Custom Group
+                        else if(radioBtn.className === "custom-group") {
+
+                            // Enclose the character set in square brackets
+                            const customGroupsField = formElement.querySelector('.custom-groups-field input');
+
+                            regex = `^(${customGroupsField.value})`;
+                        }
                     }
                 });
 
@@ -116,18 +125,17 @@ generateRegexBtn.addEventListener('click', () => {
                 }
                 // If 'minimum' is equal to 'maximum', then omit any one of the fields
                 else if(min === max) {
-
                     // If 'minimum' and 'maximum' is equal to 1, then omit both of them
                     if(Number(min) !== 1) {
-                        const lastPortion = regex.slice(regex.indexOf("]") + 1);
+                        const lastPortion = regex.slice(regex.indexOf("]") + 1 | regex.indexOf(")") + 1);
 
-                        regex = regex.slice(0, regex.indexOf("]") + 1) + `{${max}}` + lastPortion;
+                        regex = regex.slice(0, regex.indexOf("]") + 1 | regex.indexOf(")") + 1) + `{${max}}` + lastPortion;
                     }
                 }
                 else {
-                    const lastPortion = regex.slice(regex.indexOf("]") + 1);
+                    const lastPortion = regex.slice(regex.indexOf("]") + 1 | regex.indexOf(")") + 1);
 
-                    regex = regex.slice(0, regex.indexOf("]") + 1) + `{${min}, ${max}}` + lastPortion;
+                    regex = regex.slice(0, regex.indexOf("]") + 1 | regex.indexOf(")") + 1) + `{${min}, ${max}}` + lastPortion;
                 }
 
             }
@@ -193,6 +201,16 @@ generateRegexBtn.addEventListener('click', () => {
                             const lastPortion = regex.slice(regex.lastIndexOf("]"));
                         
                             regex = regex.slice(0, regex.lastIndexOf("[") + 1) + `${customCharactersField.value}` + lastPortion;
+                        }
+
+                        // Custom Group
+                        else if(radioBtn.className === "custom-group") {
+                            const customGroupsField = formElement.querySelector('.custom-groups-field input');
+                            
+                            // Enclose the custom charcacter set in square brackets
+                            const lastPortion = regex.slice(regex.lastIndexOf("]") + 1);
+                        
+                            regex = regex.slice(0, regex.lastIndexOf("[")) + `(${customGroupsField.value})` + lastPortion;
                         }
                     }
                 });
