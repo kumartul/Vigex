@@ -362,17 +362,17 @@ main #form-group .quantity div:not(last-of-type) input:focus {
   transition: 0.3s;
 }
 
-main #form-group input[type="checkbox"] {
-  cursor: pointer;
-}
-
-main #form-group #global-search-checkbox {
+main #form-group .flag {
   cursor: pointer;
   margin-right: 1rem;
   margin-bottom: 2rem;
 }
 
-main #form-group label[for="global-search-checkbox"] {
+main #form-group .flag:not(:first-of-type) {
+  margin-left: 8rem;
+}
+
+main #form-group .flag-label {
   color: black;
   font-size: 1.5rem;
 }

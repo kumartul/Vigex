@@ -7,9 +7,10 @@ const outputRegexField = document.getElementById('output-regex');
 
 const formElements = document.querySelectorAll('.form-element');
 
-const globalSearchCheckbox = document.getElementById('global-search-checkbox');
-
 const regexNameField = document.getElementById('regex-name');
+
+// Convert the NodeList to an array
+const flags = [...document.querySelectorAll('.flag')];
 
 // Function: Displays the regex in the outputRegexField
 const displayRegex = regex => {
@@ -225,10 +226,12 @@ generateRegexBtn.addEventListener('click', () => {
     // Add 'forward slashes'
     regex = "/" + regex + "/";
 
-    // If the global search checkbox is checked, then add a 'g' flag at the end
-    if(globalSearchCheckbox.checked) {
-        regex += "g";
-    }
+    // Add the flags accordingly
+    flags.forEach(flag => {
+        if(flag.checked) {
+            regex += flag.value;
+        }
+    });
 
     displayRegex(regex);
 });

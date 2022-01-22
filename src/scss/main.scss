@@ -162,18 +162,18 @@ main {
             }
         }
 
-        input[type="checkbox"] {
-            cursor: pointer;
-        }
-
-        #global-search-checkbox {
+        .flag {
             cursor: pointer;
             
             margin-right: 1rem;
             margin-bottom: 2rem;
         }
 
-        label[for="global-search-checkbox"] {
+        .flag:not(:first-of-type) {
+            margin-left: 8rem;
+        }
+
+        .flag-label {
             @include text(black);
         }
 

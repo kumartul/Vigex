@@ -1,4 +1,4 @@
-import { statements, formElementIDs } from "./utils.js";
+import { statements, formElementIDs, flags } from "./utils.js";
 
 const form = document.getElementById('form-group');
 
@@ -35,18 +35,16 @@ const generateFormElements = formElementIDs => {
         }
     });
 
-    // Create 'Global Search' checkbox
-    const globalCheckbox = document.createElement('input');
-    globalCheckbox.type = "checkbox";
-    globalCheckbox.value = "Global";
-    globalCheckbox.id = "global-search-checkbox";
+    // Create 'Flag checkboxes'
+    flags.forEach(flag => {
+        const element = 
+        `
+        <input type = "checkbox" id = "${flag.flag}-flag" value = "${flag.flag}" class="flag">
+        <label for = "${flag.flag}-flag" class="flag-label">${flag.text}</label>
+        `;
 
-    const globalLabel = document.createElement("label");
-    globalLabel.textContent = "Global Search";
-    globalLabel.setAttribute("for", "global-search-checkbox");
-
-    form.appendChild(globalCheckbox);
-    form.appendChild(globalLabel);
+        form.innerHTML += element;
+    });
     
     form.innerHTML += "<br>";
 

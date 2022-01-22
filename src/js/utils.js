@@ -8,4 +8,23 @@ export const formElementIDs = [
     "ends-with"
 ];
 
+export const flags = [
+    {
+        flag: "g",
+        text: "Global Search"
+    },
+    {
+        flag: "i",
+        text: "Case Insensitive Search"
+    },
+    {
+        flag: "m",
+        text: "Multi-line Mode"
+    },
+    {
+        flag: "u",
+        text: "Support Unicode Characters"
+    }
+]
+
 export const regexKeyName = "regex";
