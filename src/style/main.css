@@ -81,6 +81,16 @@ html {
   margin-left: 2rem;
 }
 
+.alert button {
+  margin-left: auto;
+  margin-right: 1rem;
+  color: white;
+  font-size: 3rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 footer .footer-container {
   width: 100%;
   height: 30rem;

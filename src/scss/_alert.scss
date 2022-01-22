@@ -14,4 +14,17 @@
     p {
         margin-left: 2rem;
     }
+
+    button {
+        margin-left: auto;
+        margin-right: 1rem;
+
+        @include text(white, 3rem);
+
+        background: transparent;
+
+        border: none;
+
+        cursor: pointer;
+    }
 }
