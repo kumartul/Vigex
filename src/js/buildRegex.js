@@ -74,7 +74,7 @@ generateRegexBtn.addEventListener('click', () => {
                                     if(checkBox.id.includes("numbers")) {
                                         const lastPortion = regex.slice(regex.indexOf("^") + 1);
 
-                                        regex = regex.slice(0, regex.indexOf("^") + 1) + "0-9" + lastPortion;
+                                        regex = regex.slice(0, regex.indexOf("^") + 1) + "\\d" + lastPortion;
                                     }
 
                                     // Special Characters
@@ -172,7 +172,7 @@ generateRegexBtn.addEventListener('click', () => {
                                     if(checkBox.id.includes("numbers")) {
                                         const lastPortion = regex.slice(regex.lastIndexOf("[") + 1);
 
-                                        regex = regex.slice(0, regex.lastIndexOf("[") + 1) + "0-9" + lastPortion;
+                                        regex = regex.slice(0, regex.lastIndexOf("[") + 1) + "\\d" + lastPortion;
                                     }
 
                                     // Special Characters
