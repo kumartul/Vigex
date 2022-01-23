@@ -252,6 +252,18 @@ main #form-group .form-element .params {
   margin-top: 1.5rem;
 }
 
+main #form-group .form-element .remove {
+  float: right;
+  color: red;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: none;
+  font-weight: bold;
+  background: rgba(255, 0, 0, 0.25);
+}
+
 main #form-group select {
   float: right;
   background-color: white;
@@ -398,6 +410,10 @@ main #form-group .character-or-group-select-menu strong {
   color: #0082e6;
   font-size: 1.5rem;
   margin-right: 1rem;
+}
+
+main input[type="checkbox"] {
+  cursor: pointer;
 }
 
 .hidden {

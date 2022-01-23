@@ -160,10 +160,11 @@ characterOrGroupSelectMenu.addEventListener('change', event => {
         <div class = "form-element" id="${id}">
             <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
             <label>Character Set</label>
+            <button type = "button" class = "remove" id="delete-${id}">Remove</button>
 
             <div class = "params hidden">
                 <div class="character-set">
-                    <input checked disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-character-set" class="character-set">
+                    <input checked type="radio" name="${id}-confirmation" id="${id}-confirmation-character-set" class="character-set">
                     <label for="${id}-confirmation-character-set">Choose character set(s)</label>
                 </div>
 
@@ -188,8 +189,9 @@ characterOrGroupSelectMenu.addEventListener('change', event => {
                         <label for="${id}-confirmation-character-set-special-characters">Special Characters</label>
                     </div>
                 </div>
+
                 <div class="custom-characters">
-                    <input disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-custom-characters" class="custom-characters">
+                    <input type="radio" name="${id}-confirmation" id="${id}-confirmation-custom-characters" class="custom-characters">
                     <label for="${id}-confirmation-custom-characters">Custom Characters</label>
                 </div>
 
@@ -239,6 +241,41 @@ characterOrGroupSelectMenu.addEventListener('change', event => {
 
                 event.target.setAttribute("data-expanded", "no");
             }
+        });
+
+        const deleteBtn = document.getElementById(`delete-${id}`);
+
+        // Attach a 'click' event listener to the delete button so that whenever someone clicks on it,
+        // a confirm popup pops up and handle the process based on user input
+        deleteBtn.addEventListener('click', event => {
+            const confirmation = confirm("Are you sure you want to remove this field?");
+            if(confirmation) {
+                form.removeChild(event.target.parentElement);
+            }
+        });
+
+        const radioBtns = document.getElementById(id).querySelectorAll('input[type="radio"]');
+        
+        radioBtns.forEach(radioBtn => {
+            radioBtn.addEventListener('click', event => {
+                const checkboxes = document.getElementById(id).querySelectorAll('input[type="checkbox"]');
+                const customCharactersField = document.getElementById(id).querySelector('input');
+                
+                if(event.target.className === "character-set") {
+                    checkboxes.forEach(checkbox => {
+                        checkbox.disabled = false;
+                    });
+
+                    customCharactersField.disabled = true;
+                }
+                else if(event.target.className === "custom-characters") {
+                    checkboxes.forEach(checkbox => {
+                        checkbox.disabled = true;
+                    });
+
+                    customCharactersField.disabled = false;
+                }
+            });
         });
     }
     else if(optionNumber === 2) {   // Groups
