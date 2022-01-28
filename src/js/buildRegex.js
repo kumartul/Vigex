@@ -37,7 +37,7 @@ generateRegexBtn.addEventListener('click', () => {
         if(formElement.querySelector('select').selectedIndex === 0) {
             // 'Starts-With'
             if(formElement.id === "starts-with") {
-                let first = `^`;
+                let first = "";
 
                 // Fetch all the radio buttons in the current formElement in the form of an array
                 const radioBtns = [...formElement.querySelectorAll('input[type="radio"]')];
@@ -56,35 +56,27 @@ generateRegexBtn.addEventListener('click', () => {
                                 if(checkBox.checked) {
                                     // Uppercase
                                     if(checkBox.id.includes("uppercase")) {
-                                        const lastPortion = first.slice(first.indexOf("^") + 1);
-
-                                        first = first.slice(0, first.indexOf("^") + 1) + "A-Z" + lastPortion;
+                                        first += "A-Z";
                                     }
                                     // Lowercase
                                     if(checkBox.id.includes("lowercase")) {
-                                        const lastPortion = first.slice(first.indexOf("^") + 1);
-
-                                        first = first.slice(0, first.indexOf("^") + 1) + "a-z" + lastPortion;
+                                        first += "a-z";
                                     }
                                     // Numbers
                                     if(checkBox.id.includes("numbers")) {
-                                        const lastPortion = first.slice(first.indexOf("^") + 1);
-
-                                        first = first.slice(0, first.indexOf("^") + 1) + "\\d" + lastPortion;
+                                        first += "\\d";
                                     }
                                     // Special Characters
                                     if(checkBox.id.includes("special")) {
-                                        const lastPortion = first.slice(first.indexOf("^") + 1);
-
-                                        first = first.slice(0, first.indexOf("^") + 1) + "_\\W" + lastPortion;
+                                        first += "_\\W";
                                     }
                                 }
                             });
-                            
-                            // Enclose the character set in square brackets
-                            const lastPortion = first.slice(first.indexOf("^") + 1);
 
-                            first = first.slice(0, first.indexOf("^") + 1) + "[" + lastPortion + "]";
+                            first = first.split("");
+                            first.unshift("^", "[");
+                            first = first.join("");
+                            first += "]";
                         }
 
                         // Custom Characters
@@ -157,17 +149,19 @@ generateRegexBtn.addEventListener('click', () => {
                                     }
                                     // Numbers
                                     if(checkBox.id.includes("numbers")) {
-                                        last += "0-9";
+                                        last += "\d";
                                     }
                                     // Special Characters
                                     if(checkBox.id.includes("special")) {
                                         last += "_\\W";
                                     }
-
-                                    last = last.split("").splice(0, 0, "[").join("");
-                                    last += "]";
                                 }
                             });
+
+                            last = last.split("");
+                            last.unshift("[");
+                            last = last.join("");
+                            last += "]";
                         }
 
                         // Custom Characters
