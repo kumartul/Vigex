@@ -123,12 +123,12 @@ const generateEndpointFormElementInnerHTML = formElements => {
             <div class="hidden quantity">
 
                 <div>
-                    <label for="${id}-min-quantity">Minimum number of times this character set must repeat: </label>
+                    <label for="${id}-min-quantity">Minimum number of times this character set / group must repeat: </label>
                     <input disabled type="number" id="${id}-min-quantity" min="0" value="1" class="min">
                 </div>
 
                 <div>
-                    <label for="${id}-max-quantity">Maximum number of times this character set must repeat: </label>
+                    <label for="${id}-max-quantity">Maximum number of times this character set / group must repeat: </label>
                     <input disabled type="number" id="${id}-max-quantity" min="1" value="1" class="max">
                 </div>
             </div>
@@ -153,7 +153,7 @@ characterOrGroupSelectMenu.addEventListener('change', event => {
     if(optionNumber === 1) {    // Character Sets
         const firstFormElement = document.querySelector('.form-element');
         
-        const id = Math.random();
+        const id = Math.random() * Math.random();
 
         firstFormElement.insertAdjacentHTML('afterend', 
         `
@@ -197,6 +197,18 @@ characterOrGroupSelectMenu.addEventListener('change', event => {
 
                 <div class="hidden custom-characters-field">
                     <input disabled type="text" placeholder="Enter your character set">
+                </div>
+
+                <div class="hidden quantity">
+                    <div>
+                        <label for="${id}-min-quantity">Minimum number of times this character set must repeat: </label>
+                        <input disabled type="number" id="${id}-min-quantity" min="0" value="1" class="min">
+                    </div>
+
+                    <div>
+                        <label for="${id}-max-quantity">Maximum number of times this character set must repeat: </label>
+                        <input disabled type="number" id="${id}-max-quantity" min="1" value="1" class="max">
+                    </div>
                 </div>
             </div>
         </div>
@@ -259,7 +271,7 @@ characterOrGroupSelectMenu.addEventListener('change', event => {
         radioBtns.forEach(radioBtn => {
             radioBtn.addEventListener('click', event => {
                 const checkboxes = document.getElementById(id).querySelectorAll('input[type="checkbox"]');
-                const customCharactersField = document.getElementById(id).querySelector('input');
+                const customCharactersField = document.getElementById(id).querySelector('input[type="text"]');
                 
                 if(event.target.className === "character-set") {
                     checkboxes.forEach(checkbox => {

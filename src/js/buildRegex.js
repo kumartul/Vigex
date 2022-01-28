@@ -28,13 +28,16 @@ const displayRegex = regex => {
 generateRegexBtn.addEventListener('click', () => {    
     let regex = ``;
 
+    let _first = "";
+    let _last = "";
+
     // Iterate through every formElement and analyse each of them deeply and generate the regex
     formElements.forEach(formElement => {
         // If the formElement's selectedIndex is 0 (Yes), then only analyse it
         if(formElement.querySelector('select').selectedIndex === 0) {
             // 'Starts-With'
             if(formElement.id === "starts-with") {
-                regex = `^`;
+                let first = `^`;
 
                 // Fetch all the radio buttons in the current formElement in the form of an array
                 const radioBtns = [...formElement.querySelectorAll('input[type="radio"]')];
@@ -53,36 +56,35 @@ generateRegexBtn.addEventListener('click', () => {
                                 if(checkBox.checked) {
                                     // Uppercase
                                     if(checkBox.id.includes("uppercase")) {
-                                        const lastPortion = regex.slice(regex.indexOf("^") + 1);
+                                        const lastPortion = first.slice(first.indexOf("^") + 1);
 
-                                        regex = regex.slice(0, regex.indexOf("^") + 1) + "A-Z" + lastPortion;
+                                        first = first.slice(0, first.indexOf("^") + 1) + "A-Z" + lastPortion;
                                     }
                                     // Lowercase
                                     if(checkBox.id.includes("lowercase")) {
-                                        const lastPortion = regex.slice(regex.indexOf("^") + 1);
+                                        const lastPortion = first.slice(first.indexOf("^") + 1);
 
-                                        regex = regex.slice(0, regex.indexOf("^") + 1) + "a-z" + lastPortion;
+                                        first = first.slice(0, first.indexOf("^") + 1) + "a-z" + lastPortion;
                                     }
                                     // Numbers
                                     if(checkBox.id.includes("numbers")) {
-                                        const lastPortion = regex.slice(regex.indexOf("^") + 1);
+                                        const lastPortion = first.slice(first.indexOf("^") + 1);
 
-                                        regex = regex.slice(0, regex.indexOf("^") + 1) + "\\d" + lastPortion;
+                                        first = first.slice(0, first.indexOf("^") + 1) + "\\d" + lastPortion;
                                     }
                                     // Special Characters
                                     if(checkBox.id.includes("special")) {
-                                        const lastPortion = regex.slice(regex.indexOf("^") + 1);
+                                        const lastPortion = first.slice(first.indexOf("^") + 1);
 
-                                        regex = regex.slice(0, regex.indexOf("^") + 1) + "_\\W" + lastPortion;
+                                        first = first.slice(0, first.indexOf("^") + 1) + "_\\W" + lastPortion;
                                     }
-
                                 }
                             });
                             
                             // Enclose the character set in square brackets
-                            const lastPortion = regex.slice(regex.indexOf("^") + 1);
+                            const lastPortion = first.slice(first.indexOf("^") + 1);
 
-                            regex = regex.slice(0, regex.indexOf("^") + 1) + "[" + lastPortion + "]";
+                            first = first.slice(0, first.indexOf("^") + 1) + "[" + lastPortion + "]";
                         }
 
                         // Custom Characters
@@ -90,7 +92,7 @@ generateRegexBtn.addEventListener('click', () => {
                             // Enclose the character set in square brackets
                             const customCharactersField = formElement.querySelector('.custom-characters-field input');
                             
-                            regex = `^[${customCharactersField.value}]`;
+                            first = `^[${customCharactersField.value}]`;
                         }                        
 
                         // Custom Group
@@ -98,7 +100,7 @@ generateRegexBtn.addEventListener('click', () => {
                             // Enclose the character set in square brackets
                             const customGroupsField = formElement.querySelector('.custom-groups-field input');
 
-                            regex = `^(${customGroupsField.value})`;
+                            first = `^(${customGroupsField.value})`;
                         }
                     }
                 });
@@ -117,21 +119,18 @@ generateRegexBtn.addEventListener('click', () => {
                 else if(min === max) {
                     // If 'minimum' and 'maximum' is equal to 1, then omit both of them
                     if(Number(min) !== 1) {
-                        const lastPortion = regex.slice(regex.indexOf("]") + 1 | regex.indexOf(")") + 1);
-
-                        regex = regex.slice(0, regex.indexOf("]") + 1 | regex.indexOf(")") + 1) + `{${max}}` + lastPortion;
+                        first += `{${min}}`;
                     }
                 }
                 else {
-                    const lastPortion = regex.slice(regex.indexOf("]") + 1 | regex.indexOf(")") + 1);
-
-                    regex = regex.slice(0, regex.indexOf("]") + 1 | regex.indexOf(")") + 1) + `{${min}, ${max}}` + lastPortion;
+                    first += `{${min}, ${max}}`;
                 }
 
+                _first = first;
             }
             // 'Ends-With'
             else if(formElement.id === "ends-with") {
-                regex += "[]$";
+                let last = "";
 
                 // Fetch all the radio buttons in the form of an array
                 const radioBtns = [...formElement.querySelectorAll('input[type="radio"]')];
@@ -150,28 +149,23 @@ generateRegexBtn.addEventListener('click', () => {
                                 if(checkBox.checked) {
                                     // Uppercase
                                     if(checkBox.id.includes("uppercase")) {
-                                        const lastPortion = regex.slice(regex.lastIndexOf("[") + 1);
-
-                                        regex = regex.slice(0, regex.lastIndexOf("[") + 1) + "A-Z" + lastPortion;
+                                        last += "A-Z";
                                     }
                                     // Lowercase
                                     if(checkBox.id.includes("lowercase")) {
-                                        const lastPortion = regex.slice(regex.lastIndexOf("[") + 1);
-
-                                        regex = regex.slice(0, regex.lastIndexOf("[") + 1) + "a-z" + lastPortion;
+                                        last += "a-z";
                                     }
                                     // Numbers
                                     if(checkBox.id.includes("numbers")) {
-                                        const lastPortion = regex.slice(regex.lastIndexOf("[") + 1);
-
-                                        regex = regex.slice(0, regex.lastIndexOf("[") + 1) + "\\d" + lastPortion;
+                                        last += "0-9";
                                     }
                                     // Special Characters
                                     if(checkBox.id.includes("special")) {
-                                        const lastPortion = regex.slice(regex.lastIndexOf("[") + 1);
-
-                                        regex = regex.slice(0, regex.lastIndexOf("[") + 1) + "_\\W" + lastPortion;
+                                        last += "_\\W";
                                     }
+
+                                    last = last.split("").splice(0, 0, "[").join("");
+                                    last += "]";
                                 }
                             });
                         }
@@ -180,20 +174,14 @@ generateRegexBtn.addEventListener('click', () => {
                         else if(radioBtn.className === "custom-characters") {
                             const customCharactersField = formElement.querySelector('.custom-characters-field input');
                             
-                            // Enclose the custom charcacter set in square brackets
-                            const lastPortion = regex.slice(regex.lastIndexOf("]"));
-                        
-                            regex = regex.slice(0, regex.lastIndexOf("[") + 1) + `${customCharactersField.value}` + lastPortion;
+                            last = `[${customCharactersField.value}]`;
                         }
 
                         // Custom Group
                         else if(radioBtn.className === "custom-group") {
                             const customGroupsField = formElement.querySelector('.custom-groups-field input');
                             
-                            // Enclose the custom charcacter set in square brackets
-                            const lastPortion = regex.slice(regex.lastIndexOf("]") + 1);
-                        
-                            regex = regex.slice(0, regex.lastIndexOf("[")) + `(${customGroupsField.value})` + lastPortion;
+                            last = `(${customGroupsField.value})`;
                         }
                     }
                 });
@@ -212,19 +200,21 @@ generateRegexBtn.addEventListener('click', () => {
                 else if(min === max) {
                     // If 'maximum' and 'minimum' are equal to 1, then omit both the fields
                     if(Number(min) !== 1) {
-                        regex = regex.slice(0, regex.indexOf("$")) + `{${min}}` + "$";
+                        last += `{${min}}`;
                     }
                 }
                 else {
-                    regex = regex.slice(0, regex.indexOf("$")) + `{${min}, ${max}}` + "$";
+                    last += `{${min}, ${max}}`;
                 }
 
+                last += "$";
+                _last = last;
             }
         }
     });
 
     // Add 'forward slashes'
-    regex = "/" + regex + "/";
+    regex = "/" + _first + _last + "/";
 
     // Add the flags accordingly
     flags.forEach(flag => {
