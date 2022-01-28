@@ -100,6 +100,36 @@ const generateEndpointFormElementInnerHTML = formElements => {
                     <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-special-characters">
                     <label for="${id}-confirmation-character-set-special-characters">Special Characters</label>
                 </div>
+
+                <div>
+                    <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-whitespace">
+                    <label for="${id}-confirmation-character-set-whitespace">Whitespace</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-horizontal-tab">
+                    <label for="${id}-confirmation-character-set-horizontal-tab">Horizontal Tab</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-vertical-tab">
+                    <label for="${id}-confirmation-character-set-vertical-tab">Vertical Tab</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-carriage-return">
+                    <label for="${id}-confirmation-character-set-carriage-return">Carriage Return</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-linefeed">
+                    <label for="${id}-confirmation-character-set-linefeed">Linefeed</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-form-feed">
+                    <label for="${id}-confirmation-character-set-form-feed">Form Feed</label>k
+                </div>
             </div>
 
             <div class="custom-characters">
@@ -188,6 +218,36 @@ characterOrGroupSelectMenu.addEventListener('change', event => {
                     <div>
                         <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-special-characters">
                         <label for="${id}-confirmation-character-set-special-characters">Special Characters</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-whitespace">
+                        <label for="${id}-confirmation-character-set-whitespace">Whitespace</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-horizontal-tab">
+                        <label for="${id}-confirmation-character-set-horizontal-tab">Horizontal Tab</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-vertical-tab">
+                        <label for="${id}-confirmation-character-set-vertical-tab">Vertical Tab</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-carriage-return">
+                        <label for="${id}-confirmation-character-set-carriage-return">Carriage Return</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-linefeed">
+                        <label for="${id}-confirmation-character-set-linefeed">Linefeed</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-form-feed">
+                        <label for="${id}-confirmation-character-set-form-feed">Form Feed</label>k
                     </div>
                 </div>
 

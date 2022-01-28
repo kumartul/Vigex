@@ -70,6 +70,30 @@ generateRegexBtn.addEventListener('click', () => {
                                     if(checkBox.id.includes("special")) {
                                         first += "_\\W";
                                     }
+                                    // Whitespace
+                                    if(checkBox.id.includes("whitespace")) {
+                                        first += "\\s";
+                                    }
+                                    // Horizontal Tab
+                                    if(checkBox.id.includes("horizontal")) {
+                                        first += "\\t";
+                                    }
+                                    // Vertical Tab
+                                    if(checkBox.id.includes("vertical")) {
+                                        first += "\\v";
+                                    }
+                                    // Carriage Return
+                                    if(checkBox.id.includes("carriage")) {
+                                        first += "\\r";
+                                    }
+                                    // Linefeed
+                                    if(checkBox.id.includes("linefeed")) {
+                                        first += "\\n";
+                                    }
+                                    // Form Feed
+                                    if(checkBox.id.includes("form")) {
+                                        first += "\\f";
+                                    }
                                 }
                             });
 
@@ -157,6 +181,30 @@ generateRegexBtn.addEventListener('click', () => {
                                     if(checkBox.id.includes("special")) {
                                         last += "_\\W";
                                     }
+                                    // Whitespace
+                                    if(checkBox.id.includes("whitespace")) {
+                                        last += "\\s";
+                                    }
+                                    // Horizontal Tab
+                                    if(checkBox.id.includes("horizontal")) {
+                                        last += "\\t";
+                                    }
+                                    // Vertical Tab
+                                    if(checkBox.id.includes("vertical")) {
+                                        last += "\\v";
+                                    }
+                                    // Carriage Return
+                                    if(checkBox.id.includes("carriage")) {
+                                        last += "\\r";
+                                    }
+                                    // Linefeed
+                                    if(checkBox.id.includes("linefeed")) {
+                                        last += "\\n";
+                                    }
+                                    // Form Feed
+                                    if(checkBox.id.includes("form")) {
+                                        last += "\\f";
+                                    }
                                 }
                             });
 
@@ -243,16 +291,40 @@ generateRegexBtn.addEventListener('click', () => {
                                     expr += "A-Z";
                                 }
                                 // Lowercase
-                                else if(checkBox.id.includes("lowercase")) {
+                                if(checkBox.id.includes("lowercase")) {
                                     expr += "a-z";
                                 }
                                 // Number
-                                else if(checkBox.id.includes("number")) {
+                                if(checkBox.id.includes("number")) {
                                     expr += "\\d";
                                 }
                                 // Special Characters
-                                else if(checkBox.id.includes("special")) {
+                                if(checkBox.id.includes("special")) {
                                     expr += "_\\W";
+                                }
+                                // Whitespace
+                                if(checkBox.id.includes("whitespace")) {
+                                    expr += "\\s";
+                                }
+                                // Horizontal Tab
+                                if(checkBox.id.includes("horizontal")) {
+                                    expr += "\\t";
+                                }
+                                // Vertical Tab
+                                if(checkBox.id.includes("vertical")) {
+                                    expr += "\\v";
+                                }
+                                // Carriage Return
+                                if(checkBox.id.includes("carriage")) {
+                                    expr += "\\r";
+                                }
+                                // Linefeed
+                                if(checkBox.id.includes("linefeed")) {
+                                    expr += "\\n";
+                                }
+                                // Form Feed
+                                if(checkBox.id.includes("form")) {
+                                    expr += "\\f";
                                 }
                             }
                         });
