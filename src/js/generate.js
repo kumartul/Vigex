@@ -151,11 +151,12 @@ characterOrGroupSelectMenu.addEventListener('change', event => {
     const optionNumber = event.target.selectedIndex;
 
     if(optionNumber === 1) {    // Character Sets
-        const firstFormElement = document.querySelector('.form-element');
+        let secondLastFormElement = [...document.querySelectorAll('.form-element')];
+        secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
         
         const id = Math.random() * Math.random();
 
-        firstFormElement.insertAdjacentHTML('afterend', 
+        secondLastFormElement.insertAdjacentHTML('afterend', 
         `
         <div class = "form-element character-set-block midpoint" id="${id}">
             <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
