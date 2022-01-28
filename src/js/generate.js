@@ -157,7 +157,7 @@ characterOrGroupSelectMenu.addEventListener('change', event => {
 
         firstFormElement.insertAdjacentHTML('afterend', 
         `
-        <div class = "form-element" id="${id}">
+        <div class = "form-element character-set-block midpoint" id="${id}">
             <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
             <label>Character Set</label>
             <button type = "button" class = "remove" id="delete-${id}">Remove</button>
@@ -202,12 +202,12 @@ characterOrGroupSelectMenu.addEventListener('change', event => {
                 <div class="hidden quantity">
                     <div>
                         <label for="${id}-min-quantity">Minimum number of times this character set must repeat: </label>
-                        <input disabled type="number" id="${id}-min-quantity" min="0" value="1" class="min">
+                        <input type="number" id="${id}-min-quantity" min="0" value="1" class="min">
                     </div>
 
                     <div>
                         <label for="${id}-max-quantity">Maximum number of times this character set must repeat: </label>
-                        <input disabled type="number" id="${id}-max-quantity" min="1" value="1" class="max">
+                        <input type="number" id="${id}-max-quantity" min="1" value="1" class="max">
                     </div>
                 </div>
             </div>

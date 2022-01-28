@@ -73,6 +73,7 @@ generateRegexBtn.addEventListener('click', () => {
                                 }
                             });
 
+                            // Enclose the expression in square brackets
                             first = first.split("");
                             first.unshift("^", "[");
                             first = first.join("");
@@ -102,7 +103,7 @@ generateRegexBtn.addEventListener('click', () => {
                 const max = formElement.querySelector('.quantity .max').value;
 
                 // If 'maximum' is more than 'minimum', then show an alert
-                if(max < min) {
+                if(Number(max) < Number(min)) {
                     showAlertBox(alertBox, "Minimum number of occurrences cannot be greater than maximum number of occurrences");                    
 
                     return;
@@ -120,6 +121,7 @@ generateRegexBtn.addEventListener('click', () => {
 
                 _first = first;
             }
+
             // 'Ends-With'
             else if(formElement.id === "ends-with") {
                 let last = "";
@@ -149,7 +151,7 @@ generateRegexBtn.addEventListener('click', () => {
                                     }
                                     // Numbers
                                     if(checkBox.id.includes("numbers")) {
-                                        last += "\d";
+                                        last += "\\d";
                                     }
                                     // Special Characters
                                     if(checkBox.id.includes("special")) {
@@ -158,6 +160,7 @@ generateRegexBtn.addEventListener('click', () => {
                                 }
                             });
 
+                            // Enclose the expression in square brackets
                             last = last.split("");
                             last.unshift("[");
                             last = last.join("");
@@ -185,7 +188,7 @@ generateRegexBtn.addEventListener('click', () => {
                 const max = formElement.querySelector('.quantity .max').value;
 
                 // If the 'maximum' is less than 'minimum', then show an alert
-                if(max < min) {
+                if(Number(max) < Number(min)) {
                     showAlertBox(alertBox, "Minimum number of occurrences cannot be greater than maximum number of occurrences");                    
 
                     return;
@@ -200,15 +203,116 @@ generateRegexBtn.addEventListener('click', () => {
                 else {
                     last += `{${min}, ${max}}`;
                 }
-
+                
                 last += "$";
                 _last = last;
             }
         }
     });
 
-    // Add 'forward slashes'
-    regex = "/" + _first + _last + "/";
+    // This array will store all the expressions used in the midfields
+    let midExprs = [];
+
+    // Fetch all the mid fields in the form of an array
+    const midFields = [...document.querySelectorAll('.midpoint')];
+
+    // Iterate through every midField and analyse each midField deeply to build the regex
+    midFields.forEach(midField => {
+        // Character Set
+        if(midField.classList.contains("character-set-block")) {
+            let expr = "";
+
+            // Fetch all the radio buttons in the current character-set-block
+            const radioBtns = midField.querySelectorAll('input[type="radio"]');
+
+            // Iterate through every radioBtn and analyse each radioBtn to build the regex
+            radioBtns.forEach(radioBtn => {
+                // Analyse only if the radioBtn is checked
+                if(radioBtn.checked) {
+                    // Character Set
+                    if(radioBtn.className === "character-set") {
+                        // Fetch all the checkboxes
+                        const checkBoxes = midField.querySelectorAll('input[type="checkbox"]');
+
+                        // Iterate through every checkBox and inspect each checkbox to build the regex
+                        checkBoxes.forEach(checkBox => {
+                            // Check only if the checkbox is checked
+                            if(checkBox.checked) {
+                                // Uppercase
+                                if(checkBox.id.includes("uppercase")) {
+                                    expr += "A-Z";
+                                }
+                                // Lowercase
+                                else if(checkBox.id.includes("lowercase")) {
+                                    expr += "a-z";
+                                }
+                                // Number
+                                else if(checkBox.id.includes("number")) {
+                                    expr += "\\d";
+                                }
+                                // Special Characters
+                                else if(checkBox.id.includes("special")) {
+                                    expr += "_\\W";
+                                }
+                            }
+                        });
+
+                        // Enclose the expression in square brackets only if it's not empty
+                        if(expr) {
+                            expr = expr.split("");
+                            expr.unshift("[");
+                            expr = expr.join("");
+                            expr += "]";
+                        }
+                    }
+
+                    // Custom Characters
+                    else if(radioBtn.className === "custom-characters") {
+                        const customCharactersField = midField.querySelector('input[type="text"]');
+
+                        expr = `[${customCharactersField.value}]`;
+                    }
+                }
+            });
+
+            // Fetch the 'minimum' and 'maximum' quantity
+            const min = midField.querySelector('.min').value;
+            const max = midField.querySelector('.max').value;
+
+            // If the 'maximum' is less than 'minimum', then show an alert
+            if(Number(max) < Number(min)) {
+                showAlertBox(alertBox, "Minimum number of occurrences cannot be greater than maximum number of occurrences");                    
+
+                return;
+            }
+            // If 'minimum' is equal to 'maximum', then omit any one of the fields
+            else if(min === max) {
+                // If 'maximum' and 'minimum' are equal to 1, then omit both the fields
+                if(Number(min) !== 1) {
+                    expr += `{${min}}`;
+                }
+            }
+            else {
+                expr += `{${min}, ${max}}`;
+            }
+
+            midExprs.push(expr);
+        }
+        else if(midField.className === "group-block") {
+
+        }
+    });
+
+    // Add 'forward slash' and the '_first' part
+    regex = "/" + _first;
+
+    // Iterate through every midExpr and add each of them to the regex
+    midExprs.forEach(midExpr => {
+        regex += midExpr;
+    });
+
+    // Add 'forward slash' and the '_last' part
+    regex += _last + "/";
 
     // Add the flags accordingly
     flags.forEach(flag => {
