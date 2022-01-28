@@ -369,9 +369,38 @@ generateRegexBtn.addEventListener('click', () => {
             }
 
             midExprs.push(expr);
-        }
-        else if(midField.className === "group-block") {
 
+            console.log("i am in charbohye...");
+        }
+        // Groups
+        if(midField.classList.contains("group-block")) {
+            console.log("I am in boye...");
+            const customGroupsField = midField.querySelector('input[type="text"]');
+
+            let expr = `(${customGroupsField.value})`;
+
+            // Fetch the 'minimum' and 'maximum' quantity
+            const min = midField.querySelector('.min').value;
+            const max = midField.querySelector('.max').value;
+
+            // If the 'maximum' is less than 'minimum', then show an alert
+            if(Number(max) < Number(min)) {
+                showAlertBox(alertBox, "Minimum number of occurrences cannot be greater than maximum number of occurrences");                    
+
+                return;
+            }
+            // If 'minimum' is equal to 'maximum', then omit any one of the fields
+            else if(min === max) {
+                // If 'maximum' and 'minimum' are equal to 1, then omit both the fields
+                if(Number(min) !== 1) {
+                    expr += `{${min}}`;
+                }
+            }
+            else {
+                expr += `{${min}, ${max}}`;
+            }
+
+            midExprs.push(expr);
         }
     });
 
