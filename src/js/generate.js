@@ -144,7 +144,7 @@ const generateEndpointFormElementInnerHTML = formElements => {
 
             <div class="custom-groups">
                 <input disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-custom-groups" class="custom-group">
-                <label for="${id}-confirmation-custom-groups">Custom Groups</label>
+                <label for="${id}-confirmation-custom-groups">Custom Group</label>
             </div>
 
             <div class="hidden custom-groups-field">
