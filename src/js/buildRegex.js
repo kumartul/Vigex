@@ -31,6 +31,11 @@ generateRegexBtn.addEventListener('click', () => {
     let _first = "";
     let _last = "";
 
+    let assertionInfo = {
+        isLookahead: false,
+        isNegativeLookahead: false
+    }
+
     // Iterate through every formElement and analyse each of them deeply and generate the regex
     formElements.forEach(formElement => {
         // If the formElement's selectedIndex is 0 (Yes), then only analyse it
@@ -368,6 +373,17 @@ generateRegexBtn.addEventListener('click', () => {
                 expr += `{${min},${max}}`;
             }
 
+            // Check if any lookahead assertion is applied on the current field
+            if(assertionInfo.isLookahead) {
+                expr = "(?=" + expr + ")";
+            }
+            if(assertionInfo.isNegativeLookahead) {
+                expr = "(?!" + expr + ")";
+            }
+
+            assertionInfo.isLookahead = false;
+            assertionInfo.isNegativeLookahead = false;
+
             midExprs.push(expr);
         }
         // Groups
@@ -397,6 +413,17 @@ generateRegexBtn.addEventListener('click', () => {
                 expr += `{${min},${max}}`;
             }
 
+            // Check if any lookahead assertion is applied on the current field
+            if(assertionInfo.isLookahead) {
+                expr = "(?=" + expr + ")";
+            }
+            if(assertionInfo.isNegativeLookahead) {
+                expr = "(?!" + expr + ")";
+            }
+
+            assertionInfo.isLookahead = false;
+            assertionInfo.isNegativeLookahead = false;
+
             midExprs.push(expr);
         }
         // Assertions
@@ -406,10 +433,22 @@ generateRegexBtn.addEventListener('click', () => {
             assertions.forEach(assertion => {
                 if(assertion.checked) {
                     if(assertion.value === "lookahead") {
-                        
+                        assertionInfo.isLookahead = true;
+
+                        const topMostParent = assertion.parentElement.parentElement;
+
+                        // If the element after the current assertion element is the last element
+                        if(topMostParent.nextElementSibling.nextElementSibling.id === "ends-with") {
+                            _last = "(?=" + _last + ")";
+                        }
                     }
                     if(assertion.value === "negative_lookahead") {
-                        
+                        assertionInfo.isNegativeLookahead = true;
+
+                        // If the element after the current assertion element is the last element
+                        if(topMostParent.nextElementSibling.nextElementSibling.id === "ends-with") {
+                            _last = "(?!" + _last + ")";
+                        }
                     }
                     if(assertion.value === "lookbehind") {
                         if(midExprs.length !== 0) {
