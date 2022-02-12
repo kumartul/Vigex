@@ -140,7 +140,7 @@ generateRegexBtn.addEventListener('click', () => {
                     }
                 }
                 else {
-                    first += `{${min}, ${max}}`;
+                    first += `{${min},${max}}`;
                 }
 
                 _first = first;
@@ -249,7 +249,7 @@ generateRegexBtn.addEventListener('click', () => {
                     }
                 }
                 else {
-                    last += `{${min}, ${max}}`;
+                    last += `{${min},${max}}`;
                 }
                 
                 last += "$";
@@ -365,16 +365,13 @@ generateRegexBtn.addEventListener('click', () => {
                 }
             }
             else {
-                expr += `{${min}, ${max}}`;
+                expr += `{${min},${max}}`;
             }
 
             midExprs.push(expr);
-
-            console.log("i am in charbohye...");
         }
         // Groups
         if(midField.classList.contains("group-block")) {
-            console.log("I am in boye...");
             const customGroupsField = midField.querySelector('input[type="text"]');
 
             let expr = `(${customGroupsField.value})`;
@@ -397,10 +394,57 @@ generateRegexBtn.addEventListener('click', () => {
                 }
             }
             else {
-                expr += `{${min}, ${max}}`;
+                expr += `{${min},${max}}`;
             }
 
             midExprs.push(expr);
+        }
+        // Assertions
+        if(midField.classList.contains("assertion-block")) {
+            const assertions = [...midField.querySelectorAll('input[type="radio"]')];
+
+            assertions.forEach(assertion => {
+                if(assertion.checked) {
+                    if(assertion.value === "lookahead") {
+                        
+                    }
+                    if(assertion.value === "negative_lookahead") {
+                        
+                    }
+                    if(assertion.value === "lookbehind") {
+                        if(midExprs.length !== 0) {
+                            midExprs[midExprs.length - 1] = "(?<=" + midExprs[midExprs.length - 1] + ")";
+                        }
+                        else {
+                            if(_first.includes("{")) {
+                                const content = _first.substring(0, _first.indexOf("{"));
+                                const quantifier = _first.substring(_first.indexOf("{"), _first.indexOf("}") + 1);
+
+                                _first = "(?<=" + content + ")" + quantifier;
+                            }
+                            else {
+                                _first = "(?<=" + _first + ")";
+                            }
+                        }
+                    }
+                    if(assertion.value === "negative_lookbehind") {
+                        if(midExprs.length !== 0) {
+                            midExprs[midExprs.length - 1] = "(?!" + midExprs[midExprs.length - 1] + ")";
+                        }
+                        else {
+                            if(_first.includes("{")) {
+                                const content = _first.substring(0, _first.indexOf("{"));
+                                const quantifier = _first.substring(_first.indexOf("{"), _first.indexOf("}") + 1);
+                                
+                                _first = "(?<=" + content + ")" + quantifier;
+                            }
+                            else {
+
+                            }
+                        }
+                    }
+                }
+            });
         }
     });
 

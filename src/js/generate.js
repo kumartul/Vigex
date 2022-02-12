@@ -12,6 +12,7 @@ const selectMenu =
         <option value = "None" selected>None</option>
         <option value = "Character">Character Set</option>
         <option value = "Group">Group</option>
+        <option value = "Assertion">Assertion</option>
     </select>
 </div>
 `;
@@ -175,9 +176,9 @@ const formElements = [...document.querySelectorAll('.form-element')];
 // This will dynamically populate all the formElements on load
 generateEndpointFormElementInnerHTML(formElements);
 
-const characterOrGroupSelectMenu = document.querySelector('.character-or-group-select');
+const characterOrGroupOrAssertionSelectMenu = document.querySelector('.character-or-group-select');
 
-characterOrGroupSelectMenu.addEventListener('change', event => {
+characterOrGroupOrAssertionSelectMenu.addEventListener('change', event => {
     const optionNumber = event.target.selectedIndex;
 
     if(optionNumber === 1) {    // Character Sets
@@ -380,6 +381,93 @@ characterOrGroupSelectMenu.addEventListener('change', event => {
                         <input type="number" id="${id}-max-quantity" min="1" value="1" class="max">
                     </div>
                 </div>
+            </div>
+        </div>
+        `);
+
+        const expandBtn = document.getElementById(id);
+        
+        // Rotate the expandBtn by 90deg on the z-axis
+        expandBtn.addEventListener('click', event => {
+            // Parent element of expandBtn
+            const formElement = event.target.parentElement;
+
+            if(event.target.getAttribute("data-expanded") === "no") {
+                event.target.style.transition = "0.25s";
+                event.target.style.transform = "rotateZ(90deg)";
+
+                // Fetch all the divs in the formElement that are hidden in the form of an array
+                const hiddenDivs = [...formElement.querySelectorAll(".hidden")];
+
+                // Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
+                // so that they become visible
+                hiddenDivs.forEach(hiddenDiv => {
+                    hiddenDiv.classList.remove('hidden');
+                    hiddenDiv.classList.add('visible');
+                });
+
+                event.target.setAttribute("data-expanded", "yes");
+            }
+            else if(event.target.getAttribute("data-expanded") === "yes") {
+                event.target.style.transition = "0.25s";
+                event.target.style.transform = "rotateZ(0deg)";
+
+                // Fetch all the divs in the formElement that are hidden in the form of an array
+                const hiddenDivs = [...formElement.querySelectorAll(".visible")];
+
+                // Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
+                // so that they become visible
+                hiddenDivs.forEach(hiddenDiv => {
+                    hiddenDiv.classList.remove('visible');
+                    hiddenDiv.classList.add('hidden');
+                });
+
+                event.target.setAttribute("data-expanded", "no");
+            }
+        });
+
+        const deleteBtn = document.getElementById(`delete-${id}`);
+
+        // Attach a 'click' event listener to the delete button so that whenever someone clicks on it,
+        // a confirm popup pops up and handle the process based on user input
+        deleteBtn.addEventListener('click', event => {
+            const confirmation = confirm("Are you sure you want to remove this field?");
+            if(confirmation) {
+                form.removeChild(event.target.parentElement);
+            }
+        });
+    }
+    else if(optionNumber === 3) {   // Assertions
+        let secondLastFormElement = [...document.querySelectorAll('.form-element')];
+        secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
+        
+        const id = Math.random() * Math.random() * Math.random();
+
+        secondLastFormElement.insertAdjacentHTML('afterend', 
+        `
+        <div class = "form-element assertion-block midpoint" id="${id}">
+            <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
+            <label>Assertion</label>
+            <button type = "button" class = "remove" id="delete-${id}">Remove</button>
+
+            <div class = "params hidden">
+                <input type = "radio" value = "lookahead" name = "assertion" id = "lookahead-assertion-radio-${id}" checked>
+                <label for = "lookahead-assertion-radio-${id}">Only if followed by</label>
+
+                <br>
+
+                <input type = "radio" value = "negative_lookahead" name = "assertion" id = "negative-lookahead-assertion-radio-${id}">
+                <label for = "negative-lookahead-assertion-radio-${id}">Only if not followed by</label>
+
+                <br>
+
+                <input type = "radio" value = "lookbehind" name = "assertion" id = "lookbehind-assertion-radio-${id}">
+                <label for = "lookbehind-assertion-radio-${id}">Only if preceded by</label>
+
+                <br>
+
+                <input type = "radio" value = "negative_lookbehind" name = "assertion" id = "negative-lookbehind-assertion-radio-${id}">
+                <label for = "negative-lookbehind-assertion-radio-${id}">Only if not preceded by</label>
             </div>
         </div>
         `);
