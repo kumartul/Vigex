@@ -1,0 +1,28 @@
+{
+  "name": "vigex",
+  "version": "0.1.0",
+  "description": "No more frustration while writing regular expressions",
+  "main": "./src/js/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kumartul/Vigex.git"
+  },
+  "keywords": [
+    "vigex",
+    "regex",
+    "regular-expression",
+    "regexp"
+  ],
+  "author": "Atul Kumar <akumarofficial4224@gmail.com> (https://www.github.com/Atul-Kumar-Official)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kumartul/Vigex/issues"
+  },
+  "homepage": "https://github.com/kumartul/Vigex#readme",
+  "devDependencies": {
+    "eslint": "8.9.0"
+  }
+}
