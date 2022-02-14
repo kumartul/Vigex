@@ -144,6 +144,9 @@ generateRegexBtn.addEventListener('click', () => {
                         first += `{${min}}`;
                     }
                 }
+                else if(Number(min) === 0 && Number(max) === 1) {
+                    first += "?";
+                }
                 else {
                     first += `{${min},${max}}`;
                 }
@@ -252,6 +255,9 @@ generateRegexBtn.addEventListener('click', () => {
                     if(Number(min) !== 1) {
                         last += `{${min}}`;
                     }
+                }
+                else if(Number(min) === 0 && Number(max) === 1) {
+                    last += "?";
                 }
                 else {
                     last += `{${min},${max}}`;
@@ -368,6 +374,9 @@ generateRegexBtn.addEventListener('click', () => {
                 if(Number(min) !== 1) {
                     expr += `{${min}}`;
                 }
+            }
+            else if(Number(min) === 0 && Number(max) === 1) {
+                expr += "?";
             }
             else {
                 expr += `{${min},${max}}`;
