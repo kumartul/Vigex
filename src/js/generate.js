@@ -13,6 +13,7 @@ const selectMenu =
         <option value = "Character">Character Set</option>
         <option value = "Group">Group</option>
         <option value = "Assertion">Assertion</option>
+        <option value = "Or">Or</option>
     </select>
 </div>
 `;
@@ -512,6 +513,33 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', event => {
                 event.target.setAttribute("data-expanded", "no");
             }
         });
+
+        const deleteBtn = document.getElementById(`delete-${id}`);
+
+        // Attach a 'click' event listener to the delete button so that whenever someone clicks on it,
+        // a confirm popup pops up and handle the process based on user input
+        deleteBtn.addEventListener('click', event => {
+            const confirmation = confirm("Are you sure you want to remove this field?");
+            if(confirmation) {
+                form.removeChild(event.target.parentElement);
+            }
+        });
+    }
+    // Or
+    else if(optionNumber === 4) {
+        let secondLastFormElement = [...document.querySelectorAll('.form-element')];
+        secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
+        
+        const id = Math.random() * Math.random() * Math.random();
+
+        secondLastFormElement.insertAdjacentHTML('afterend', 
+        `
+        <div class = "form-element or-block midpoint" id="${id}">
+            <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
+            <label>Or</label>
+            <button type = "button" class = "remove" id="delete-${id}">Remove</button>
+        </div>
+        `);
 
         const deleteBtn = document.getElementById(`delete-${id}`);
 

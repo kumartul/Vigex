@@ -475,15 +475,19 @@ generateRegexBtn.addEventListener('click', () => {
                                 const content = _first.substring(0, _first.indexOf("{"));
                                 const quantifier = _first.substring(_first.indexOf("{"), _first.indexOf("}") + 1);
                                 
-                                _first = "(?<=" + content + ")" + quantifier;
+                                _first = "(?!" + content + ")" + quantifier;
                             }
                             else {
-
+                                _first = "(?!" + _first + ")";
                             }
                         }
                     }
                 }
             });
+        }
+        // Or
+        if(midField.classList.contains("or-block")) {
+            midExprs.push("|");
         }
     });
 
