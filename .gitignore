@@ -1,2 +1,5 @@
 # Text Files
 *.txt
+
+# Directories
+node_modules
