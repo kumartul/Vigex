@@ -34,21 +34,11 @@
 		],
 		"object-shorthand": [
 			"error",
-			"always",
-			"methods",
-			"properties",
-			"consistent-as-needed", {
-				"avoidQuotes": true,
-				"avoidExplicitReturnArrows": true
-			}
+			"always"
 		],
 		"quote-props": [
 			"error",
-			"always",
-			"consistent-as-needed", {
-				"keywords": true,
-				"unnecessary": true
-			}
+			"always"
 		],
 		"prefer-object-spread": [
 			"error"
@@ -85,13 +75,6 @@
 		],
 
 		// Functions
-		"func-style": [
-			"error",
-			"expression",
-			"declaration", {
-				"allowArrowFunctions": true
-			}
-		],
 		"wrap-iife": [
 			"error"
 		],
@@ -269,10 +252,6 @@
 		// Type Casting and Coercion
 		"no-new-wrappers": [
 			"error"
-		],
-		"radix-no-new-wrappers": [
-			"error",
-			"always"
 		],
 
 		// Semicolon
