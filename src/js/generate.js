@@ -1,10 +1,10 @@
-import { statements, formElementIDs, flags } from "./utils.js";
+import { statements, formElementIDs, flags } from './utils.js';
 
 const form = document.getElementById('form-group');
 
 // This select menu will be  generated when as soon as the first formElement gets rendered and a user adds
 // a new field
-const selectMenu = 
+const selectMenu =
 `
 <div class="character-or-group-select-menu">
     <strong>Add</strong>
@@ -19,54 +19,54 @@ const selectMenu =
 `;
 
 // Function: Generates form elements dynamically
-const generateFormElements = formElementIDs => {
-    // Iterate through every formElementID and create and append formElements
-    formElementIDs.forEach((formElementID, index) => {
-        const formElement = document.createElement('div');
-        
-        formElement.className = "form-element";
-        formElement.classList.add("endpoint");
-        formElement.id = formElementIDs[index];
-        formElement.dataset.expanded = "no";
+const generateFormElements = (formElementIDs) => {
+	// Iterate through every formElementID and create and append formElements
+	formElementIDs.forEach((formElementID, index) => {
+		const formElement = document.createElement('div');
 
-        form.appendChild(formElement);
+		formElement.className = 'form-element';
+		formElement.classList.add('endpoint');
+		formElement.id = formElementIDs[index];
+		formElement.dataset.expanded = 'no';
 
-        // Render the select menu as soon as the first formElement gets rendered
-        if(index === 0) {
-            form.innerHTML += selectMenu;
-        }
-    });
+		form.appendChild(formElement);
 
-    // Create 'Flag checkboxes'
-    flags.forEach(flag => {
-        const element = 
+		// Render the select menu as soon as the first formElement gets rendered
+		if(index === 0) {
+			form.innerHTML += selectMenu;
+		}
+	});
+
+	// Create 'Flag checkboxes'
+	flags.forEach((flag) => {
+		const element =
         `
         <input type = "checkbox" id = "${flag.flag}-flag" value = "${flag.flag}" class="flag">
         <label for = "${flag.flag}-flag" class="flag-label">${flag.text}</label>
         `;
 
-        form.innerHTML += element;
-    });
-    
-    form.innerHTML += "<br>";
+		form.innerHTML += element;
+	});
 
-    // Create 'Generate Regex' button
-    const generateRegexBtn = document.createElement('button');
-    
-    generateRegexBtn.type = "button";
-    generateRegexBtn.id = "generate-regex";
-    generateRegexBtn.textContent = "Generate Regex";
+	form.innerHTML += '<br>';
 
-    form.appendChild(generateRegexBtn);
-}
+	// Create 'Generate Regex' button
+	const generateRegexBtn = document.createElement('button');
+
+	generateRegexBtn.type = 'button';
+	generateRegexBtn.id = 'generate-regex';
+	generateRegexBtn.textContent = 'Generate Regex';
+
+	form.appendChild(generateRegexBtn);
+};
 
 // Function: Generates the innerHTML of endpointFormElements by using their ID
-const generateEndpointFormElementInnerHTML = formElements => {
-    // Iterate through each formElement and populate them based on their IDs
-    formElements.forEach((formElement, index) => {
-        const id = formElement.id;
+const generateEndpointFormElementInnerHTML = (formElements) => {
+	// Iterate through each formElement and populate them based on their IDs
+	formElements.forEach((formElement, index) => {
+		const { id } = formElement;
 
-        formElement.innerHTML = 
+		formElement.innerHTML =
         `
         <button type="button" data-expanded="no" id="expand-${id}-confirmation" class="expand-btn">&gt;</button>
         <label for="${id}-confirmation">${statements[index]}</label>
@@ -166,8 +166,8 @@ const generateEndpointFormElementInnerHTML = formElements => {
             </div>
         </div>
         `;
-    });
-}
+	});
+};
 
 generateFormElements(formElementIDs);
 
@@ -179,17 +179,17 @@ generateEndpointFormElementInnerHTML(formElements);
 
 const characterOrGroupOrAssertionSelectMenu = document.querySelector('.character-or-group-select');
 
-characterOrGroupOrAssertionSelectMenu.addEventListener('change', event => {
-    const optionNumber = event.target.selectedIndex;
+characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
+	const optionNumber = event.target.selectedIndex;
 
-    if(optionNumber === 1) {    // Character Sets
-        let secondLastFormElement = [...document.querySelectorAll('.form-element')];
-        secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
-        
-        const id = Math.random() * Math.random();
+	if(optionNumber === 1) {    // Character Sets
+		let secondLastFormElement = [...document.querySelectorAll('.form-element')];
+		secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
 
-        secondLastFormElement.insertAdjacentHTML('afterend', 
-        `
+		const id = Math.random() * Math.random();
+
+		secondLastFormElement.insertAdjacentHTML('afterend',
+			`
         <div class = "form-element character-set-block midpoint" id="${id}">
             <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
             <label>Character Set</label>
@@ -277,90 +277,90 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', event => {
         </div>
         `);
 
-        const expandBtn = document.getElementById(id);
-        
-        // Rotate the expandBtn by 90deg on the z-axis
-        expandBtn.addEventListener('click', event => {
-            // Parent element of expandBtn
-            const formElement = event.target.parentElement;
+		const expandBtn = document.getElementById(id);
 
-            if(event.target.getAttribute("data-expanded") === "no") {
-                event.target.style.transition = "0.25s";
-                event.target.style.transform = "rotateZ(90deg)";
+		// Rotate the expandBtn by 90deg on the z-axis
+		expandBtn.addEventListener('click', (event) => {
+			// Parent element of expandBtn
+			const formElement = event.target.parentElement;
 
-                // Fetch all the divs in the formElement that are hidden in the form of an array
-                const hiddenDivs = [...formElement.querySelectorAll(".hidden")];
+			if(event.target.getAttribute('data-expanded') === 'no') {
+				event.target.style.transition = '0.25s';
+				event.target.style.transform = 'rotateZ(90deg)';
 
-                // Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
-                // so that they become visible
-                hiddenDivs.forEach(hiddenDiv => {
-                    hiddenDiv.classList.remove('hidden');
-                    hiddenDiv.classList.add('visible');
-                });
+				// Fetch all the divs in the formElement that are hidden in the form of an array
+				const hiddenDivs = [...formElement.querySelectorAll('.hidden')];
 
-                event.target.setAttribute("data-expanded", "yes");
-            }
-            else if(event.target.getAttribute("data-expanded") === "yes") {
-                event.target.style.transition = "0.25s";
-                event.target.style.transform = "rotateZ(0deg)";
+				// Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
+				// so that they become visible
+				hiddenDivs.forEach((hiddenDiv) => {
+					hiddenDiv.classList.remove('hidden');
+					hiddenDiv.classList.add('visible');
+				});
 
-                // Fetch all the divs in the formElement that are hidden in the form of an array
-                const hiddenDivs = [...formElement.querySelectorAll(".visible")];
+				event.target.setAttribute('data-expanded', 'yes');
+			}
+			else if(event.target.getAttribute('data-expanded') === 'yes') {
+				event.target.style.transition = '0.25s';
+				event.target.style.transform = 'rotateZ(0deg)';
 
-                // Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
-                // so that they become visible
-                hiddenDivs.forEach(hiddenDiv => {
-                    hiddenDiv.classList.remove('visible');
-                    hiddenDiv.classList.add('hidden');
-                });
+				// Fetch all the divs in the formElement that are hidden in the form of an array
+				const hiddenDivs = [...formElement.querySelectorAll('.visible')];
 
-                event.target.setAttribute("data-expanded", "no");
-            }
-        });
+				// Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
+				// so that they become visible
+				hiddenDivs.forEach((hiddenDiv) => {
+					hiddenDiv.classList.remove('visible');
+					hiddenDiv.classList.add('hidden');
+				});
 
-        const deleteBtn = document.getElementById(`delete-${id}`);
+				event.target.setAttribute('data-expanded', 'no');
+			}
+		});
 
-        // Attach a 'click' event listener to the delete button so that whenever someone clicks on it,
-        // a confirm popup pops up and handle the process based on user input
-        deleteBtn.addEventListener('click', event => {
-            const confirmation = confirm("Are you sure you want to remove this field?");
-            if(confirmation) {
-                form.removeChild(event.target.parentElement);
-            }
-        });
+		const deleteBtn = document.getElementById(`delete-${id}`);
 
-        const radioBtns = document.getElementById(id).querySelectorAll('input[type="radio"]');
-        
-        radioBtns.forEach(radioBtn => {
-            radioBtn.addEventListener('click', event => {
-                const checkboxes = document.getElementById(id).querySelectorAll('input[type="checkbox"]');
-                const customCharactersField = document.getElementById(id).querySelector('input[type="text"]');
-                
-                if(event.target.className === "character-set") {
-                    checkboxes.forEach(checkbox => {
-                        checkbox.disabled = false;
-                    });
+		// Attach a 'click' event listener to the delete button so that whenever someone clicks on it,
+		// a confirm popup pops up and handle the process based on user input
+		deleteBtn.addEventListener('click', (event) => {
+			const confirmation = confirm('Are you sure you want to remove this field?');
+			if(confirmation) {
+				form.removeChild(event.target.parentElement);
+			}
+		});
 
-                    customCharactersField.disabled = true;
-                }
-                else if(event.target.className === "custom-characters") {
-                    checkboxes.forEach(checkbox => {
-                        checkbox.disabled = true;
-                    });
+		const radioBtns = document.getElementById(id).querySelectorAll('input[type="radio"]');
 
-                    customCharactersField.disabled = false;
-                }
-            });
-        });
-    }
-    else if(optionNumber === 2) {   // Groups
-        let secondLastFormElement = [...document.querySelectorAll('.form-element')];
-        secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
-        
-        const id = Math.random() * Math.random() * Math.random();
+		radioBtns.forEach((radioBtn) => {
+			radioBtn.addEventListener('click', (event) => {
+				const checkboxes = document.getElementById(id).querySelectorAll('input[type="checkbox"]');
+				const customCharactersField = document.getElementById(id).querySelector('input[type="text"]');
 
-        secondLastFormElement.insertAdjacentHTML('afterend', 
-        `
+				if(event.target.className === 'character-set') {
+					checkboxes.forEach((checkbox) => {
+						checkbox.disabled = false;
+					});
+
+					customCharactersField.disabled = true;
+				}
+				else if(event.target.className === 'custom-characters') {
+					checkboxes.forEach((checkbox) => {
+						checkbox.disabled = true;
+					});
+
+					customCharactersField.disabled = false;
+				}
+			});
+		});
+	}
+	else if(optionNumber === 2) {   // Groups
+		let secondLastFormElement = [...document.querySelectorAll('.form-element')];
+		secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
+
+		const id = Math.random() * Math.random() * Math.random();
+
+		secondLastFormElement.insertAdjacentHTML('afterend',
+			`
         <div class = "form-element group-block midpoint" id="${id}">
             <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
             <label>Group</label>
@@ -386,66 +386,66 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', event => {
         </div>
         `);
 
-        const expandBtn = document.getElementById(id);
-        
-        // Rotate the expandBtn by 90deg on the z-axis
-        expandBtn.addEventListener('click', event => {
-            // Parent element of expandBtn
-            const formElement = event.target.parentElement;
+		const expandBtn = document.getElementById(id);
 
-            if(event.target.getAttribute("data-expanded") === "no") {
-                event.target.style.transition = "0.25s";
-                event.target.style.transform = "rotateZ(90deg)";
+		// Rotate the expandBtn by 90deg on the z-axis
+		expandBtn.addEventListener('click', (event) => {
+			// Parent element of expandBtn
+			const formElement = event.target.parentElement;
 
-                // Fetch all the divs in the formElement that are hidden in the form of an array
-                const hiddenDivs = [...formElement.querySelectorAll(".hidden")];
+			if(event.target.getAttribute('data-expanded') === 'no') {
+				event.target.style.transition = '0.25s';
+				event.target.style.transform = 'rotateZ(90deg)';
 
-                // Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
-                // so that they become visible
-                hiddenDivs.forEach(hiddenDiv => {
-                    hiddenDiv.classList.remove('hidden');
-                    hiddenDiv.classList.add('visible');
-                });
+				// Fetch all the divs in the formElement that are hidden in the form of an array
+				const hiddenDivs = [...formElement.querySelectorAll('.hidden')];
 
-                event.target.setAttribute("data-expanded", "yes");
-            }
-            else if(event.target.getAttribute("data-expanded") === "yes") {
-                event.target.style.transition = "0.25s";
-                event.target.style.transform = "rotateZ(0deg)";
+				// Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
+				// so that they become visible
+				hiddenDivs.forEach((hiddenDiv) => {
+					hiddenDiv.classList.remove('hidden');
+					hiddenDiv.classList.add('visible');
+				});
 
-                // Fetch all the divs in the formElement that are hidden in the form of an array
-                const hiddenDivs = [...formElement.querySelectorAll(".visible")];
+				event.target.setAttribute('data-expanded', 'yes');
+			}
+			else if(event.target.getAttribute('data-expanded') === 'yes') {
+				event.target.style.transition = '0.25s';
+				event.target.style.transform = 'rotateZ(0deg)';
 
-                // Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
-                // so that they become visible
-                hiddenDivs.forEach(hiddenDiv => {
-                    hiddenDiv.classList.remove('visible');
-                    hiddenDiv.classList.add('hidden');
-                });
+				// Fetch all the divs in the formElement that are hidden in the form of an array
+				const hiddenDivs = [...formElement.querySelectorAll('.visible')];
 
-                event.target.setAttribute("data-expanded", "no");
-            }
-        });
+				// Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
+				// so that they become visible
+				hiddenDivs.forEach((hiddenDiv) => {
+					hiddenDiv.classList.remove('visible');
+					hiddenDiv.classList.add('hidden');
+				});
 
-        const deleteBtn = document.getElementById(`delete-${id}`);
+				event.target.setAttribute('data-expanded', 'no');
+			}
+		});
 
-        // Attach a 'click' event listener to the delete button so that whenever someone clicks on it,
-        // a confirm popup pops up and handle the process based on user input
-        deleteBtn.addEventListener('click', event => {
-            const confirmation = confirm("Are you sure you want to remove this field?");
-            if(confirmation) {
-                form.removeChild(event.target.parentElement);
-            }
-        });
-    }
-    else if(optionNumber === 3) {   // Assertions
-        let secondLastFormElement = [...document.querySelectorAll('.form-element')];
-        secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
-        
-        const id = Math.random() * Math.random() * Math.random();
+		const deleteBtn = document.getElementById(`delete-${id}`);
 
-        secondLastFormElement.insertAdjacentHTML('afterend', 
-        `
+		// Attach a 'click' event listener to the delete button so that whenever someone clicks on it,
+		// a confirm popup pops up and handle the process based on user input
+		deleteBtn.addEventListener('click', (event) => {
+			const confirmation = confirm('Are you sure you want to remove this field?');
+			if(confirmation) {
+				form.removeChild(event.target.parentElement);
+			}
+		});
+	}
+	else if(optionNumber === 3) {   // Assertions
+		let secondLastFormElement = [...document.querySelectorAll('.form-element')];
+		secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
+
+		const id = Math.random() * Math.random() * Math.random();
+
+		secondLastFormElement.insertAdjacentHTML('afterend',
+			`
         <div class = "form-element assertion-block midpoint" id="${id}">
             <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
             <label>Assertion</label>
@@ -473,67 +473,67 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', event => {
         </div>
         `);
 
-        const expandBtn = document.getElementById(id);
-        
-        // Rotate the expandBtn by 90deg on the z-axis
-        expandBtn.addEventListener('click', event => {
-            // Parent element of expandBtn
-            const formElement = event.target.parentElement;
+		const expandBtn = document.getElementById(id);
 
-            if(event.target.getAttribute("data-expanded") === "no") {
-                event.target.style.transition = "0.25s";
-                event.target.style.transform = "rotateZ(90deg)";
+		// Rotate the expandBtn by 90deg on the z-axis
+		expandBtn.addEventListener('click', (event) => {
+			// Parent element of expandBtn
+			const formElement = event.target.parentElement;
 
-                // Fetch all the divs in the formElement that are hidden in the form of an array
-                const hiddenDivs = [...formElement.querySelectorAll(".hidden")];
+			if(event.target.getAttribute('data-expanded') === 'no') {
+				event.target.style.transition = '0.25s';
+				event.target.style.transform = 'rotateZ(90deg)';
 
-                // Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
-                // so that they become visible
-                hiddenDivs.forEach(hiddenDiv => {
-                    hiddenDiv.classList.remove('hidden');
-                    hiddenDiv.classList.add('visible');
-                });
+				// Fetch all the divs in the formElement that are hidden in the form of an array
+				const hiddenDivs = [...formElement.querySelectorAll('.hidden')];
 
-                event.target.setAttribute("data-expanded", "yes");
-            }
-            else if(event.target.getAttribute("data-expanded") === "yes") {
-                event.target.style.transition = "0.25s";
-                event.target.style.transform = "rotateZ(0deg)";
+				// Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
+				// so that they become visible
+				hiddenDivs.forEach((hiddenDiv) => {
+					hiddenDiv.classList.remove('hidden');
+					hiddenDiv.classList.add('visible');
+				});
 
-                // Fetch all the divs in the formElement that are hidden in the form of an array
-                const hiddenDivs = [...formElement.querySelectorAll(".visible")];
+				event.target.setAttribute('data-expanded', 'yes');
+			}
+			else if(event.target.getAttribute('data-expanded') === 'yes') {
+				event.target.style.transition = '0.25s';
+				event.target.style.transform = 'rotateZ(0deg)';
 
-                // Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
-                // so that they become visible
-                hiddenDivs.forEach(hiddenDiv => {
-                    hiddenDiv.classList.remove('visible');
-                    hiddenDiv.classList.add('hidden');
-                });
+				// Fetch all the divs in the formElement that are hidden in the form of an array
+				const hiddenDivs = [...formElement.querySelectorAll('.visible')];
 
-                event.target.setAttribute("data-expanded", "no");
-            }
-        });
+				// Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
+				// so that they become visible
+				hiddenDivs.forEach((hiddenDiv) => {
+					hiddenDiv.classList.remove('visible');
+					hiddenDiv.classList.add('hidden');
+				});
 
-        const deleteBtn = document.getElementById(`delete-${id}`);
+				event.target.setAttribute('data-expanded', 'no');
+			}
+		});
 
-        // Attach a 'click' event listener to the delete button so that whenever someone clicks on it,
-        // a confirm popup pops up and handle the process based on user input
-        deleteBtn.addEventListener('click', event => {
-            const confirmation = confirm("Are you sure you want to remove this field?");
-            if(confirmation) {
-                form.removeChild(event.target.parentElement);
-            }
-        });
-    }
-    // Or
-    else if(optionNumber === 4) {
-        let secondLastFormElement = [...document.querySelectorAll('.form-element')];
-        secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
-        
-        const id = Math.random() * Math.random() * Math.random();
+		const deleteBtn = document.getElementById(`delete-${id}`);
 
-        secondLastFormElement.insertAdjacentHTML('afterend', 
-        `
+		// Attach a 'click' event listener to the delete button so that whenever someone clicks on it,
+		// a confirm popup pops up and handle the process based on user input
+		deleteBtn.addEventListener('click', (event) => {
+			const confirmation = confirm('Are you sure you want to remove this field?');
+			if(confirmation) {
+				form.removeChild(event.target.parentElement);
+			}
+		});
+	}
+	// Or
+	else if(optionNumber === 4) {
+		let secondLastFormElement = [...document.querySelectorAll('.form-element')];
+		secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
+
+		const id = Math.random() * Math.random() * Math.random();
+
+		secondLastFormElement.insertAdjacentHTML('afterend',
+			`
         <div class = "form-element or-block midpoint" id="${id}">
             <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
             <label>Or</label>
@@ -541,18 +541,18 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', event => {
         </div>
         `);
 
-        const deleteBtn = document.getElementById(`delete-${id}`);
+		const deleteBtn = document.getElementById(`delete-${id}`);
 
-        // Attach a 'click' event listener to the delete button so that whenever someone clicks on it,
-        // a confirm popup pops up and handle the process based on user input
-        deleteBtn.addEventListener('click', event => {
-            const confirmation = confirm("Are you sure you want to remove this field?");
-            if(confirmation) {
-                form.removeChild(event.target.parentElement);
-            }
-        });
-    }
+		// Attach a 'click' event listener to the delete button so that whenever someone clicks on it,
+		// a confirm popup pops up and handle the process based on user input
+		deleteBtn.addEventListener('click', (event) => {
+			const confirmation = confirm('Are you sure you want to remove this field?');
+			if(confirmation) {
+				form.removeChild(event.target.parentElement);
+			}
+		});
+	}
 
-    // Reset the value to 'None'
-    event.target.selectedIndex = 0;
+	// Reset the value to 'None'
+	event.target.selectedIndex = 0;
 });
