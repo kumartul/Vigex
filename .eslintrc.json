@@ -1,0 +1,294 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+
+		// References
+		"prefer-const": [
+			"error", {
+				"destructuring": "any",
+				"ignoreReadBeforeAssign": true
+			}
+		],
+		"no-const-assign": [
+			"error"
+		],
+		"no-var": [
+			"error"
+		],
+
+		// Objects
+		"no-new-object": [
+			"error"
+		],
+		"object-shorthand": [
+			"error",
+			"always",
+			"methods",
+			"properties",
+			"consistent-as-needed", {
+				"avoidQuotes": true,
+				"avoidExplicitReturnArrows": true
+			}
+		],
+		"quote-props": [
+			"error",
+			"always",
+			"consistent-as-needed", {
+				"keywords": true,
+				"unnecessary": true
+			}
+		],
+		"prefer-object-spread": [
+			"error"
+		],
+
+		// Arrays
+		"no-array-constructor": [
+			"error"
+		],
+		"array-callback-return": [
+			"error"
+		],
+		"prefer-destructuring": [
+			"error"
+		],
+
+		// Strings
+		"quotes": [
+			"error",
+			"single"
+		],
+		"prefer-template": [
+			"error"
+		],
+		"template-curly-spacing": [
+			"error",
+			"never"
+		],
+		"no-eval": [
+			"error"
+		],
+		"no-useless-escape": [
+			"error"
+		],
+
+		// Functions
+		"func-style": [
+			"error",
+			"expression",
+			"declaration", {
+				"allowArrowFunctions": true
+			}
+		],
+		"wrap-iife": [
+			"error"
+		],
+		"no-loop-func": [
+			"error"
+		],
+		"prefer-rest-params": [
+			"error"
+		],
+		"default-param-last": [
+			"error"
+		],
+		"no-new-func": [
+			"error"
+		],
+		"no-param-reassign": [
+			"error"
+		],
+		"prefer-spread": [
+			"error"
+		],
+		"function-paren-newline": [
+			"error",
+			"never"
+		],
+
+		// Arrow Functions
+		"prefer-arrow-callback": [
+			"error"
+		],
+		"arrow-spacing": [
+			"error"
+		],
+		"arrow-parens": [
+			"error"
+		],
+		"no-confusing-arrow": [
+			"error"
+		],
+
+		// Classes and Constructors
+		"no-useless-constructor": [
+			"error"
+		],
+		"no-dupe-class-members": [
+			"error"
+		],
+		"class-methods-use-this": [
+			"error"
+		],
+
+		// Modules
+		"no-duplicate-imports": [
+			"error"
+		],
+		"object-curly-newline": [
+			"error",
+			"never"
+		],
+
+		// Iterators and Generators
+		"no-iterator": [
+			"error"
+		],
+		"no-restricted-syntax": [
+			"error"
+		],
+		"generator-star-spacing": [
+			"error"
+		],
+
+		// Properties
+		"dot-notation": [
+			"error"
+		],
+		"no-restricted-properties": [
+			"error"
+		],
+
+		// Variables
+		"no-undef": [
+			"error"
+		],
+		"no-multi-assign": [
+			"error"
+		],
+		"no-unused-vars": [
+			"error"
+		],
+
+		// Comparison Operators and Equality
+		"eqeqeq": [
+			"error"
+		],
+		"no-case-declarations": [
+			"error"
+		],
+		"no-nested-ternary": [
+			"error"
+		],
+		"no-unneeded-ternary": [
+			"error"
+		],
+		"no-mixed-operators": [
+			"error"
+		],
+
+		// Blocks
+		"brace-style": [
+			"error",
+			"stroustrup"
+		],
+		"no-else-return": [
+			"error"
+		],
+
+		// Comments
+		"spaced-comment": [
+			"error"
+		],
+
+		// Whitespace
+		"indent": [
+			"error",
+			"tab"
+		],
+		"space-before-blocks": [
+			"error"
+		],
+		"space-infix-ops": [
+			"error"
+		],
+		"no-whitespace-before-property": [
+			"error"
+		],
+		"padded-blocks": [
+			"error"
+		],
+		"no-multiple-empty-lines": [
+			"error"
+		],
+		"array-bracket-spacing": [
+			"error",
+			"never"
+		],
+		"object-curly-spacing": [
+			"error",
+			"always"
+		],
+		"comma-spacing": [
+			"error", {
+				"before": false,
+				"after": true
+			}
+		],
+		"computed-property-spacing": [
+			"error",
+			"never"
+		],
+		"func-call-spacing": [
+			"error",
+			"never"
+		],
+		"key-spacing": [
+			"error", {
+				"beforeColon": false,
+				"afterColon": true,
+				"mode": "strict"
+			}
+		],
+		"no-trailing-spaces": [
+			"error"
+		],
+
+		// Type Casting and Coercion
+		"no-new-wrappers": [
+			"error"
+		],
+		"radix-no-new-wrappers": [
+			"error",
+			"always"
+		],
+
+		// Semicolon
+		"semi": [
+			"error",
+			"always"
+		],
+
+		// Naming Conventions
+		"camelcase": [
+			"error", {
+				"properties": "always"
+			}
+		],
+		"new-cap": [
+			"error"
+		]
+    }
+}
