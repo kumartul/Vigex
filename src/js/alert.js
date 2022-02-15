@@ -6,17 +6,17 @@ const hideAlertBtn = alertBox.querySelector('button');
 // Attach a 'click' event listener to the hideAlertBtn so that whenever someone clicks on that button, the
 // alert box disappears
 hideAlertBtn.addEventListener('click', () => {
-    hideAlertBox(alertBox);
+	hideAlertBox(alertBox);
 });
 
 // Function: Hides the alert box
-export const hideAlertBox = alertBox => {
-    alertBox.style.display = "none"; 
-}
+export const hideAlertBox = (alertBox) => {
+	alertBox.style.display = 'none';
+};
 
 // Function: Displays the alert box with a message in it
 export const showAlertBox = (alertBox, message) => {
-    alertBox.style.display = "flex";
+	alertBox.style.display = 'flex';
 
-    alertBox.querySelector('p').innerHTML = `<strong>Error!</strong> ${message}`;
-}
+	alertBox.querySelector('p').innerHTML = `<strong>Error!</strong> ${message}`;
+};
