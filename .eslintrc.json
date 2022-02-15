@@ -211,7 +211,8 @@
 			"error"
 		],
 		"padded-blocks": [
-			"error"
+			"error",
+			"never"
 		],
 		"no-multiple-empty-lines": [
 			"error"
@@ -257,7 +258,9 @@
 		// Semicolon
 		"semi": [
 			"error",
-			"always"
+			"always", {
+				"omitLastInOneLineBlock": true
+			}
 		],
 
 		// Naming Conventions
