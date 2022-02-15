@@ -10,7 +10,7 @@ hideAlertBtn.addEventListener('click', () => {
 });
 
 // Function: Hides the alert box
-export const hideAlertBox = (alertBox) => {
+const hideAlertBox = (alertBox) => {
 	alertBox.style.display = 'none';
 };
 
