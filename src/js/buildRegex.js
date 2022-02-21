@@ -78,6 +78,11 @@ const analyseCheckBoxes = checkBoxes => {
 	return variable;
 }
 
+// Function: Encloses the expression in square brackets based on the position of the expression
+const encloseExpressionInSquareBrackets = expression => {
+	return `[${expression}]`;
+}
+
 // Function: Generates the regular expression
 generateRegexBtn.addEventListener('click', () => {
 	let regex = '';
@@ -109,11 +114,9 @@ generateRegexBtn.addEventListener('click', () => {
 
 							first = analyseCheckBoxes(checkBoxes);
 
-							// Enclose the expression in square brackets
-							first = first.split('');
-							first.unshift('^', '[');
-							first = first.join('');
-							first += ']';
+							first = encloseExpressionInSquareBrackets(first);
+
+							first = "^" + first;
 						}
 
 						// Custom Characters
@@ -178,11 +181,7 @@ generateRegexBtn.addEventListener('click', () => {
 
 							last = analyseCheckBoxes(checkBoxes);
 
-							// Enclose the expression in square brackets
-							last = last.split('');
-							last.unshift('[');
-							last = last.join('');
-							last += ']';
+							last = encloseExpressionInSquareBrackets(last);
 						}
 
 						// Custom Characters
@@ -259,10 +258,7 @@ generateRegexBtn.addEventListener('click', () => {
 
 						// Enclose the expression in square brackets only if it's not empty
 						if(expr) {
-							expr = expr.split('');
-							expr.unshift('[');
-							expr = expr.join('');
-							expr += ']';
+							expr = encloseExpressionInSquareBrackets(expr);
 						}
 					}
 
