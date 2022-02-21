@@ -26,7 +26,7 @@ const displayRegex = (regex) => {
 
 // Function: Analyse checkboxes
 const analyseCheckBoxes = checkBoxes => {
-	let variable = "";
+	let expression = "";
 
 	// Iterate through every checkBox and generate the regex accordingly
 	checkBoxes.forEach((checkBox) => {
@@ -34,48 +34,48 @@ const analyseCheckBoxes = checkBoxes => {
 		if(checkBox.checked) {
 			// Uppercase
 			if(checkBox.id.includes('uppercase')) {
-				variable += 'A-Z';
+				expression += 'A-Z';
 			}
 			// Lowercase
 			if(checkBox.id.includes('lowercase')) {
-				variable += 'a-z';
+				expression += 'a-z';
 			}
 			// Numbers
 			if(checkBox.id.includes('numbers')) {
-				variable += '\\d';
+				expression += '\\d';
 			}
 			// Special Characters
 			if(checkBox.id.includes('special')) {
-				variable += '_\\W';
+				expression += '_\\W';
 			}
 			// Whitespace
 			if(checkBox.id.includes('whitespace')) {
-				variable += '\\s';
+				expression += '\\s';
 			}
 			// Horizontal Tab
 			if(checkBox.id.includes('horizontal')) {
-				variable += '\\t';
+				expression += '\\t';
 			}
 			// Vertical Tab
 			if(checkBox.id.includes('vertical')) {
-				variable += '\\v';
+				expression += '\\v';
 			}
 			// Carriage Return
 			if(checkBox.id.includes('carriage')) {
-				variable += '\\r';
+				expression += '\\r';
 			}
 			// Linefeed
 			if(checkBox.id.includes('linefeed')) {
-				variable += '\\n';
+				expression += '\\n';
 			}
 			// Form Feed
 			if(checkBox.id.includes('form')) {
-				variable += '\\f';
+				expression += '\\f';
 			}
 		}
 	});
 
-	return variable;
+	return expression;
 }
 
 // Function: Encloses the expression in square brackets based on the position of the expression
