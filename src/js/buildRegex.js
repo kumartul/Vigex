@@ -24,6 +24,60 @@ const displayRegex = (regex) => {
 	}
 };
 
+// Function: Analyse checkboxes
+const analyseCheckBoxes = checkBoxes => {
+	let variable = "";
+
+	// Iterate through every checkBox and generate the regex accordingly
+	checkBoxes.forEach((checkBox) => {
+		// Analyse the checkbox only if it's checked
+		if(checkBox.checked) {
+			// Uppercase
+			if(checkBox.id.includes('uppercase')) {
+				variable += 'A-Z';
+			}
+			// Lowercase
+			if(checkBox.id.includes('lowercase')) {
+				variable += 'a-z';
+			}
+			// Numbers
+			if(checkBox.id.includes('numbers')) {
+				variable += '\\d';
+			}
+			// Special Characters
+			if(checkBox.id.includes('special')) {
+				variable += '_\\W';
+			}
+			// Whitespace
+			if(checkBox.id.includes('whitespace')) {
+				variable += '\\s';
+			}
+			// Horizontal Tab
+			if(checkBox.id.includes('horizontal')) {
+				variable += '\\t';
+			}
+			// Vertical Tab
+			if(checkBox.id.includes('vertical')) {
+				variable += '\\v';
+			}
+			// Carriage Return
+			if(checkBox.id.includes('carriage')) {
+				variable += '\\r';
+			}
+			// Linefeed
+			if(checkBox.id.includes('linefeed')) {
+				variable += '\\n';
+			}
+			// Form Feed
+			if(checkBox.id.includes('form')) {
+				variable += '\\f';
+			}
+		}
+	});
+
+	return variable;
+}
+
 // Function: Generates the regular expression
 generateRegexBtn.addEventListener('click', () => {
 	let regex = '';
@@ -53,52 +107,7 @@ generateRegexBtn.addEventListener('click', () => {
 							// Fetch all the checkboxes in the form of an array
 							const checkBoxes = [...formElement.querySelectorAll('.character-sets input')];
 
-							// Iterate through every checkBox and generate the regex accordingly
-							checkBoxes.forEach((checkBox) => {
-								// Analyse the checkbox only if it's checked
-								if(checkBox.checked) {
-									// Uppercase
-									if(checkBox.id.includes('uppercase')) {
-										first += 'A-Z';
-									}
-									// Lowercase
-									if(checkBox.id.includes('lowercase')) {
-										first += 'a-z';
-									}
-									// Numbers
-									if(checkBox.id.includes('numbers')) {
-										first += '\\d';
-									}
-									// Special Characters
-									if(checkBox.id.includes('special')) {
-										first += '_\\W';
-									}
-									// Whitespace
-									if(checkBox.id.includes('whitespace')) {
-										first += '\\s';
-									}
-									// Horizontal Tab
-									if(checkBox.id.includes('horizontal')) {
-										first += '\\t';
-									}
-									// Vertical Tab
-									if(checkBox.id.includes('vertical')) {
-										first += '\\v';
-									}
-									// Carriage Return
-									if(checkBox.id.includes('carriage')) {
-										first += '\\r';
-									}
-									// Linefeed
-									if(checkBox.id.includes('linefeed')) {
-										first += '\\n';
-									}
-									// Form Feed
-									if(checkBox.id.includes('form')) {
-										first += '\\f';
-									}
-								}
-							});
+							first = analyseCheckBoxes(checkBoxes);
 
 							// Enclose the expression in square brackets
 							first = first.split('');
@@ -167,52 +176,7 @@ generateRegexBtn.addEventListener('click', () => {
 							// Fetch all the checkboxes in the form of an array
 							const checkBoxes = [...formElement.querySelectorAll('.character-sets input')];
 
-							// Iterate through every checkbox and analyse them to build the regex
-							checkBoxes.forEach((checkBox) => {
-								// Analyse the checkbox only if it's checked
-								if(checkBox.checked) {
-									// Uppercase
-									if(checkBox.id.includes('uppercase')) {
-										last += 'A-Z';
-									}
-									// Lowercase
-									if(checkBox.id.includes('lowercase')) {
-										last += 'a-z';
-									}
-									// Numbers
-									if(checkBox.id.includes('numbers')) {
-										last += '\\d';
-									}
-									// Special Characters
-									if(checkBox.id.includes('special')) {
-										last += '_\\W';
-									}
-									// Whitespace
-									if(checkBox.id.includes('whitespace')) {
-										last += '\\s';
-									}
-									// Horizontal Tab
-									if(checkBox.id.includes('horizontal')) {
-										last += '\\t';
-									}
-									// Vertical Tab
-									if(checkBox.id.includes('vertical')) {
-										last += '\\v';
-									}
-									// Carriage Return
-									if(checkBox.id.includes('carriage')) {
-										last += '\\r';
-									}
-									// Linefeed
-									if(checkBox.id.includes('linefeed')) {
-										last += '\\n';
-									}
-									// Form Feed
-									if(checkBox.id.includes('form')) {
-										last += '\\f';
-									}
-								}
-							});
+							last = analyseCheckBoxes(checkBoxes);
 
 							// Enclose the expression in square brackets
 							last = last.split('');
@@ -291,52 +255,7 @@ generateRegexBtn.addEventListener('click', () => {
 						// Fetch all the checkboxes
 						const checkBoxes = midField.querySelectorAll('input[type="checkbox"]');
 
-						// Iterate through every checkBox and inspect each checkbox to build the regex
-						checkBoxes.forEach((checkBox) => {
-							// Check only if the checkbox is checked
-							if(checkBox.checked) {
-								// Uppercase
-								if(checkBox.id.includes('uppercase')) {
-									expr += 'A-Z';
-								}
-								// Lowercase
-								if(checkBox.id.includes('lowercase')) {
-									expr += 'a-z';
-								}
-								// Number
-								if(checkBox.id.includes('number')) {
-									expr += '\\d';
-								}
-								// Special Characters
-								if(checkBox.id.includes('special')) {
-									expr += '_\\W';
-								}
-								// Whitespace
-								if(checkBox.id.includes('whitespace')) {
-									expr += '\\s';
-								}
-								// Horizontal Tab
-								if(checkBox.id.includes('horizontal')) {
-									expr += '\\t';
-								}
-								// Vertical Tab
-								if(checkBox.id.includes('vertical')) {
-									expr += '\\v';
-								}
-								// Carriage Return
-								if(checkBox.id.includes('carriage')) {
-									expr += '\\r';
-								}
-								// Linefeed
-								if(checkBox.id.includes('linefeed')) {
-									expr += '\\n';
-								}
-								// Form Feed
-								if(checkBox.id.includes('form')) {
-									expr += '\\f';
-								}
-							}
-						});
+						expr = analyseCheckBoxes(checkBoxes);
 
 						// Enclose the expression in square brackets only if it's not empty
 						if(expr) {
