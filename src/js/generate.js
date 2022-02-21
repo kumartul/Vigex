@@ -102,6 +102,18 @@ const attachEventListenerToExpandBtn = expandBtn => {
 	});
 }
 
+// Function: Attaches an event listener to the delete button
+const attachEventListenerToDeleteBtn = deleteBtn => {
+	// Attach a 'click' event listener to the delete button so that whenever someone clicks on it,
+	// a confirm popup pops up and handle the process based on user input
+	deleteBtn.addEventListener('click', (event) => {
+		const confirmation = confirm('Are you sure you want to remove this field?');
+		if (confirmation) {
+			form.removeChild(event.target.parentElement);
+		}
+	});
+}
+
 // Function: Generates the innerHTML of endpointFormElements by using their ID
 const generateEndpointFormElementInnerHTML = (formElements) => {
 	// Iterate through each formElement and populate them based on their IDs
@@ -325,14 +337,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 
 		const deleteBtn = document.getElementById(`delete-${id}`);
 
-		// Attach a 'click' event listener to the delete button so that whenever someone clicks on it,
-		// a confirm popup pops up and handle the process based on user input
-		deleteBtn.addEventListener('click', (event) => {
-			const confirmation = confirm('Are you sure you want to remove this field?');
-			if(confirmation) {
-				form.removeChild(event.target.parentElement);
-			}
-		});
+		attachEventListenerToDeleteBtn(deleteBtn);
 
 		const radioBtns = document.getElementById(id).querySelectorAll('input[type="radio"]');
 
@@ -397,14 +402,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 
 		const deleteBtn = document.getElementById(`delete-${id}`);
 
-		// Attach a 'click' event listener to the delete button so that whenever someone clicks on it,
-		// a confirm popup pops up and handle the process based on user input
-		deleteBtn.addEventListener('click', (event) => {
-			const confirmation = confirm('Are you sure you want to remove this field?');
-			if(confirmation) {
-				form.removeChild(event.target.parentElement);
-			}
-		});
+		attachEventListenerToDeleteBtn(deleteBtn);
 	}
 	else if(optionNumber === 3) {   // Assertions
 		let secondLastFormElement = [...document.querySelectorAll('.form-element')];
@@ -447,14 +445,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 
 		const deleteBtn = document.getElementById(`delete-${id}`);
 
-		// Attach a 'click' event listener to the delete button so that whenever someone clicks on it,
-		// a confirm popup pops up and handle the process based on user input
-		deleteBtn.addEventListener('click', (event) => {
-			const confirmation = confirm('Are you sure you want to remove this field?');
-			if(confirmation) {
-				form.removeChild(event.target.parentElement);
-			}
-		});
+		attachEventListenerToDeleteBtn(deleteBtn);
 	}
 	// Or
 	else if(optionNumber === 4) {
@@ -474,14 +465,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 
 		const deleteBtn = document.getElementById(`delete-${id}`);
 
-		// Attach a 'click' event listener to the delete button so that whenever someone clicks on it,
-		// a confirm popup pops up and handle the process based on user input
-		deleteBtn.addEventListener('click', (event) => {
-			const confirmation = confirm('Are you sure you want to remove this field?');
-			if(confirmation) {
-				form.removeChild(event.target.parentElement);
-			}
-		});
+		attachEventListenerToDeleteBtn(deleteBtn);
 	}
 
 	// Reset the value to 'None'
