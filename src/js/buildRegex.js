@@ -323,6 +323,8 @@ generateRegexBtn.addEventListener('click', () => {
 					if(assertion.value === 'negative_lookahead') {
 						assertionInfo.isNegativeLookahead = true;
 
+						const topMostParent = assertion.parentElement.parentElement;
+
 						// If the element after the current assertion element is the last element
 						if(topMostParent.nextElementSibling.nextElementSibling.id === 'ends-with') {
 							_last = `(?!${_last})`;
