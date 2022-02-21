@@ -83,6 +83,31 @@ const encloseExpressionInSquareBrackets = expression => {
 	return `[${expression}]`;
 }
 
+// Function: Generates the quantifier
+const generateQuantifier = (min, max) => {
+	let expression = "";
+
+	// If 'maximum' is more than 'minimum', then show an alert
+	if (Number(max) < Number(min)) {
+		showAlertBox(alertBox, 'Minimum number of occurrences cannot be greater than maximum number of occurrences');
+	}
+	// If 'minimum' is equal to 'maximum', then omit any one of the fields
+	else if (min === max) {
+		// If 'minimum' and 'maximum' is equal to 1, then omit both of them
+		if (Number(min) !== 1) {
+			expression += `{${min}}`;
+		}
+	}
+	else if (Number(min) === 0 && Number(max) === 1) {
+		expression += '?';
+	}
+	else {
+		expression += `{${min},${max}}`;
+	}
+
+	return expression;
+}
+
 // Function: Generates the regular expression
 generateRegexBtn.addEventListener('click', () => {
 	let regex = '';
@@ -141,25 +166,7 @@ generateRegexBtn.addEventListener('click', () => {
 				const min = formElement.querySelector('.quantity .min').value;
 				const max = formElement.querySelector('.quantity .max').value;
 
-				// If 'maximum' is more than 'minimum', then show an alert
-				if(Number(max) < Number(min)) {
-					showAlertBox(alertBox, 'Minimum number of occurrences cannot be greater than maximum number of occurrences');
-
-					return;
-				}
-				// If 'minimum' is equal to 'maximum', then omit any one of the fields
-				else if(min === max) {
-					// If 'minimum' and 'maximum' is equal to 1, then omit both of them
-					if(Number(min) !== 1) {
-						first += `{${min}}`;
-					}
-				}
-				else if(Number(min) === 0 && Number(max) === 1) {
-					first += '?';
-				}
-				else {
-					first += `{${min},${max}}`;
-				}
+				first += generateQuantifier(min, max);
 
 				_first = first;
 			}
@@ -204,25 +211,7 @@ generateRegexBtn.addEventListener('click', () => {
 				const min = formElement.querySelector('.quantity .min').value;
 				const max = formElement.querySelector('.quantity .max').value;
 
-				// If the 'maximum' is less than 'minimum', then show an alert
-				if(Number(max) < Number(min)) {
-					showAlertBox(alertBox, 'Minimum number of occurrences cannot be greater than maximum number of occurrences');
-
-					return;
-				}
-				// If 'minimum' is equal to 'maximum', then omit any one of the fields
-				else if(min === max) {
-					// If 'maximum' and 'minimum' are equal to 1, then omit both the fields
-					if(Number(min) !== 1) {
-						last += `{${min}}`;
-					}
-				}
-				else if(Number(min) === 0 && Number(max) === 1) {
-					last += '?';
-				}
-				else {
-					last += `{${min},${max}}`;
-				}
+				last += generateQuantifier(min, max);
 
 				last += '$';
 				_last = last;
@@ -275,25 +264,7 @@ generateRegexBtn.addEventListener('click', () => {
 			const min = midField.querySelector('.min').value;
 			const max = midField.querySelector('.max').value;
 
-			// If the 'maximum' is less than 'minimum', then show an alert
-			if(Number(max) < Number(min)) {
-				showAlertBox(alertBox, 'Minimum number of occurrences cannot be greater than maximum number of occurrences');
-
-				return;
-			}
-			// If 'minimum' is equal to 'maximum', then omit any one of the fields
-			else if(min === max) {
-				// If 'maximum' and 'minimum' are equal to 1, then omit both the fields
-				if(Number(min) !== 1) {
-					expr += `{${min}}`;
-				}
-			}
-			else if(Number(min) === 0 && Number(max) === 1) {
-				expr += '?';
-			}
-			else {
-				expr += `{${min},${max}}`;
-			}
+			expr += generateQuantifier(min, max);
 
 			// Check if any lookahead assertion is applied on the current field
 			if(assertionInfo.isLookahead) {
@@ -318,22 +289,7 @@ generateRegexBtn.addEventListener('click', () => {
 			const min = midField.querySelector('.min').value;
 			const max = midField.querySelector('.max').value;
 
-			// If the 'maximum' is less than 'minimum', then show an alert
-			if(Number(max) < Number(min)) {
-				showAlertBox(alertBox, 'Minimum number of occurrences cannot be greater than maximum number of occurrences');
-
-				return;
-			}
-			// If 'minimum' is equal to 'maximum', then omit any one of the fields
-			else if(min === max) {
-				// If 'maximum' and 'minimum' are equal to 1, then omit both the fields
-				if(Number(min) !== 1) {
-					expr += `{${min}}`;
-				}
-			}
-			else {
-				expr += `{${min},${max}}`;
-			}
+			expr += generateQuantifier(min, max);
 
 			// Check if any lookahead assertion is applied on the current field
 			if(assertionInfo.isLookahead) {
