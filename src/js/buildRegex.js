@@ -108,6 +108,7 @@ const generateQuantifier = (min, max) => {
 	return expression;
 }
 
+// Function: Handles lookahead assertion
 const handleLookaheadAssertion = assertionInfo => {
 	let expression = "";
 
