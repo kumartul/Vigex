@@ -126,7 +126,7 @@ const handleLookaheadAssertion = assertionInfo => {
 	return expression;
 }
 
-// Function: Generates the regular expression
+// Attach a 'click' event listener to the generateRegexBtn
 generateRegexBtn.addEventListener('click', () => {
 	let regex = '';
 
