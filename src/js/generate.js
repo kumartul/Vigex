@@ -207,7 +207,6 @@ const generateEndpointFormElementInnerHTML = (formElements) => {
             </div>
 
             <div class="hidden quantity">
-
                 <div>
                     <label for="${id}-min-quantity">Minimum number of times this character set / group must repeat: </label>
                     <input disabled type="number" id="${id}-min-quantity" min="0" value="1" class="min">
