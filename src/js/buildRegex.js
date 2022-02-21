@@ -6,8 +6,6 @@ const outputRegexField = document.getElementById('output-regex');
 
 const formElements = document.querySelectorAll('.form-element');
 
-const regexNameField = document.getElementById('regex-name');
-
 // Convert the NodeList to an array
 const flags = [...document.querySelectorAll('.flag')];
 
