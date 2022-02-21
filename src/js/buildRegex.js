@@ -1,5 +1,4 @@
 import alertBox, { showAlertBox } from './alert.js';
-import { saveToLocalStorage } from './localStorage.js';
 
 const generateRegexBtn = document.getElementById('generate-regex');
 
@@ -14,14 +13,7 @@ const flags = [...document.querySelectorAll('.flag')];
 
 // Function: Displays the regex in the outputRegexField
 const displayRegex = (regex) => {
-	if(regexNameField.value) {
-		outputRegexField.value = regex;
-
-		saveToLocalStorage(regexNameField.value, regex);
-	}
-	else {
-		showAlertBox(alertBox, 'Please give a name to your regular expression');
-	}
+	outputRegexField.value = regex;
 };
 
 // Function: Analyse checkboxes
