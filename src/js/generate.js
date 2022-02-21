@@ -366,7 +366,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 		let secondLastFormElement = [...document.querySelectorAll('.form-element')];
 		secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
 
-		const id = Math.random() * Math.random() * Math.random();
+		const id = Math.random() * Math.random();
 
 		secondLastFormElement.insertAdjacentHTML('afterend',
 			`
@@ -407,7 +407,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 		let secondLastFormElement = [...document.querySelectorAll('.form-element')];
 		secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
 
-		const id = Math.random() * Math.random() * Math.random();
+		const id = Math.random() * Math.random();
 
 		secondLastFormElement.insertAdjacentHTML('afterend',
 			`
