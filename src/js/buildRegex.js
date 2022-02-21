@@ -108,6 +108,23 @@ const generateQuantifier = (min, max) => {
 	return expression;
 }
 
+const handleLookaheadAssertion = assertionInfo => {
+	let expression = "";
+
+	// Check if any lookahead assertion is applied on the current field
+	if (assertionInfo.isLookahead) {
+		expression = `(?=${expression})`;
+	}
+	if (assertionInfo.isNegativeLookahead) {
+		expression = `(?!${expression})`;
+	}
+
+	assertionInfo.isLookahead = false;
+	assertionInfo.isNegativeLookahead = false;
+
+	return expression;
+}
+
 // Function: Generates the regular expression
 generateRegexBtn.addEventListener('click', () => {
 	let regex = '';
@@ -266,16 +283,7 @@ generateRegexBtn.addEventListener('click', () => {
 
 			expr += generateQuantifier(min, max);
 
-			// Check if any lookahead assertion is applied on the current field
-			if(assertionInfo.isLookahead) {
-				expr = `(?=${expr})`;
-			}
-			if(assertionInfo.isNegativeLookahead) {
-				expr = `(?!${expr})`;
-			}
-
-			assertionInfo.isLookahead = false;
-			assertionInfo.isNegativeLookahead = false;
+			expr = handleLookaheadAssertion(assertionInfo);
 
 			midExprs.push(expr);
 		}
@@ -291,16 +299,7 @@ generateRegexBtn.addEventListener('click', () => {
 
 			expr += generateQuantifier(min, max);
 
-			// Check if any lookahead assertion is applied on the current field
-			if(assertionInfo.isLookahead) {
-				expr = `(?=${expr})`;
-			}
-			if(assertionInfo.isNegativeLookahead) {
-				expr = `(?!${expr})`;
-			}
-
-			assertionInfo.isLookahead = false;
-			assertionInfo.isNegativeLookahead = false;
+			expr = handleLookaheadAssertion(assertionInfo);
 
 			midExprs.push(expr);
 		}
