@@ -15,8 +15,8 @@ const displayRegex = (regex) => {
 };
 
 // Function: Analyse checkboxes
-const analyseCheckBoxes = checkBoxes => {
-	let expression = "";
+const analyseCheckBoxes = (checkBoxes) => {
+	let expression = '';
 
 	// Iterate through every checkBox and generate the regex accordingly
 	checkBoxes.forEach((checkBox) => {
@@ -66,16 +66,16 @@ const analyseCheckBoxes = checkBoxes => {
 	});
 
 	return expression;
-}
+};
 
 // Function: Encloses the expression in square brackets based on the position of the expression
-const encloseExpressionInSquareBrackets = expression => {
+const encloseExpressionInSquareBrackets = (expression) => {
 	return `[${expression}]`;
-}
+};
 
 // Function: Generates the quantifier
 const generateQuantifier = (min, max) => {
-	let expression = "";
+	let expression = '';
 
 	// If 'maximum' is more than 'minimum', then show an alert
 	if (Number(max) < Number(min)) {
@@ -96,11 +96,11 @@ const generateQuantifier = (min, max) => {
 	}
 
 	return expression;
-}
+};
 
 // Function: Handles lookahead assertion
-const handleLookaheadAssertion = assertionInfo => {
-	let expression = "";
+const handleLookaheadAssertion = (assertionInfo) => {
+	let expression = '';
 
 	// Check if any lookahead assertion is applied on the current field
 	if (assertionInfo.isLookahead) {
@@ -114,7 +114,7 @@ const handleLookaheadAssertion = assertionInfo => {
 	assertionInfo.isNegativeLookahead = false;
 
 	return expression;
-}
+};
 
 // Attach a 'click' event listener to the generateRegexBtn
 generateRegexBtn.addEventListener('click', () => {
@@ -149,7 +149,7 @@ generateRegexBtn.addEventListener('click', () => {
 
 							first = encloseExpressionInSquareBrackets(first);
 
-							first = "^" + first;
+							first = `^${first}`;
 						}
 
 						// Custom Characters

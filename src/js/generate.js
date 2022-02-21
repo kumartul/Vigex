@@ -61,7 +61,7 @@ const generateFormElements = (formElementIDs) => {
 };
 
 // Function: Attaches event listener to the expand button
-const attachEventListenerToExpandBtn = expandBtn => {
+const attachEventListenerToExpandBtn = (expandBtn) => {
 	// Rotate the expandBtn by 90deg on the z-axis
 	expandBtn.addEventListener('click', (event) => {
 		// Parent element of expandBtn
@@ -100,10 +100,10 @@ const attachEventListenerToExpandBtn = expandBtn => {
 			event.target.setAttribute('data-expanded', 'no');
 		}
 	});
-}
+};
 
 // Function: Attaches an event listener to the delete button
-const attachEventListenerToDeleteBtn = deleteBtn => {
+const attachEventListenerToDeleteBtn = (deleteBtn) => {
 	// Attach a 'click' event listener to the delete button so that whenever someone clicks on it,
 	// a confirm popup pops up and handle the process based on user input
 	deleteBtn.addEventListener('click', (event) => {
@@ -112,7 +112,7 @@ const attachEventListenerToDeleteBtn = deleteBtn => {
 			form.removeChild(event.target.parentElement);
 		}
 	});
-}
+};
 
 // Function: Generates the innerHTML of endpointFormElements by using their ID
 const generateEndpointFormElementInnerHTML = (formElements) => {
