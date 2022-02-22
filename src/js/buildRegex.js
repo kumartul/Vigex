@@ -34,13 +34,25 @@ const analyseCheckBoxes = (checkBoxes) => {
 			if(checkBox.id.includes('numbers')) {
 				expression += '\\d';
 			}
+			// Non-numeric Characters
+			if(checkBox.id.includes('non-numeric')) {
+				expression += '\\D';
+			}
+			// Word Characters
+			if(checkBox.id.includes('word-characters')) {
+				expression += '\\w';
+			}
 			// Special Characters
 			if(checkBox.id.includes('special')) {
 				expression += '_\\W';
 			}
 			// Whitespace
-			if(checkBox.id.includes('whitespace')) {
+			if(checkBox.id.includes('set-whitespace')) {
 				expression += '\\s';
+			}
+			// Non-Whitespace Character
+			if(checkBox.id.includes('non-whitespace')) {
+				expression += '\\S';
 			}
 			// Horizontal Tab
 			if(checkBox.id.includes('horizontal')) {
