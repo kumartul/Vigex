@@ -297,6 +297,51 @@ generateRegexBtn.addEventListener('click', () => {
 
 			midExprs.push(expr);
 		}
+		// Negative Character Set
+		if (midField.classList.contains('negative-character-set-block')) {
+			let expr = '';
+
+			// Fetch all the radio buttons in the current character-set-block
+			const radioBtns = midField.querySelectorAll('input[type="radio"]');
+
+			// Iterate through every radioBtn and analyse each radioBtn to build the regex
+			radioBtns.forEach((radioBtn) => {
+				// Analyse only if the radioBtn is checked
+				if (radioBtn.checked) {
+					// Character Set
+					if (radioBtn.className === 'character-set') {
+						// Fetch all the checkboxes
+						const checkBoxes = midField.querySelectorAll('input[type="checkbox"]');
+
+						expr = analyseCheckBoxes(checkBoxes);
+
+						expr = `^${expr}`;
+
+						// Enclose the expression in square brackets only if it's not empty
+						if (expr) {
+							expr = encloseExpressionInSquareBrackets(expr);
+						}
+					}
+
+					// Custom Characters
+					else if (radioBtn.className === 'custom-characters') {
+						const customCharactersField = midField.querySelector('input[type="text"]');
+
+						expr = `[^${customCharactersField.value}]`;
+					}
+				}
+			});
+
+			// Fetch the 'minimum' and 'maximum' quantity
+			const min = midField.querySelector('.min').value;
+			const max = midField.querySelector('.max').value;
+
+			expr += generateQuantifier(min, max);
+
+			expr = handleLookaheadAssertion(assertionInfo, expr);
+
+			midExprs.push(expr);
+		}
 		// Groups
 		if(midField.classList.contains('group-block')) {
 			const customGroupsField = midField.querySelector('input[type="text"]');

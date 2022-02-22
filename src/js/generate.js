@@ -11,6 +11,7 @@ const selectMenu =
     <select class="character-or-group-select">
         <option value = "None" selected>None</option>
         <option value = "Character">Character Set</option>
+        <option value = "NegativeCharacter">Negative Character Set</option>
         <option value = "Group">Group</option>
         <option value = "Assertion">Assertion</option>
         <option value = "Or">Or</option>
@@ -401,7 +402,149 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 			});
 		});
 	}
-	else if(optionNumber === 2) {   // Groups
+	if (optionNumber === 2) {    // Negative Character Sets
+
+		const id = Math.random() * Math.random();
+
+		const secondLastFormElement = fetchSecondLastFormElement();
+
+		secondLastFormElement.insertAdjacentHTML('afterend',
+			`
+        <div class = "form-element negative-character-set-block midpoint" id="${id}">
+            <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
+            <label>Negative Character Set</label>
+            <button type = "button" class = "remove" id="delete-${id}">Remove</button>
+
+            <div class = "params hidden">
+                <div class="character-set">
+                    <input checked type="radio" name="${id}-confirmation" id="${id}-confirmation-character-set" class="character-set">
+                    <label for="${id}-confirmation-character-set">Choose character set(s)</label>
+                </div>
+
+                <div class="hidden character-sets">
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-uppercase-letters">
+                        <label for="${id}-confirmation-character-set-uppercase-letters">Uppercase Letters</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-lowercase-letters">
+                        <label for="${id}-confirmation-character-set-lowercase-letters">Lowercase Letters</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-numbers">
+                        <label for="${id}-confirmation-character-set-numbers">Numbers</label>
+                    </div>
+
+					<div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-non-numeric-characters">
+                        <label for="${id}-confirmation-character-set-non-numeric-characters">Non-numeric Characters</label>
+                    </div>
+
+					<div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-word-characters">
+                        <label for="${id}-confirmation-character-set-word-characters">Word Characters</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-special-characters">
+                        <label for="${id}-confirmation-character-set-special-characters">Special Characters</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-whitespace">
+                        <label for="${id}-confirmation-character-set-whitespace">Whitespace</label>
+                    </div>
+
+					<div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-non-whitespace">
+                        <label for="${id}-confirmation-character-set-non-whitespace">Non-Whitespace Character</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-horizontal-tab">
+                        <label for="${id}-confirmation-character-set-horizontal-tab">Horizontal Tab</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-vertical-tab">
+                        <label for="${id}-confirmation-character-set-vertical-tab">Vertical Tab</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-carriage-return">
+                        <label for="${id}-confirmation-character-set-carriage-return">Carriage Return</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-linefeed">
+                        <label for="${id}-confirmation-character-set-linefeed">Linefeed</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-form-feed">
+                        <label for="${id}-confirmation-character-set-form-feed">Form Feed</label>
+                    </div>
+                </div>
+
+                <div class="custom-characters">
+                    <input type="radio" name="${id}-confirmation" id="${id}-confirmation-custom-characters" class="custom-characters">
+                    <label for="${id}-confirmation-custom-characters">Custom Characters</label>
+                </div>
+
+                <div class="hidden custom-characters-field">
+                    <input disabled type="text" placeholder="Enter your character set">
+                </div>
+
+                <div class="hidden quantity">
+                    <div>
+                        <label for="${id}-min-quantity">Minimum number of times this character set must repeat: </label>
+                        <input type="number" id="${id}-min-quantity" min="0" value="1" class="min">
+                    </div>
+
+                    <div>
+                        <label for="${id}-max-quantity">Maximum number of times this character set must repeat: </label>
+                        <input type="number" id="${id}-max-quantity" min="1" value="1" class="max">
+                    </div>
+                </div>
+            </div>
+        </div>
+        `);
+
+		const expandBtn = document.getElementById(id);
+
+		attachEventListenerToExpandBtn(expandBtn);
+
+		const deleteBtn = document.getElementById(`delete-${id}`);
+
+		attachEventListenerToDeleteBtn(deleteBtn);
+
+		const radioBtns = document.getElementById(id).querySelectorAll('input[type="radio"]');
+
+		radioBtns.forEach((radioBtn) => {
+			radioBtn.addEventListener('click', (event) => {
+				const checkboxes = document.getElementById(id).querySelectorAll('input[type="checkbox"]');
+				const customCharactersField = document.getElementById(id).querySelector('input[type="text"]');
+
+				if (event.target.className === 'character-set') {
+					checkboxes.forEach((checkbox) => {
+						checkbox.disabled = false;
+					});
+
+					customCharactersField.disabled = true;
+				}
+				else if (event.target.className === 'custom-characters') {
+					checkboxes.forEach((checkbox) => {
+						checkbox.disabled = true;
+					});
+
+					customCharactersField.disabled = false;
+				}
+			});
+		});
+	}
+	else if(optionNumber === 3) {   // Groups
 		const secondLastFormElement = fetchSecondLastFormElement();
 
 		const id = Math.random() * Math.random();
@@ -441,7 +584,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 
 		attachEventListenerToDeleteBtn(deleteBtn);
 	}
-	else if(optionNumber === 3) {   // Assertions
+	else if(optionNumber === 4) {   // Assertions
 		const secondLastFormElement = fetchSecondLastFormElement();
 
 		const id = Math.random() * Math.random();
@@ -483,8 +626,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 
 		attachEventListenerToDeleteBtn(deleteBtn);
 	}
-	// Or
-	else if(optionNumber === 4) {
+	else if(optionNumber === 5) {	// Or
 		const secondLastFormElement = fetchSecondLastFormElement();
 
 		const id = Math.random() * Math.random();
@@ -502,8 +644,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 
 		attachEventListenerToDeleteBtn(deleteBtn);
 	}
-	// Any
-	else if(optionNumber === 5) {
+	else if(optionNumber === 6) {	// Any Single Character
 		const secondLastFormElement = fetchSecondLastFormElement();
 
 		const id = Math.random() * Math.random();
