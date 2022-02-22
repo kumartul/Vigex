@@ -77,8 +77,11 @@ const encloseExpressionInSquareBrackets = (expression) => {
 const generateQuantifier = (min, max) => {
 	let expression = '';
 
+	min = Number(min);
+	max = Number(max);
+
 	// If 'maximum' is more than 'minimum', then show an alert
-	if (Number(max) < Number(min)) {
+	if (max < min) {
 		showAlertBox(alertBox, 'Minimum number of occurrences cannot be greater than maximum number of occurrences');
 	}
 	// If 'minimum' is equal to 'maximum', then omit any one of the fields
@@ -88,8 +91,14 @@ const generateQuantifier = (min, max) => {
 			expression += `{${min}}`;
 		}
 	}
-	else if (Number(min) === 0 && Number(max) === 1) {
+	else if (min === 0 && max === 1) {
 		expression += '?';
+	}
+	else if(min === 0 && max >= 65535) {
+		expression += '*';
+	}
+	else if (min === 1 && max >= 65535) {
+		expression += '+';
 	}
 	else {
 		expression += `{${min},${max}}`;
