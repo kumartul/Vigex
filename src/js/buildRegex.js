@@ -368,6 +368,10 @@ generateRegexBtn.addEventListener('click', () => {
 		if(midField.classList.contains('or-block')) {
 			midExprs.push('|');
 		}
+		// Any single character
+		if(midField.classList.contains('any-single-character-block')) {
+			midExprs.push('.');
+		}
 	});
 
 	// Add 'forward slash' and the '_first' part

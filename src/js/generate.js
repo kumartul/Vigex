@@ -14,6 +14,7 @@ const selectMenu =
         <option value = "Group">Group</option>
         <option value = "Assertion">Assertion</option>
         <option value = "Or">Or</option>
+		<option value = "Any">Any Single Character</option>
     </select>
 </div>
 `;
@@ -465,6 +466,22 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 		const deleteBtn = document.getElementById(`delete-${id}`);
 
 		attachEventListenerToDeleteBtn(deleteBtn);
+	}
+	// Any
+	else if(optionNumber === 5) {
+		let secondLastFormElement = [...document.querySelectorAll('.form-element')];
+		secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
+
+		const id = Math.random() * Math.random();
+
+		secondLastFormElement.insertAdjacentHTML('afterend',
+		`
+		<div class = "form-element any-single-character-block midpoint" id="${id}">
+            <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
+            <label>Any Single Character</label>
+            <button type = "button" class = "remove" id="delete-${id}">Remove</button>
+        </div>
+		`);
 	}
 
 	// Reset the value to 'None'
