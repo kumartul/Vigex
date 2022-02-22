@@ -108,9 +108,7 @@ const generateQuantifier = (min, max) => {
 };
 
 // Function: Handles lookahead assertion
-const handleLookaheadAssertion = (assertionInfo) => {
-	let expression = '';
-
+const handleLookaheadAssertion = (assertionInfo, expression) => {
 	// Check if any lookahead assertion is applied on the current field
 	if (assertionInfo.isLookahead) {
 		expression = `(?=${expression})`;
@@ -283,7 +281,7 @@ generateRegexBtn.addEventListener('click', () => {
 
 			expr += generateQuantifier(min, max);
 
-			expr = handleLookaheadAssertion(assertionInfo);
+			expr = handleLookaheadAssertion(assertionInfo, expr);
 
 			midExprs.push(expr);
 		}
@@ -299,7 +297,7 @@ generateRegexBtn.addEventListener('click', () => {
 
 			expr += generateQuantifier(min, max);
 
-			expr = handleLookaheadAssertion(assertionInfo);
+			expr = handleLookaheadAssertion(assertionInfo, expr);
 
 			midExprs.push(expr);
 		}
