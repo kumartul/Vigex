@@ -184,7 +184,7 @@ const generateEndpointFormElementInnerHTML = (formElements) => {
 
                 <div>
                     <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-form-feed">
-                    <label for="${id}-confirmation-character-set-form-feed">Form Feed</label>k
+                    <label for="${id}-confirmation-character-set-form-feed">Form Feed</label>
                 </div>
             </div>
 
