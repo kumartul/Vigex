@@ -135,6 +135,11 @@ const handleLookaheadAssertion = (assertionInfo, expression) => {
 	return expression;
 };
 
+// Function: Escapes special characters in the expression
+const escapeSpecialCharacters = (expression) => {
+	return expression.replace(/\W/g, '\\$&');
+}
+
 // Attach a 'click' event listener to the generateRegexBtn
 generateRegexBtn.addEventListener('click', () => {
 	let regex = '';
@@ -176,7 +181,7 @@ generateRegexBtn.addEventListener('click', () => {
 							// Enclose the character set in square brackets
 							const customCharactersField = formElement.querySelector('.custom-characters-field input');
 
-							first = `^[${customCharactersField.value}]`;
+							first = `^[${escapeSpecialCharacters(customCharactersField.value)}]`;
 						}
 
 						// Custom Group
@@ -222,7 +227,7 @@ generateRegexBtn.addEventListener('click', () => {
 						else if(radioBtn.className === 'custom-characters') {
 							const customCharactersField = formElement.querySelector('.custom-characters-field input');
 
-							last = `[${customCharactersField.value}]`;
+							last = `[${escapeSpecialCharacters(customCharactersField.value)}]`;
 						}
 
 						// Custom Group
@@ -282,7 +287,7 @@ generateRegexBtn.addEventListener('click', () => {
 					else if(radioBtn.className === 'custom-characters') {
 						const customCharactersField = midField.querySelector('input[type="text"]');
 
-						expr = `[${customCharactersField.value}]`;
+						expr = `[${escapeSpecialCharacters(customCharactersField.value)}]`;
 					}
 				}
 			});
@@ -327,7 +332,7 @@ generateRegexBtn.addEventListener('click', () => {
 					else if (radioBtn.className === 'custom-characters') {
 						const customCharactersField = midField.querySelector('input[type="text"]');
 
-						expr = `[^${customCharactersField.value}]`;
+						expr = `[^${escapeSpecialCharacters(customCharactersField.value)}]`;
 					}
 				}
 			});
