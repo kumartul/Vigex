@@ -115,6 +115,14 @@ const attachEventListenerToDeleteBtn = (deleteBtn) => {
 	});
 };
 
+// Function: Fetches the second last formElement and returns it
+const fetchSecondLastFormElement = () => {
+	const formElements = [...document.querySelectorAll('.form-element')];
+	const secondLastFormElement = formElements[formElements.length - 2];
+
+	return secondLastFormElement
+}
+
 // Function: Generates the innerHTML of endpointFormElements by using their ID
 const generateEndpointFormElementInnerHTML = (formElements) => {
 	// Iterate through each formElement and populate them based on their IDs
@@ -237,10 +245,10 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 	const optionNumber = event.target.selectedIndex;
 
 	if(optionNumber === 1) {    // Character Sets
-		let secondLastFormElement = [...document.querySelectorAll('.form-element')];
-		secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
 
 		const id = Math.random() * Math.random();
+
+		const secondLastFormElement = fetchSecondLastFormElement();
 
 		secondLastFormElement.insertAdjacentHTML('afterend',
 			`
@@ -364,8 +372,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 		});
 	}
 	else if(optionNumber === 2) {   // Groups
-		let secondLastFormElement = [...document.querySelectorAll('.form-element')];
-		secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
+		const secondLastFormElement = fetchSecondLastFormElement();
 
 		const id = Math.random() * Math.random();
 
@@ -405,8 +412,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 		attachEventListenerToDeleteBtn(deleteBtn);
 	}
 	else if(optionNumber === 3) {   // Assertions
-		let secondLastFormElement = [...document.querySelectorAll('.form-element')];
-		secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
+		const secondLastFormElement = fetchSecondLastFormElement();
 
 		const id = Math.random() * Math.random();
 
@@ -449,8 +455,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 	}
 	// Or
 	else if(optionNumber === 4) {
-		let secondLastFormElement = [...document.querySelectorAll('.form-element')];
-		secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
+		const secondLastFormElement = fetchSecondLastFormElement();
 
 		const id = Math.random() * Math.random();
 
@@ -469,8 +474,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 	}
 	// Any
 	else if(optionNumber === 5) {
-		let secondLastFormElement = [...document.querySelectorAll('.form-element')];
-		secondLastFormElement = secondLastFormElement[secondLastFormElement.length - 2];
+		const secondLastFormElement = fetchSecondLastFormElement();
 
 		const id = Math.random() * Math.random();
 
