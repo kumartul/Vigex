@@ -484,6 +484,10 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
             <button type = "button" class = "remove" id="delete-${id}">Remove</button>
         </div>
 		`);
+
+		const deleteBtn = document.getElementById(`delete-${id}`);
+
+		attachEventListenerToDeleteBtn(deleteBtn);
 	}
 
 	// Reset the value to 'None'
