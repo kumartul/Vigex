@@ -30,17 +30,13 @@
     <a href="https://github.com/kumartul/Vigex/issues/new/choose">Request Feature</a>
 </p>
 
-### Introducing Vigex - The only and only Visual Regex Generator 👋
+### Introducing Vigex - The one and only Visual Regex Generator 👋
 
 Vigex is the one and only **visual** regular expression generator. Now, no more frustration while writing regular expressions. Build regex like a PRO!!! Try out [Vigex](https://vigex.netlify.app/) 🙌
 
 [Read blog to understand better 📖](https://kumartul.hashnode.dev/introducing-vigex-pro-regex-builder)
 
 ## 🚀 Demo
-
-<a href="https://vigex.netlify.app/" target="blank">
-<img src="./public/icons/favicon.ico" />
-</a>
 
 Try the App: [vigex.netlify.app](https://vigex.netlify.app)
 
@@ -75,7 +71,7 @@ cd Vigex
 npm install
 ```
 
-5. Open the app and play with the codebase
+4. Open the app and play with the codebase
 
 ## 🤝 Contributing
 
@@ -88,7 +84,7 @@ npm install
 - [HTML](https://html.spec.whatwg.org/)
 - [SCSS](https://sass-lang.com/)
 - [JavaScript](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/)
-- [ESLint]: For Linting
+- [ESLint](https://eslint.org/): For Linting
 - [Netlify](https://netlify.com): For Hosting
 
 ## 👀 Future of Vigex
