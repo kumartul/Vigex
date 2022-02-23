@@ -117,6 +117,9 @@ const generateQuantifierTemplate = (id, isEndpointElement) => {
                     <label for="${id}-max-quantity">Maximum number of times this character set / group must repeat (Type -1 if you don't want this field): </label>
                     <input ${isEndpointElement ? 'disabled' : ''} type="number" id="${id}-max-quantity" min="-1" value="1" class="max">
                 </div>
+
+				<input type="checkbox" id="${id}-is-non-greedy" class="is-non-greedy">
+				<label for="${id}-is-non-greedy">Non-greedy</label>
             </div>`;
 }
 

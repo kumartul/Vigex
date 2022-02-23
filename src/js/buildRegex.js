@@ -86,7 +86,7 @@ const encloseExpressionInSquareBrackets = (expression) => {
 };
 
 // Function: Generates the quantifier
-const generateQuantifier = (min, max) => {
+const generateQuantifier = (min, max, isNonGreedy) => {
 	let expression = '';
 
 	min = Number(min);
@@ -117,6 +117,15 @@ const generateQuantifier = (min, max) => {
 	}
 	else {
 		expression += `{${min},${max}}`;
+	}
+
+	if(isNonGreedy) {
+		if(expression === '') {
+			expression += '{1}?';
+		}
+		else {
+			expression += '?';
+		}
 	}
 
 	return expression;
@@ -201,7 +210,9 @@ generateRegexBtn.addEventListener('click', () => {
 				const min = formElement.querySelector('.quantity .min').value;
 				const max = formElement.querySelector('.quantity .max').value;
 
-				first += generateQuantifier(min, max);
+				const isNonGreedy = formElement.querySelector('.quantity .is-non-greedy').checked;
+
+				first += generateQuantifier(min, max, isNonGreedy);
 
 				_first = first;
 			}
@@ -246,7 +257,9 @@ generateRegexBtn.addEventListener('click', () => {
 				const min = formElement.querySelector('.quantity .min').value;
 				const max = formElement.querySelector('.quantity .max').value;
 
-				last += generateQuantifier(min, max);
+				const isNonGreedy = formElement.querySelector('.quantity .is-non-greedy').checked;
+
+				last += generateQuantifier(min, max, isNonGreedy);
 
 				last += '$';
 				_last = last;
@@ -299,7 +312,9 @@ generateRegexBtn.addEventListener('click', () => {
 			const min = midField.querySelector('.min').value;
 			const max = midField.querySelector('.max').value;
 
-			expr += generateQuantifier(min, max);
+			const isNonGreedy = midField.querySelector('.quantity .is-non-greedy').checked;
+
+			expr += generateQuantifier(min, max, isNonGreedy);
 
 			expr = handleLookaheadAssertion(assertionInfo, expr);
 
@@ -344,7 +359,9 @@ generateRegexBtn.addEventListener('click', () => {
 			const min = midField.querySelector('.min').value;
 			const max = midField.querySelector('.max').value;
 
-			expr += generateQuantifier(min, max);
+			const isNonGreedy = midField.querySelector('.quantity .is-non-greedy').checked;
+
+			expr += generateQuantifier(min, max, isNonGreedy);
 
 			expr = handleLookaheadAssertion(assertionInfo, expr);
 
@@ -360,7 +377,9 @@ generateRegexBtn.addEventListener('click', () => {
 			const min = midField.querySelector('.min').value;
 			const max = midField.querySelector('.max').value;
 
-			expr += generateQuantifier(min, max);
+			const isNonGreedy = midField.querySelector('.quantity .is-non-greedy').checked;
+
+			expr += generateQuantifier(min, max, isNonGreedy);
 
 			expr = handleLookaheadAssertion(assertionInfo, expr);
 
