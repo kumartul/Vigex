@@ -1,2 +1,1 @@
-# Vigex
-No more frustration while writing Regular Expressions
+<h1 align='center'>Vigex</h1>
