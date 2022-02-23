@@ -123,7 +123,3 @@ If you found the app helpful, consider supporting me with a coffee.
 </a>
 
 ---
-
-<h3 align="center">
-Vigex needs a ⭐️ from you!
-</h3>
