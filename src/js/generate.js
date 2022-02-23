@@ -20,6 +20,106 @@ const selectMenu =
 </div>
 `;
 
+// Function: Generates the character set block
+const generateCharacterSetTemplate = (id, isEndpointElement) => {
+	return `<div class="character-set">
+		<input checked ${isEndpointElement ? 'disabled' : ''} type="radio" name="${id}-confirmation" id="${id}-confirmation-character-set" class="character-set">
+		<label for="${id}-confirmation-character-set">Choose character set(s)</label>
+	</div>
+
+	<div class="hidden character-sets">
+		<div>
+			<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-uppercase-letters">
+			<label for="${id}-confirmation-character-set-uppercase-letters">Uppercase Letters</label>
+		</div>
+
+		<div>
+			<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-lowercase-letters">
+			<label for="${id}-confirmation-character-set-lowercase-letters">Lowercase Letters</label>
+		</div>
+
+		<div>
+			<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-numbers">
+			<label for="${id}-confirmation-character-set-numbers">Numbers</label>
+		</div>
+
+		<div>
+			<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-non-numeric-characters">
+			<label for="${id}-confirmation-character-set-non-numeric-characters">Non-numeric Characters</label>
+		</div>
+
+		<div>
+			<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-word-characters">
+			<label for="${id}-confirmation-character-set-word-characters">Word Characters</label>
+		</div>
+
+		<div>
+			<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-special-characters">
+			<label for="${id}-confirmation-character-set-special-characters">Special Characters</label>
+		</div>
+
+		<div>
+			<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-whitespace">
+			<label for="${id}-confirmation-character-set-whitespace">Whitespace</label>
+		</div>
+
+		<div>
+			<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-non-whitespace">
+			<label for="${id}-confirmation-character-set-non-whitespace">Non-Whitespace Character</label>
+		</div>
+
+		<div>
+			<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-horizontal-tab">
+			<label for="${id}-confirmation-character-set-horizontal-tab">Horizontal Tab</label>
+		</div>
+
+		<div>
+			<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-vertical-tab">
+			<label for="${id}-confirmation-character-set-vertical-tab">Vertical Tab</label>
+		</div>
+
+		<div>
+			<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-carriage-return">
+			<label for="${id}-confirmation-character-set-carriage-return">Carriage Return</label>
+		</div>
+
+		<div>
+			<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-linefeed">
+			<label for="${id}-confirmation-character-set-linefeed">Linefeed</label>
+		</div>
+
+		<div>
+			<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-form-feed">
+			<label for="${id}-confirmation-character-set-form-feed">Form Feed</label>
+		</div>
+	</div>
+
+	<div class="custom-characters">
+		<input ${isEndpointElement ? 'disabled' : ''} type="radio" name="${id}-confirmation" id="${id}-confirmation-custom-characters" class="custom-characters">
+		<label for="${id}-confirmation-custom-characters">Custom Characters</label>
+	</div>
+
+	<div class="hidden custom-characters-field">
+		<input disabled type="text" placeholder="Enter your character set">
+	</div>
+	`;
+}
+
+// Function: Generates the quantifier block
+const generateQuantifierTemplate = (id, isEndpointElement) => {
+	return `<div class="hidden quantity">
+                <div>
+                    <label for="${id}-min-quantity">Minimum number of times this character set / group must repeat: </label>
+                    <input ${isEndpointElement ? 'disabled' : ''} type="number" id="${id}-min-quantity" min="0" value="1" class="min">
+                </div>
+
+                <div>
+                    <label for="${id}-max-quantity">Maximum number of times this character set / group must repeat (Type -1 if you don't want this field): </label>
+                    <input ${isEndpointElement ? 'disabled' : ''} type="number" id="${id}-max-quantity" min="-1" value="1" class="max">
+                </div>
+            </div>`;
+}
+
 // Function: Generates form elements dynamically
 const generateFormElements = (formElementIDs) => {
 	// Iterate through every formElementID and create and append formElements
@@ -130,6 +230,8 @@ const generateEndpointFormElementInnerHTML = (formElements) => {
 	formElements.forEach((formElement, index) => {
 		const { id } = formElement;
 
+		const randomId = Math.random() * Math.random();
+
 		formElement.innerHTML =
         `
         <button type="button" data-expanded="no" id="expand-${id}-confirmation" class="expand-btn">&gt;</button>
@@ -141,86 +243,7 @@ const generateEndpointFormElementInnerHTML = (formElements) => {
 
         <div class="params hidden">
 
-            <div class="character-set">
-                <input checked disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-character-set" class="character-set">
-                <label for="${id}-confirmation-character-set">Choose character set(s)</label>
-            </div>
-
-            <div class="hidden character-sets">
-                <div>
-					<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-uppercase-letters">
-					<label for="${id}-confirmation-character-set-uppercase-letters">Uppercase Letters</label>
-				</div>
-
-				<div>
-					<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-lowercase-letters">
-					<label for="${id}-confirmation-character-set-lowercase-letters">Lowercase Letters</label>
-				</div>
-
-				<div>
-					<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-numbers">
-					<label for="${id}-confirmation-character-set-numbers">Numbers</label>
-				</div>
-
-				<div>
-					<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-non-numeric-characters">
-					<label for="${id}-confirmation-character-set-non-numeric-characters">Non-numeric Characters</label>
-				</div>
-
-				<div>
-					<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-word-characters">
-					<label for="${id}-confirmation-character-set-word-characters">Word Characters</label>
-				</div>
-
-				<div>
-					<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-special-characters">
-					<label for="${id}-confirmation-character-set-special-characters">Special Characters</label>
-				</div>
-
-				<div>
-					<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-whitespace">
-					<label for="${id}-confirmation-character-set-whitespace">Whitespace</label>
-				</div>
-
-				<div>
-					<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-non-whitespace">
-					<label for="${id}-confirmation-character-set-non-whitespace">Non-Whitespace Character</label>
-				</div>
-
-				<div>
-					<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-horizontal-tab">
-					<label for="${id}-confirmation-character-set-horizontal-tab">Horizontal Tab</label>
-				</div>
-
-				<div>
-					<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-vertical-tab">
-					<label for="${id}-confirmation-character-set-vertical-tab">Vertical Tab</label>
-				</div>
-
-				<div>
-					<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-carriage-return">
-					<label for="${id}-confirmation-character-set-carriage-return">Carriage Return</label>
-				</div>
-
-				<div>
-					<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-linefeed">
-					<label for="${id}-confirmation-character-set-linefeed">Linefeed</label>
-				</div>
-
-				<div>
-					<input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-form-feed">
-					<label for="${id}-confirmation-character-set-form-feed">Form Feed</label>
-				</div>
-            </div>
-
-            <div class="custom-characters">
-                <input disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-custom-characters" class="custom-characters">
-                <label for="${id}-confirmation-custom-characters">Custom Characters</label>
-            </div>
-
-            <div class="hidden custom-characters-field">
-                <input disabled type="text" placeholder="Enter your character set">
-            </div>
+			${generateCharacterSetTemplate(randomId, true)}
 
             <div class="custom-groups">
                 <input disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-custom-groups" class="custom-group">
@@ -231,17 +254,7 @@ const generateEndpointFormElementInnerHTML = (formElements) => {
                 <input disabled type="text" placeholder="Enter your group">
             </div>
 
-            <div class="hidden quantity">
-                <div>
-                    <label for="${id}-min-quantity">Minimum number of times this character set / group must repeat: </label>
-                    <input disabled type="number" id="${id}-min-quantity" min="0" value="1" class="min">
-                </div>
-
-                <div>
-                    <label for="${id}-max-quantity">Maximum number of times this character set / group must repeat (Type -1 if you don't want this field): </label>
-                    <input disabled type="number" id="${id}-max-quantity" min="-1" value="1" class="max">
-                </div>
-            </div>
+			${generateQuantifierTemplate(id, true)}
         </div>
         `;
 	});
@@ -274,98 +287,10 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
             <button type = "button" class = "remove" id="delete-${id}">Remove</button>
 
             <div class = "params hidden">
-                <div class="character-set">
-                    <input checked type="radio" name="${id}-confirmation" id="${id}-confirmation-character-set" class="character-set">
-                    <label for="${id}-confirmation-character-set">Choose character set(s)</label>
-                </div>
 
-                <div class="hidden character-sets">
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-uppercase-letters">
-                        <label for="${id}-confirmation-character-set-uppercase-letters">Uppercase Letters</label>
-                    </div>
+				${generateCharacterSetTemplate(id, false)}
 
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-lowercase-letters">
-                        <label for="${id}-confirmation-character-set-lowercase-letters">Lowercase Letters</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-numbers">
-                        <label for="${id}-confirmation-character-set-numbers">Numbers</label>
-                    </div>
-
-					<div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-non-numeric-characters">
-                        <label for="${id}-confirmation-character-set-non-numeric-characters">Non-numeric Characters</label>
-                    </div>
-
-					<div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-word-characters">
-                        <label for="${id}-confirmation-character-set-word-characters">Word Characters</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-special-characters">
-                        <label for="${id}-confirmation-character-set-special-characters">Special Characters</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-whitespace">
-                        <label for="${id}-confirmation-character-set-whitespace">Whitespace</label>
-                    </div>
-
-					<div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-non-whitespace">
-                        <label for="${id}-confirmation-character-set-non-whitespace">Non-Whitespace Character</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-horizontal-tab">
-                        <label for="${id}-confirmation-character-set-horizontal-tab">Horizontal Tab</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-vertical-tab">
-                        <label for="${id}-confirmation-character-set-vertical-tab">Vertical Tab</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-carriage-return">
-                        <label for="${id}-confirmation-character-set-carriage-return">Carriage Return</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-linefeed">
-                        <label for="${id}-confirmation-character-set-linefeed">Linefeed</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-form-feed">
-                        <label for="${id}-confirmation-character-set-form-feed">Form Feed</label>
-                    </div>
-                </div>
-
-                <div class="custom-characters">
-                    <input type="radio" name="${id}-confirmation" id="${id}-confirmation-custom-characters" class="custom-characters">
-                    <label for="${id}-confirmation-custom-characters">Custom Characters</label>
-                </div>
-
-                <div class="hidden custom-characters-field">
-                    <input disabled type="text" placeholder="Enter your character set">
-                </div>
-
-                <div class="hidden quantity">
-                    <div>
-                        <label for="${id}-min-quantity">Minimum number of times this character set must repeat: </label>
-                        <input type="number" id="${id}-min-quantity" min="0" value="1" class="min">
-                    </div>
-
-                    <div>
-                        <label for="${id}-max-quantity">Maximum number of times this character set must repeat (Type -1 if you don't want this field): </label>
-                        <input type="number" id="${id}-max-quantity" min="-1" value="1" class="max">
-                    </div>
-                </div>
+                ${generateQuantifierTemplate(id, false)}
             </div>
         </div>
         `);
@@ -416,98 +341,10 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
             <button type = "button" class = "remove" id="delete-${id}">Remove</button>
 
             <div class = "params hidden">
-                <div class="character-set">
-                    <input checked type="radio" name="${id}-confirmation" id="${id}-confirmation-character-set" class="character-set">
-                    <label for="${id}-confirmation-character-set">Choose character set(s)</label>
-                </div>
 
-                <div class="hidden character-sets">
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-uppercase-letters">
-                        <label for="${id}-confirmation-character-set-uppercase-letters">Uppercase Letters</label>
-                    </div>
+				${generateCharacterSetTemplate(id, false)}
 
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-lowercase-letters">
-                        <label for="${id}-confirmation-character-set-lowercase-letters">Lowercase Letters</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-numbers">
-                        <label for="${id}-confirmation-character-set-numbers">Numbers</label>
-                    </div>
-
-					<div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-non-numeric-characters">
-                        <label for="${id}-confirmation-character-set-non-numeric-characters">Non-numeric Characters</label>
-                    </div>
-
-					<div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-word-characters">
-                        <label for="${id}-confirmation-character-set-word-characters">Word Characters</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-special-characters">
-                        <label for="${id}-confirmation-character-set-special-characters">Special Characters</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-whitespace">
-                        <label for="${id}-confirmation-character-set-whitespace">Whitespace</label>
-                    </div>
-
-					<div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-non-whitespace">
-                        <label for="${id}-confirmation-character-set-non-whitespace">Non-Whitespace Character</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-horizontal-tab">
-                        <label for="${id}-confirmation-character-set-horizontal-tab">Horizontal Tab</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-vertical-tab">
-                        <label for="${id}-confirmation-character-set-vertical-tab">Vertical Tab</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-carriage-return">
-                        <label for="${id}-confirmation-character-set-carriage-return">Carriage Return</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-linefeed">
-                        <label for="${id}-confirmation-character-set-linefeed">Linefeed</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" name="${id}-confirmation-character-set" id="${id}-confirmation-character-set-form-feed">
-                        <label for="${id}-confirmation-character-set-form-feed">Form Feed</label>
-                    </div>
-                </div>
-
-                <div class="custom-characters">
-                    <input type="radio" name="${id}-confirmation" id="${id}-confirmation-custom-characters" class="custom-characters">
-                    <label for="${id}-confirmation-custom-characters">Custom Characters</label>
-                </div>
-
-                <div class="hidden custom-characters-field">
-                    <input disabled type="text" placeholder="Enter your character set">
-                </div>
-
-                <div class="hidden quantity">
-                    <div>
-                        <label for="${id}-min-quantity">Minimum number of times this character set must repeat: </label>
-                        <input type="number" id="${id}-min-quantity" min="0" value="1" class="min">
-                    </div>
-
-                    <div>
-                        <label for="${id}-max-quantity">Maximum number of times this character set must repeat (Type -1 if you don't want this field): </label>
-                        <input type="number" id="${id}-max-quantity" min="-1" value="1" class="max">
-                    </div>
-                </div>
+                ${generateQuantifierTemplate(id, false)}
             </div>
         </div>
         `);
@@ -561,17 +398,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
                     <input type="text" placeholder="Enter your group">
                 </div>
 
-                <div class="hidden quantity">
-                    <div>
-                        <label for="${id}-min-quantity">Minimum number of times this character set must repeat: </label>
-                        <input type="number" id="${id}-min-quantity" min="0" value="1" class="min">
-                    </div>
-
-                    <div>
-                        <label for="${id}-max-quantity">Maximum number of times this character set must repeat (Type -1 if you don't want this field): </label>
-                        <input type="number" id="${id}-max-quantity" min="-1" value="1" class="max">
-                    </div>
-                </div>
+				${generateQuantifierTemplate(id, false)}
             </div>
         </div>
         `);
