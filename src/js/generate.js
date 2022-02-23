@@ -238,8 +238,8 @@ const generateEndpointFormElementInnerHTML = (formElements) => {
                 </div>
 
                 <div>
-                    <label for="${id}-max-quantity">Maximum number of times this character set / group must repeat: </label>
-                    <input disabled type="number" id="${id}-max-quantity" min="1" value="1" class="max">
+                    <label for="${id}-max-quantity">Maximum number of times this character set / group must repeat (Type -1 if you don't want this field): </label>
+                    <input disabled type="number" id="${id}-max-quantity" min="-1" value="1" class="max">
                 </div>
             </div>
         </div>
@@ -362,8 +362,8 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
                     </div>
 
                     <div>
-                        <label for="${id}-max-quantity">Maximum number of times this character set must repeat: </label>
-                        <input type="number" id="${id}-max-quantity" min="1" value="1" class="max">
+                        <label for="${id}-max-quantity">Maximum number of times this character set must repeat (Type -1 if you don't want this field): </label>
+                        <input type="number" id="${id}-max-quantity" min="-1" value="1" class="max">
                     </div>
                 </div>
             </div>
@@ -504,8 +504,8 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
                     </div>
 
                     <div>
-                        <label for="${id}-max-quantity">Maximum number of times this character set must repeat: </label>
-                        <input type="number" id="${id}-max-quantity" min="1" value="1" class="max">
+                        <label for="${id}-max-quantity">Maximum number of times this character set must repeat (Type -1 if you don't want this field): </label>
+                        <input type="number" id="${id}-max-quantity" min="-1" value="1" class="max">
                     </div>
                 </div>
             </div>
@@ -568,8 +568,8 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
                     </div>
 
                     <div>
-                        <label for="${id}-max-quantity">Maximum number of times this character set must repeat: </label>
-                        <input type="number" id="${id}-max-quantity" min="1" value="1" class="max">
+                        <label for="${id}-max-quantity">Maximum number of times this character set must repeat (Type -1 if you don't want this field): </label>
+                        <input type="number" id="${id}-max-quantity" min="-1" value="1" class="max">
                     </div>
                 </div>
             </div>

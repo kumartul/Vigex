@@ -93,7 +93,10 @@ const generateQuantifier = (min, max) => {
 	max = Number(max);
 
 	// If 'maximum' is more than 'minimum', then show an alert
-	if (max < min) {
+	if(max < min && max === -1) {
+		expression += `{${min},}`;
+	}
+	else if (max < min) {
 		showAlertBox(alertBox, 'Minimum number of occurrences cannot be greater than maximum number of occurrences');
 	}
 	// If 'minimum' is equal to 'maximum', then omit any one of the fields
