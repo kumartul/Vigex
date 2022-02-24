@@ -249,15 +249,15 @@ const generateEndpointFormElementInnerHTML = (formElements) => {
 			${generateCharacterSetTemplate(randomId, true)}
 
             <div class="custom-groups">
-                <input disabled type="radio" name="${id}-confirmation" id="${id}-confirmation-custom-groups" class="custom-group">
-                <label for="${id}-confirmation-custom-groups">Custom Group</label>
+                <input disabled type="radio" name="${randomId}-confirmation" id="${randomId}-confirmation-custom-groups" class="custom-group">
+                <label for="${randomId}-confirmation-custom-groups">Custom Group</label>
             </div>
 
             <div class="hidden custom-groups-field">
                 <input disabled type="text" placeholder="Enter your group">
             </div>
 
-			${generateQuantifierTemplate(id, true)}
+			${generateQuantifierTemplate(randomId, true)}
         </div>
         `;
 	});
