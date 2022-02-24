@@ -310,7 +310,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 
 		radioBtns.forEach((radioBtn) => {
 			radioBtn.addEventListener('click', (event) => {
-				const checkboxes = document.getElementById(id).querySelectorAll('input[type="checkbox"]');
+				const checkboxes = document.getElementById(id).querySelectorAll('.character-sets input[type="checkbox"]');
 				const customCharactersField = document.getElementById(id).querySelector('input[type="text"]');
 
 				if(event.target.className === 'character-set') {
@@ -364,7 +364,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 
 		radioBtns.forEach((radioBtn) => {
 			radioBtn.addEventListener('click', (event) => {
-				const checkboxes = document.getElementById(id).querySelectorAll('input[type="checkbox"]');
+				const checkboxes = document.getElementById(id).querySelectorAll('.character-sets input[type="checkbox"]');
 				const customCharactersField = document.getElementById(id).querySelector('input[type="text"]');
 
 				if (event.target.className === 'character-set') {
