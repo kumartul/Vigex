@@ -176,5 +176,4 @@ radioBtns.forEach((radioBtn) => {
 	});
 });
 
-// TODO: This function will be called when the project will be made open-source
-// fetchNumberOfStarGazers();
+fetchNumberOfStarGazers();
