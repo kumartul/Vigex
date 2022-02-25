@@ -201,7 +201,7 @@ generateRegexBtn.addEventListener('click', () => {
 							// Enclose the character set in square brackets
 							const customGroupsField = formElement.querySelector('.custom-groups-field input');
 
-							first = `^(${customGroupsField.value})`;
+							first = `^(${escapeSpecialCharacters(customGroupsField.value)})`;
 						}
 					}
 				});
@@ -248,7 +248,7 @@ generateRegexBtn.addEventListener('click', () => {
 						else if(radioBtn.className === 'custom-group') {
 							const customGroupsField = formElement.querySelector('.custom-groups-field input');
 
-							last = `(${customGroupsField.value})`;
+							last = `(${escapeSpecialCharacters(customGroupsField.value)})`;
 						}
 					}
 				});
