@@ -66,3 +66,13 @@
 		width: 90% !important;
 	}
 }
+
+// Main Input Fields
+@media screen and (max-width: 425px) {
+	main {
+		#regex-name,
+		#output-regex {
+			font-size: 2rem !important;
+		}
+	}
+}
