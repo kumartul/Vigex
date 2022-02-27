@@ -50,3 +50,12 @@
 		}
 	}
 }
+
+// Navbar
+@media screen and (max-width: 350px) {
+	.navbar {
+		.logo {
+			left: -9rem;
+		}
+	}
+}

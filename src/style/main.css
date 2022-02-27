@@ -222,6 +222,12 @@ footer .footer-container .socials .col a:hover {
   }
 }
 
+@media screen and (max-width: 350px) {
+  .navbar .logo {
+    left: -9rem;
+  }
+}
+
 main {
   width: 70%;
   margin: 3rem auto;
