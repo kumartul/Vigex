@@ -228,6 +228,12 @@ footer .footer-container .socials .col a:hover {
   }
 }
 
+@media screen and (max-width: 500px) {
+  main {
+    width: 90% !important;
+  }
+}
+
 main {
   width: 70%;
   margin: 3rem auto;
