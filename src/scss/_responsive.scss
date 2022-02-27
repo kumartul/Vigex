@@ -76,3 +76,19 @@
 		}
 	}
 }
+
+// Form Elements
+@media screen and (max-width: 400px) {
+	#form-group {
+		input[type="radio"] {
+			margin-left: 0 !important;
+		}
+
+		.character-sets,
+        .groups,
+		.custom-characters-field,
+        .custom-groups-field {
+			margin-left: 0 !important;
+		}
+	}
+}

@@ -241,6 +241,18 @@ footer .footer-container .socials .col a:hover {
   }
 }
 
+@media screen and (max-width: 400px) {
+  #form-group input[type="radio"] {
+    margin-left: 0 !important;
+  }
+  #form-group .character-sets,
+  #form-group .groups,
+  #form-group .custom-characters-field,
+  #form-group .custom-groups-field {
+    margin-left: 0 !important;
+  }
+}
+
 main {
   width: 70%;
   margin: 3rem auto;
