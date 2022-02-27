@@ -146,8 +146,10 @@ const generateFormElements = (formElementIDs) => {
 	flags.forEach((flag) => {
 		const element =
         `
-        <input type = "checkbox" id = "${flag.flag}-flag" value = "${flag.flag}" class="flag">
-        <label for = "${flag.flag}-flag" class="flag-label">${flag.text}</label>
+		<div class="flag-checkbox">
+			<input type = "checkbox" id = "${flag.flag}-flag" value = "${flag.flag}" class="flag">
+			<label for = "${flag.flag}-flag" class="flag-label">${flag.text}</label>
+		</div>
         `;
 
 		form.innerHTML += element;
