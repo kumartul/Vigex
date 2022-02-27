@@ -4,10 +4,11 @@
 @import './navbar';
 @import './alert';
 @import './footer';
+@import './responsive';
 
 main {
     width: 70%;
-    
+
     margin: 3rem auto;
 
     #regex-name,
@@ -41,7 +42,7 @@ main {
             label {
                 @include text($black, 1.5rem);
             }
-            
+
             .params {
                 margin-left: 1.75rem;
                 margin-top: 1.5rem;
@@ -65,8 +66,8 @@ main {
 
             background-color: white;
             font-size: 1.5rem;
-            
-            @include border; 
+
+            @include border;
 
             padding: 0.1rem 1rem;
 
@@ -79,7 +80,7 @@ main {
 
         #generate-regex {
             @include button($theme-color);
-            
+
             @include border($color: $theme-color);
 
             transition: 0.3s;
@@ -176,7 +177,7 @@ main {
 
         .flag {
             cursor: pointer;
-            
+
             margin-right: 1rem;
             margin-bottom: 2rem;
         }
