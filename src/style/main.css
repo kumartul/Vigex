@@ -190,6 +190,38 @@ footer .footer-container .socials .col a:hover {
   text-decoration: underline;
 }
 
+@media screen and (max-width: 626px) {
+  footer .footer-container {
+    overflow: hidden;
+  }
+  footer .footer-container .wrapper {
+    margin: auto 3rem;
+  }
+  footer .footer-container .wrapper .credits {
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+  }
+}
+
+@media screen and (max-width: 334px) {
+  footer .footer-container .wrapper {
+    margin: auto 0.25rem;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  footer .footer-container .credits img {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 270px) {
+  footer .footer-container .credits strong a {
+    font-size: 1.6rem;
+  }
+}
+
 main {
   width: 70%;
   margin: 3rem auto;

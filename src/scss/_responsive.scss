@@ -1,0 +1,52 @@
+// Footer
+@media screen and (max-width: 626px) {
+	footer {
+		.footer-container {
+			overflow: hidden;
+
+			.wrapper {
+				margin: auto 3rem;
+
+				.credits {
+					width: max-content;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 334px) {
+	footer {
+		.footer-container {
+			.wrapper {
+				margin: auto 0.25rem;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 300px) {
+	footer {
+		.footer-container {
+			.credits {
+				img {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 270px) {
+	footer {
+		.footer-container {
+			.credits {
+				strong {
+					a {
+						font-size: 1.6rem;
+					}
+				}
+			}
+		}
+	}
+}
