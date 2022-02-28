@@ -285,7 +285,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 
 		secondLastFormElement.insertAdjacentHTML('afterend',
 			`
-        <div class = "form-element character-set-block midpoint" id="${id}">
+        <div class = "form-element character-set-block midpoint ${Boolean(localStorage.getItem('isDarkMode')) ? 'dark' : ''}" id="${id}">
             <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
             <label>Character Set</label>
             <button type = "button" class = "remove" id="delete-${id}">Remove</button>
@@ -338,7 +338,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 
 		secondLastFormElement.insertAdjacentHTML('afterend',
 			`
-        <div class = "form-element negative-character-set-block midpoint" id="${id}">
+        <div class = "form-element negative-character-set-block midpoint ${Boolean(localStorage.getItem('isDarkMode')) ? 'dark' : ''}" id="${id}">
             <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
             <label>Negative Character Set</label>
             <button type = "button" class = "remove" id="delete-${id}">Remove</button>
@@ -391,7 +391,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 
 		secondLastFormElement.insertAdjacentHTML('afterend',
 			`
-        <div class = "form-element group-block midpoint" id="${id}">
+        <div class = "form-element group-block midpoint ${Boolean(localStorage.getItem('isDarkMode')) ? 'dark' : ''}" id="${id}">
             <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
             <label>Group</label>
             <button type = "button" class = "remove" id="delete-${id}">Remove</button>
@@ -421,7 +421,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 
 		secondLastFormElement.insertAdjacentHTML('afterend',
 			`
-        <div class = "form-element assertion-block midpoint" id="${id}">
+        <div class = "form-element assertion-block midpoint ${Boolean(localStorage.getItem('isDarkMode')) ? 'dark' : ''}" id="${id}">
             <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
             <label>Assertion</label>
             <button type = "button" class = "remove" id="delete-${id}">Remove</button>
@@ -463,7 +463,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 
 		secondLastFormElement.insertAdjacentHTML('afterend',
 			`
-        <div class = "form-element or-block midpoint" id="${id}">
+        <div class = "form-element or-block midpoint ${Boolean(localStorage.getItem('isDarkMode')) ? 'dark' : ''}" id="${id}">
             <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
             <label>Or</label>
             <button type = "button" class = "remove" id="delete-${id}">Remove</button>
@@ -481,7 +481,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 
 		secondLastFormElement.insertAdjacentHTML('afterend',
 			`
-		<div class = "form-element any-single-character-block midpoint" id="${id}">
+		<div class = "form-element any-single-character-block midpoint ${Boolean(localStorage.getItem('isDarkMode')) ? 'dark' : ''}" id="${id}">
             <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
             <label>Any Single Character</label>
             <button type = "button" class = "remove" id="delete-${id}">Remove</button>

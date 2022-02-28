@@ -253,6 +253,20 @@ footer .footer-container .socials .col a:hover {
   }
 }
 
+.light-dark-mode-toggler {
+  background-color: #0082e6;
+  height: 2rem;
+  width: 2rem;
+  padding: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 8rem;
+  right: 2rem;
+  bottom: auto;
+  left: auto;
+}
+
 main {
   width: 70%;
   margin: 3rem auto;
@@ -286,6 +300,10 @@ main #output-regex::-ms-input-placeholder {
 main #regex-name::placeholder,
 main #output-regex::placeholder {
   color: lightgrey;
+}
+
+main #regex-name {
+  background: transparent;
 }
 
 main #output-regex {
@@ -349,6 +367,16 @@ main #form-group .form-element .remove {
   border: none;
   font-weight: bold;
   background: rgba(255, 0, 0, 0.25);
+}
+
+main #form-group .dark label {
+  color: white;
+}
+
+main #form-group .dark input[type=text],
+main #form-group .dark input[type=number] {
+  background-color: #1d1d1d;
+  color: white;
 }
 
 main #form-group select {

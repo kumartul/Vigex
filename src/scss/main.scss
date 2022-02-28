@@ -26,6 +26,10 @@ main {
         }
     }
 
+	#regex-name {
+		background: transparent;
+	}
+
     #output-regex {
         margin-top: 3rem;
         padding: 0.5rem 1rem;
@@ -82,6 +86,17 @@ main {
                 background: rgba(255, 0, 0, 0.25);
             }
         }
+
+		.dark {
+			label {
+				color: white;
+			}
+			input[type=text],
+			input[type=number] {
+				background-color: #1d1d1d;
+				color: white;
+			}
+		}
 
         select {
             float: right;

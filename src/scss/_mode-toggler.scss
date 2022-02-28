@@ -1,0 +1,14 @@
+.light-dark-mode-toggler {
+	background-color: $theme-color;
+
+	height: 2rem;
+	width: 2rem;
+
+	padding: 1rem;
+
+	border-radius: 50%;
+
+	cursor: pointer;
+
+	@include pos-absolute($top: 8rem, $right: 2rem);
+}
