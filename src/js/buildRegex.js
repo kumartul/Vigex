@@ -150,7 +150,7 @@ const handleLookaheadAssertion = (assertionInfo, expression) => {
 // Function: Escapes special characters in the expression
 const escapeSpecialCharacters = (expression) => {
 	return expression.replace(/\W/g, '\\$&');
-}
+};
 
 // Attach a 'click' event listener to the generateRegexBtn
 generateRegexBtn.addEventListener('click', () => {

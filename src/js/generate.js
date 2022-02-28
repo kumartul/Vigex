@@ -103,7 +103,7 @@ const generateCharacterSetTemplate = (id, isEndpointElement) => {
 		<input disabled type="text" placeholder="Enter your character set">
 	</div>
 	`;
-}
+};
 
 // Function: Generates the quantifier block
 const generateQuantifierTemplate = (id, isEndpointElement) => {
@@ -121,7 +121,7 @@ const generateQuantifierTemplate = (id, isEndpointElement) => {
 				<input type="checkbox" id="${id}-is-non-greedy" class="is-non-greedy">
 				<label for="${id}-is-non-greedy">Non-greedy</label>
             </div>`;
-}
+};
 
 // Function: Generates form elements dynamically
 const generateFormElements = (formElementIDs) => {
@@ -226,8 +226,8 @@ const fetchSecondLastFormElement = () => {
 	const formElements = [...document.querySelectorAll('.form-element')];
 	const secondLastFormElement = formElements[formElements.length - 2];
 
-	return secondLastFormElement
-}
+	return secondLastFormElement;
+};
 
 // Function: Generates the innerHTML of endpointFormElements by using their ID
 const generateEndpointFormElementInnerHTML = (formElements) => {
@@ -279,7 +279,6 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 	const optionNumber = event.target.selectedIndex;
 
 	if(optionNumber === 1) {    // Character Sets
-
 		const id = Math.random() * Math.random();
 
 		const secondLastFormElement = fetchSecondLastFormElement();
@@ -333,7 +332,6 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 		});
 	}
 	if (optionNumber === 2) {    // Negative Character Sets
-
 		const id = Math.random() * Math.random();
 
 		const secondLastFormElement = fetchSecondLastFormElement();
@@ -482,7 +480,7 @@ characterOrGroupOrAssertionSelectMenu.addEventListener('change', (event) => {
 		const id = Math.random() * Math.random();
 
 		secondLastFormElement.insertAdjacentHTML('afterend',
-		`
+			`
 		<div class = "form-element any-single-character-block midpoint" id="${id}">
             <button type="button" data-expanded="no" class="expand-btn">&gt;</button>
             <label>Any Single Character</label>
