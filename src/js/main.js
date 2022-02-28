@@ -1,6 +1,7 @@
 import './generate.js';
 import { confirmationStates } from './utils.js';
 import { outputRegexField } from './buildRegex.js';
+import { attachEventListenerToExpandBtn } from './generate.js';
 
 const starsOnGitHubBtn = document.getElementById('stars-on-github');
 const copyRegexBtn = document.getElementById('copy-btn');
@@ -134,44 +135,7 @@ confirmationMenus.forEach((confirmationMenu) => {
 
 // Iterate through every expandBtn and attach a 'click' event listener to each of them
 expandBtns.forEach((expandBtn) => {
-	// Rotate the expandBtn by 90deg on the z-axis
-	expandBtn.addEventListener('click', (event) => {
-		// Parent element of expandBtn
-		const formElement = event.target.parentElement;
-
-		if(event.target.getAttribute('data-expanded') === 'no') {
-			event.target.style.transition = '0.25s';
-			event.target.style.transform = 'rotateZ(90deg)';
-
-			// Fetch all the divs in the formElement that are hidden in the form of an array
-			const hiddenDivs = [...formElement.querySelectorAll('.hidden')];
-
-			// Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
-			// so that they become visible
-			hiddenDivs.forEach((hiddenDiv) => {
-				hiddenDiv.classList.remove('hidden');
-				hiddenDiv.classList.add('visible');
-			});
-
-			event.target.setAttribute('data-expanded', 'yes');
-		}
-		else if(event.target.getAttribute('data-expanded') === 'yes') {
-			event.target.style.transition = '0.25s';
-			event.target.style.transform = 'rotateZ(0deg)';
-
-			// Fetch all the divs in the formElement that are hidden in the form of an array
-			const hiddenDivs = [...formElement.querySelectorAll('.visible')];
-
-			// Iterate through every hiddenDiv and remove the 'hidden' class and add the 'visible' class
-			// so that they become visible
-			hiddenDivs.forEach((hiddenDiv) => {
-				hiddenDiv.classList.remove('visible');
-				hiddenDiv.classList.add('hidden');
-			});
-
-			event.target.setAttribute('data-expanded', 'no');
-		}
-	});
+	attachEventListenerToExpandBtn(expandBtn);
 });
 
 // Iterate through every radio button and add a 'click' event listener to each of them

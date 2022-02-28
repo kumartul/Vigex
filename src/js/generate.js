@@ -168,7 +168,7 @@ const generateFormElements = (formElementIDs) => {
 };
 
 // Function: Attaches event listener to the expand button
-const attachEventListenerToExpandBtn = (expandBtn) => {
+export const attachEventListenerToExpandBtn = (expandBtn) => {
 	// Rotate the expandBtn by 90deg on the z-axis
 	expandBtn.addEventListener('click', (event) => {
 		// Parent element of expandBtn
