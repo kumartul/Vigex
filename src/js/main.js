@@ -58,6 +58,15 @@ const enableDarkMode = () => {
 	formElements.forEach(formElement => {
 		formElement.classList.add('dark');
 	});
+
+	const navbar =  document.querySelector('.navbar');
+	navbar.style.background = '#111';
+
+	const footer = document.querySelector('.footer-container');
+	footer.style.backgroundColor = '#111';
+
+	const wave = document.querySelector('footer svg path');
+	wave.setAttribute('fill', '#111');
 }
 
 // Function: Enables light mode
@@ -90,6 +99,15 @@ const enableLightMode = () => {
 	darkElements.forEach(darkElement => {
 		darkElement.classList.remove('dark');
 	});
+
+	const navbar = document.querySelector('.navbar');
+	navbar.style.background = 'linear-gradient(to right, #0082e6, #1b9bff)';
+
+	const footer = document.querySelector('.footer-container');
+	footer.style.backgroundColor = '#0099ff';
+
+	const wave = document.querySelector('footer svg path');
+	wave.setAttribute('fill', '#0099ff');
 }
 
 if(isDarkMode) {
