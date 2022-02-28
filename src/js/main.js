@@ -1,7 +1,9 @@
 import './generate.js';
 import { confirmationStates } from './utils.js';
+import { outputRegexField } from './buildRegex.js';
 
 const starsOnGitHubBtn = document.getElementById('stars-on-github');
+const copyRegexBtn = document.getElementById('copy-btn');
 
 // Convert the NodeList to an array
 const expandBtns = [...document.querySelectorAll('.expand-btn')];
@@ -34,7 +36,38 @@ const fetchNumberOfStarGazers = async () => {
 // Attach a 'click' event listener to the starsOnGitHubBtn so that whenever someone clicks on the button,
 // he/she will be redirected to the repository on GitHub
 starsOnGitHubBtn.addEventListener('click', () => {
-	window.location.href = 'https://github.com/kumartul/vigex';
+	window.location.href = 'https://github.com/kumartul/Vigex';
+});
+
+// Attach a 'click' event listener to the copyRegexBtn so that whenever someone
+// clicks on the button, the regular expression gets copied to the clipboard
+copyRegexBtn.addEventListener('click', async () => {
+	await navigator.clipboard.writeText(outputRegexField.value);
+
+	// Change the styling of the button to indicate that the regular expression
+	// has been copied
+	copyRegexBtn.innerText = 'Copied!';
+	copyRegexBtn.style.backgroundColor = '#0082e6';
+	copyRegexBtn.style.color = 'white';
+
+	// Reset the styling after 1.5 seconds
+	setTimeout(() => {
+		copyRegexBtn.innerText = 'Copy Regex';
+		copyRegexBtn.style.backgroundColor = 'transparent';
+		copyRegexBtn.style.color = '#0082e6';
+
+		copyRegexBtn.addEventListener('mouseover', () => {
+			copyRegexBtn.style.backgroundColor = '#0082e6';
+			copyRegexBtn.style.color = 'white';
+			copyRegexBtn.style.transition = '0.3s';
+		});
+
+		copyRegexBtn.addEventListener('mouseout', () => {
+			copyRegexBtn.style.backgroundColor = 'transparent';
+			copyRegexBtn.style.color = '#0082e6';
+			copyRegexBtn.style.transition = '0.3s';
+		});
+	}, 1500);
 });
 
 // Iterate through every confirmationMenu and add a 'click' event listener to each confirmationMenu

@@ -293,6 +293,31 @@ main #output-regex {
   padding: 0.5rem 1rem;
 }
 
+main #generate-regex,
+main #copy-btn {
+  color: #0082e6;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 2px solid #0082e6;
+  border-radius: 0.5rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+main #generate-regex:hover,
+main #copy-btn:hover {
+  background-color: #0082e6;
+  color: white;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+main #copy-btn {
+  margin-top: 2rem;
+}
+
 main #form-group {
   margin-top: 3rem;
 }
@@ -338,25 +363,6 @@ main #form-group select {
 
 main #form-group select:focus-within {
   border-color: #1b9bff;
-}
-
-main #form-group #generate-regex {
-  color: #0082e6;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  background: transparent;
-  border: 2px solid #0082e6;
-  border-radius: 0.5rem;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-main #form-group #generate-regex:hover {
-  background-color: #0082e6;
-  color: white;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
 }
 
 main #form-group .expand-btn {

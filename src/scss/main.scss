@@ -30,6 +30,27 @@ main {
         padding: 0.5rem 1rem;
     }
 
+	#generate-regex,
+	#copy-btn {
+		@include button($theme-color);
+
+		@include border($color: $theme-color);
+
+		transition: 0.3s;
+
+		&:hover {
+			background-color: $theme-color;
+
+			color: white;
+
+			transition: 0.3s;
+		}
+	}
+
+	#copy-btn {
+		margin-top: 2rem;
+	}
+
     #form-group {
         margin-top: 3rem;
 
@@ -75,22 +96,6 @@ main {
 
             &:focus-within {
                 border-color: #1b9bff;
-            }
-        }
-
-        #generate-regex {
-            @include button($theme-color);
-
-            @include border($color: $theme-color);
-
-            transition: 0.3s;
-
-            &:hover {
-                background-color: $theme-color;
-
-                color: white;
-
-                transition: 0.3s;
             }
         }
 

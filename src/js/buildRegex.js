@@ -2,7 +2,7 @@ import alertBox, { showAlertBox } from './alert.js';
 
 const generateRegexBtn = document.getElementById('generate-regex');
 
-const outputRegexField = document.getElementById('output-regex');
+export const outputRegexField = document.getElementById('output-regex');
 
 const formElements = document.querySelectorAll('.form-element');
 
