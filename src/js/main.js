@@ -5,6 +5,7 @@ import { attachEventListenerToExpandBtn } from './generate.js';
 
 const starsOnGitHubBtn = document.getElementById('stars-on-github');
 const copyRegexBtn = document.getElementById('copy-btn');
+const productHuntBadge = document.querySelector('.producthunt-featured-badge img');
 
 const moonIcon =
 `
@@ -39,6 +40,8 @@ const enableDarkMode = () => {
 	document.body.style.backgroundColor = '#1d1d1d';
 
 	outputRegexField.style.color = 'white';
+
+	productHuntBadge.src = 'https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=334091&theme=dark';
 
 	const flagLabels = [...document.querySelectorAll('.flag-label')];
 	flagLabels.forEach(flagLabel => {
@@ -80,6 +83,8 @@ const enableLightMode = () => {
 	document.body.style.backgroundColor = 'white';
 
 	outputRegexField.style.color = '#4a4a4a';
+
+	productHuntBadge.src = 'https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=334091&theme=light';
 
 	const flagLabels = [...document.querySelectorAll('.flag-label')];
 	flagLabels.forEach(flagLabel => {

@@ -1,4 +1,4 @@
-footer {    
+footer {
     .footer-container {
         .wrapper {
             width: fit-content;
@@ -52,6 +52,8 @@ footer {
 
         .copyright {
             @include text;
+
+			margin-bottom: 1rem;
         }
 
         .socials {
