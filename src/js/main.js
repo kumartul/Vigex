@@ -5,6 +5,12 @@ import { attachEventListenerToExpandBtn } from './generate.js';
 
 const starsOnGitHubBtn = document.getElementById('stars-on-github');
 const copyRegexBtn = document.getElementById('copy-btn');
+const flagLabels = [...document.querySelectorAll('.flag-label')];
+const regexNameField = document.getElementById('regex-name');
+const selects = [...document.querySelectorAll('select')];
+const navbar = document.querySelector('.navbar');
+const footer = document.querySelector('.footer-container');
+const wave = document.querySelector('footer svg path');
 const productHuntBadge = document.querySelector('.producthunt-featured-badge img');
 
 const moonIcon =
@@ -43,15 +49,12 @@ const enableDarkMode = () => {
 
 	productHuntBadge.src = 'https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=334091&theme=dark';
 
-	const flagLabels = [...document.querySelectorAll('.flag-label')];
 	flagLabels.forEach(flagLabel => {
 		flagLabel.style.color = 'white';
 	});
 
-	const regexNameField = document.getElementById('regex-name');
 	regexNameField.style.color = 'white';
 
-	const selects = [...document.querySelectorAll('select')];
 	selects.forEach(select => {
 		select.style.backgroundColor = '#1d1d1d';
 		select.style.color = 'white';
@@ -62,13 +65,10 @@ const enableDarkMode = () => {
 		formElement.classList.add('dark');
 	});
 
-	const navbar =  document.querySelector('.navbar');
 	navbar.style.background = '#111';
 
-	const footer = document.querySelector('.footer-container');
 	footer.style.backgroundColor = '#111';
 
-	const wave = document.querySelector('footer svg path');
 	wave.setAttribute('fill', '#111');
 }
 
@@ -86,15 +86,12 @@ const enableLightMode = () => {
 
 	productHuntBadge.src = 'https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=334091&theme=light';
 
-	const flagLabels = [...document.querySelectorAll('.flag-label')];
 	flagLabels.forEach(flagLabel => {
 		flagLabel.style.color = 'black';
 	});
 
-	const regexNameField = document.getElementById('regex-name');
 	regexNameField.style.color = '#4a4a4a';
 
-	const selects = [...document.querySelectorAll('select')];
 	selects.forEach(select => {
 		select.style.backgroundColor = 'white';
 		select.style.color = 'black';
@@ -105,13 +102,10 @@ const enableLightMode = () => {
 		darkElement.classList.remove('dark');
 	});
 
-	const navbar = document.querySelector('.navbar');
 	navbar.style.background = 'linear-gradient(to right, #0082e6, #1b9bff)';
 
-	const footer = document.querySelector('.footer-container');
 	footer.style.backgroundColor = '#0099ff';
 
-	const wave = document.querySelector('footer svg path');
 	wave.setAttribute('fill', '#0099ff');
 }
 
